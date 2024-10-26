@@ -215,3 +215,41 @@ textarea {
   }
 
 }
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-item {
+  opacity: 0;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+/* Sequence the animations */
+.hero-logo {
+  animation-delay: 0.1s;
+}
+
+.hero-subtitle {
+  animation-delay: 0.3s;
+}
+
+.hero-image {
+  animation-delay: 0.5s;
+}
+
+/* Optional: Add a nice transition for hover states */
+.hero a {
+  transition: opacity 0.2s ease;
+}
+
+.hero a:hover {
+  opacity: 0.8;
+}
