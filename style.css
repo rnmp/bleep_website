@@ -1,6 +1,5 @@
 :root {
   --color-accent: #ff5252;
-  --text-color-accent: #ff5252;
   --text-color-body: #292a4a;
   --text-color-button-primary: #ffffff;
 }
@@ -17,10 +16,23 @@ body {
 }
 
 body {
-  color: var(--text-color-body);
+  color: var(--body-foreground-color);
+  background-color: var(--body-background-color);
   font-size: 1em;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  :root {
+    --color-accent: #ff6262;
+    --body-foreground-color: white;
+    --body-background-color: #1C1919;
+  }
 }
 
 a {
@@ -31,8 +43,10 @@ a {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
-  padding: 20px;
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 .site-header {
@@ -50,24 +64,22 @@ main {
 }
 
 .hero-image {
-  max-height: 40vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 4.5rem;
-  padding: 0 20px;
+  overflow: hidden;
+  max-height: 40vh;
 }
 .hero-image img {
-  max-width: 1200px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: rgba(26, 4, 60, 0.1) -6px 16px 47.200001px -3px,
-    rgba(0, 0, 0, 0.15) 0px 0px 1px 1px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .hero {
-  flex: 1;
+  flex-shrink: 0;
   text-align: center;
+  padding: 2rem 20px;
 }
 .hero-logo {
   margin-bottom: 0.75rem;
@@ -76,13 +88,15 @@ main {
 .hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-color-accent);
+  color: var(--color-accent);
   margin-bottom: 0.75rem;
 }
 .hero-subtitle {
-  opacity: 0.7;
   font-size: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+.hero-subtitle span {
+  opacity: 0.7;
 }
 .hero footer {
   margin-top: 0.5rem;
@@ -129,7 +143,7 @@ main {
 .support-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-color-accent);
+  color: var(--color-accent);
   margin-bottom: 0.2em;
 }
 .support-subtitle {
@@ -168,7 +182,7 @@ button {
 button {
   appearance: none;
   border: 0;
-  background: var(--text-color-accent);
+  background: var(--color-accent);
   color: var(--text-color-button-primary);
 }
 
@@ -184,21 +198,14 @@ textarea {
 }
 
 @media (min-width: 700px) {
-  .hero-title {
-    font-size: 4.5rem;
-  }
-  .hero-subtitle {
-    font-size: 1.25rem;
-  }
+
   .support {
     text-align: center;
   }
   .support-subtitle {
     font-size: 1rem;
   }
-  .hero-logo {
-    width: 82px;
-  }
+
 
   #app_store_link_iphone {
     display: none;
@@ -206,7 +213,5 @@ textarea {
   #app_store_link_mac {
     display: block;
   }
-  .download-button {
-    width: 180px;
-  }
+
 }
