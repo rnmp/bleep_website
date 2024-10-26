@@ -233,6 +233,7 @@ textarea {
 }
 
 .made-by {
+  animation: fadeIn 0.8s ease-out forwards;
   animation-delay: 0.8s;
 }
 
@@ -261,4 +262,13 @@ textarea {
 .downloads {
   text-align: center;
   animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
