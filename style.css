@@ -1,11 +1,12 @@
 :root {
   --color-accent: #ff5252;
-  --text-color-body: #292a4a;
-  --text-color-button-primary: #ffffff;
+  --body-foreground-color: #292a4a;
+  --body-foreground-color-rgb: 41, 42, 74;
+  /* Remove the separate button background variable and use rgba() with the foreground color */
 }
 
 * {
-  font-family: Manrope, -apple-system, sans-serif;
+  font-family: Inter, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  line-height: 1.5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,6 +33,7 @@ body {
   :root {
     --color-accent: #ff6262;
     --body-foreground-color: white;
+    --body-foreground-color-rgb: 255, 255, 255;
     --body-background-color: #1C1919;
   }
 }
@@ -38,6 +41,14 @@ body {
 a {
   color: inherit;
   text-decoration: inherit;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+span {
+  opacity: 0.7;
 }
 
 main {
@@ -46,7 +57,6 @@ main {
   justify-content: center;
   flex: 1;
   overflow: hidden;
-  min-height: 100vh;
 }
 
 .site-header {
@@ -98,36 +108,6 @@ main {
 .hero-subtitle span {
   opacity: 0.7;
 }
-.hero footer {
-  margin-top: 0.5rem;
-  opacity: 0.7;
-  font-size: 0.75em;
-  font-weight: 500;
-}
-.hero footer a {
-  color: var(--color-accent);
-}
-
-.site-footer {
-  display: flex;
-  font-size: 0.75em;
-  opacity: 0.7;
-  padding: 0 20px 20px;
-}
-.site-footer nav {
-  display: flex;
-  gap: 2em;
-  flex: 1;
-}
-
-#app_store_link_iphone {
-  display: block;
-}
-#app_store_link_mac {
-  display: none;
-}
-.download-button {
-}
 
 .support {
   display: flex;
@@ -168,6 +148,13 @@ main {
 .terms-content h1,
 .terms-content h2 {
   font-weight: 600;
+}
+
+.made-by {
+  padding: 20px;
+  text-align: center;
+  font-size: 0.75em;
+  opacity: 0.2;
 }
 
 input[type="text"],
@@ -245,11 +232,33 @@ textarea {
   animation-delay: 0.5s;
 }
 
-/* Optional: Add a nice transition for hover states */
-.hero a {
-  transition: opacity 0.2s ease;
+.made-by {
+  animation-delay: 0.8s;
 }
 
-.hero a:hover {
-  opacity: 0.8;
+.button {
+  display: inline-flex;
+  padding: 0 0.75em;
+  height: 2em;
+  background-color: rgb(from var(--body-foreground-color) r g b / 0.1);
+  color: var(--body-foreground-color);
+  border-radius: 1em;
+  font-weight: 500;
+  font-size: 0.85em;
+  margin: 0 0.25em;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.9;
+  color: var(--body-foreground-color);
+  background-color: var(--color-accent);
+}
+
+/* Add styles for the downloads container */
+.downloads {
+  text-align: center;
+  animation-delay: 0.5s;
 }
