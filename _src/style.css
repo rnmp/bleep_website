@@ -1,0 +1,280 @@
+:root {
+  --color-accent: #ff5252;
+  --body-foreground-color: #292a4a;
+  --body-foreground-color-rgb: 41, 42, 74;
+  /* Remove the separate button background variable and use rgba() with the foreground color */
+}
+
+* {
+  font-family: Inter, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--body-foreground-color);
+  background-color: var(--body-background-color);
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  :root {
+    --color-accent: #ff6262;
+    --body-foreground-color: white;
+    --body-foreground-color-rgb: 255, 255, 255;
+    --body-background-color: #1C1919;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+span {
+  opacity: 0.7;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.site-header {
+  padding: 20px 20px 0;
+}
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.site-logo svg {
+  width: 40px;
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 50vh;
+}
+.hero-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.hero {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 2rem 20px;
+}
+.hero-logo {
+  margin-bottom: 0.75rem;
+  width: 40px;
+}
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.hero-subtitle span {
+  opacity: 0.7;
+}
+
+.support {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+.support header {
+  margin-bottom: 0.5em;
+}
+
+.support-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.2em;
+}
+.support-subtitle {
+  font-size: 1.1rem;
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  width: 100%;
+  gap: 1em;
+}
+
+.terms-content {
+  align-self: center;
+  max-width: 600px;
+}
+.terms-content > * + * {
+  margin-top: 1em;
+}
+.terms-content h1,
+.terms-content h2 {
+  font-weight: 600;
+}
+
+.made-by {
+  padding: 20px;
+  text-align: center;
+  font-size: 0.75em;
+  opacity: 0.2;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+button {
+  padding: 0.5em 0.75em;
+  border-radius: 0.75em;
+  font-size: 1rem;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  background: var(--color-accent);
+  color: var(--text-color-button-primary);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  border: 1px solid #e5e5e5;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 8em;
+}
+
+@media (min-width: 700px) {
+
+  .support {
+    text-align: center;
+  }
+  .support-subtitle {
+    font-size: 1rem;
+  }
+
+
+  #app_store_link_iphone {
+    display: none;
+  }
+  #app_store_link_mac {
+    display: block;
+  }
+
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-item {
+  opacity: 0;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+/* Sequence the animations */
+.hero-logo {
+  animation-delay: 0.1s;
+}
+
+.hero-subtitle {
+  animation-delay: 0.3s;
+}
+
+.hero-image {
+  animation-delay: 0.5s;
+}
+
+.made-by {
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.button {
+  display: inline-flex;
+  padding: 0 0.75em;
+  height: 2em;
+    background-color: rgb(from var(--body-foreground-color) r g b / 0.04);
+  color: var(--body-foreground-color);
+  border-radius: 1em;
+  font-weight: 500;
+  font-size: 0.85em;
+  margin: 0 0.25em;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.9;
+  color: white;
+  background-color: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .button {
+  background-color: rgb(from var(--body-foreground-color) r g b / 0.1);
+  }
+}
+
+/* Add styles for the downloads container */
+.downloads {
+  text-align: center;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
