@@ -1,30 +1,12 @@
-<!-- handwritten with <3 -->
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Think Visually</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
-  <link href="/style.css" rel="stylesheet" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HGTJYXHGW"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-1HGTJYXHGW');
-  </script>
-</head>
-
-<body>
+<Layout>
   <main>
     <section class="hero">
-      <svg class="hero-logo animate-item" width="82" viewBox="0 0 82 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hero-logo animate-item" width="82" viewBox="0 0 82 56" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M60.7013 6.03922H21.2987C12.7706 6.03922 5.85714 13.1675 5.85714 21.9608V34.0392C5.85714 42.8325 12.7706 49.9608 21.2987 49.9608H60.7013C69.2294 49.9608 76.1429 42.8325 76.1429 34.0392V21.9608C76.1429 13.1675 69.2294 6.03922 60.7013 6.03922ZM21.2987 0C9.53575 0 0 9.83218 0 21.9608V34.0392C0 46.1678 9.53575 56 21.2987 56H60.7013C72.4642 56 82 46.1678 82 34.0392V21.9608C82 9.83218 72.4643 0 60.7013 0H21.2987Z"
           fill="#FF5252" />
@@ -36,8 +18,7 @@
 
       <p class="hero-subtitle animate-item">
         <strong>A memory palace for creative thinkers</strong><br />
-        <span>Organize notes, links & images like never before
-          <!-- Available on</span> <a href="https://apps.apple.com/app/bleep-think-visually/id1638417383"><strong>iOS</strong></a> <span>and</span> <a href="https://apps.apple.com/app/bleep-think-visually/id6478577586"><strong>macOS</strong></a> -->
+        <span>Organize notes, links & images like never before</span>
       </p>
     </section>
     <picture class="hero-image animate-item">
@@ -53,8 +34,4 @@
   <footer class="made-by animate-item">
     <span>Made by</span> <a href="https://rolando.is"><strong>Rolando</strong></a>
   </footer>
-  </footer>
-  </footer>
-</body>
-
-</html>
+</Layout> 

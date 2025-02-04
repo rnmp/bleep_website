@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+---
+
+<Layout title="Support - Bleep">
+  <SiteHeader />
+  <main class="support">
+    <header>
+      <h1 class="support-title">Bug, idea or question?</h1>
+      <p class="support-subtitle">
+        Drop us a note and we'll back to you as soon as we can
+      </p>
+    </header>
+    <form action="https://submit-form.com/R7bwjb69d" class="support-form">
+      <input type="text" id="name" name="name" placeholder="Name" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <textarea id="message" name="message" placeholder="Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </main>
+  <SiteFooter />
+</Layout> 
