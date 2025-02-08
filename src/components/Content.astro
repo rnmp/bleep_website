@@ -1,0 +1,27 @@
+<div class="content">
+  <slot />
+</div>
+
+<style>
+  .content {
+    align-self: center;
+    max-width: 540px;
+    font-size: 0.9em;
+    padding: 80px 20px;
+  }
+
+  :global(.content h1),
+  :global(.content h2) {
+    font-family: "Corben", serif;
+    font-weight: 400;
+  }
+
+  :global(.content ul) {
+    list-style-type: square;
+    margin-left: 1rem;
+  }
+
+  :global(.content > * + *) {
+    margin-top: 1rem;
+  }
+</style>

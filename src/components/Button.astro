@@ -1,0 +1,57 @@
+---
+interface Props {
+  href?: string;
+  type?: "button" | "submit";
+  variant?: "big";
+}
+
+const { href, variant, type } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+
+<Tag href={href} class:list={["button", variant]} type={type}>
+  <slot />
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    padding: 0 0.75em;
+    height: 2em;
+    background-color: rgb(from var(--body-foreground-color) r g b / 0.04);
+    color: var(--body-foreground-color);
+    border-radius: 1em;
+    font-weight: 500;
+    font-size: 0.85em;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    appearance: none;
+  }
+
+  .button:hover {
+    opacity: 0.9;
+    color: white;
+    background-color: var(--color-accent);
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    background: var(--color-accent);
+    color: var(--text-color-button-primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .button {
+      background-color: rgb(from var(--body-foreground-color) r g b / 0.1);
+    }
+  }
+
+  /* Variant styles */
+  .big {
+    height: 3em;
+    font-size: 1em;
+  }
+</style>

@@ -1,38 +1,27 @@
 ---
+import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Button from "../components/Button.astro";
 ---
 
 <Layout>
   <main>
     <section class="hero">
-      <svg
-        class="hero-logo animate-item"
-        width="82"
-        viewBox="0 0 82 56"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M60.7013 6.03922H21.2987C12.7706 6.03922 5.85714 13.1675 5.85714 21.9608V34.0392C5.85714 42.8325 12.7706 49.9608 21.2987 49.9608H60.7013C69.2294 49.9608 76.1429 42.8325 76.1429 34.0392V21.9608C76.1429 13.1675 69.2294 6.03922 60.7013 6.03922ZM21.2987 0C9.53575 0 0 9.83218 0 21.9608V34.0392C0 46.1678 9.53575 56 21.2987 56H60.7013C72.4642 56 82 46.1678 82 34.0392V21.9608C82 9.83218 72.4643 0 60.7013 0H21.2987Z"
-          fill="#FF5252"></path>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M42.5974 6.03922H39.4026C30.8745 6.03922 23.961 13.1675 23.961 21.9608V34.0392C23.961 42.8325 30.8745 49.9608 39.4026 49.9608H42.5974C51.1255 49.9608 58.039 42.8325 58.039 34.0392V21.9608C58.039 13.1675 51.1255 6.03922 42.5974 6.03922ZM39.4026 0C27.6397 0 18.1039 9.83218 18.1039 21.9608V34.0392C18.1039 46.1678 27.6396 56 39.4026 56H42.5974C54.3603 56 63.8961 46.1678 63.8961 34.0392V21.9608C63.8961 9.83218 54.3604 0 42.5974 0H39.4026Z"
-          fill="#FF5252"></path>
-        <path d="M38.3377 0H43.6623V56H38.3377V0Z" fill="var(--color-accent)"
-        ></path>
-      </svg>
+      <Image
+        class="hero-logo"
+        src="/assets/icon_128x128@2x.png"
+        alt="Bleep icon"
+        width="64"
+        height="64"
+      />
 
-      <p class="hero-subtitle animate-item">
-        <strong>The ultra-niche thoughtboard for creative thinkers</strong><br
-        />
-        <span>Organize notes, links & images like never before</span>
-      </p>
+      <header>
+        <h1>The ultra-niche thoughtboard for creative thinkers</h1>
+        <h2>Organize notes, links & images like never before</h2>
+      </header>
     </section>
-    <picture class="hero-image animate-item">
+    <picture class="hero-image">
       <source
         srcset="/assets/preview_dark.png"
         media="(prefers-color-scheme: dark)"
@@ -42,21 +31,87 @@ import Layout from "../layouts/Layout.astro";
         alt="A screenshot of the Bleep app featuring content cards in a square grid"
       />
     </picture>
-    <footer class="downloads animate-item">
-      <a
-        class="button"
+    <p class="downloads-buttons">
+      <Button
         href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
-        >Get for iPhone</a
       >
-      <a
-        class="button"
+        Get for iPhone
+      </Button>
+      <Button
         href="https://apps.apple.com/app/bleep-think-visually/id6478577586"
-        >Get for Mac</a
       >
-    </footer>
+        Get for Mac
+      </Button>
+    </p>
   </main>
-  <footer class="made-by animate-item">
-    <span>Made by</span>
-    <a href="https://rolando.is"><strong>Rolando</strong></a>
-  </footer>
+  <SiteFooter animate />
 </Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-logo {
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 {
+    font-family: "Corben", serif;
+    font-weight: 400;
+    font-size: 1.65em;
+  }
+
+  header h2 {
+    opacity: 0.7;
+    font-weight: 500;
+    font-size: 1.25rem;
+  }
+
+  .hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 50vh;
+    margin: 3rem 0;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow:
+      0 0 0 1px rgba(var(--body-foreground-color-rgb), 0.1),
+      0 20px 40px -15px rgba(var(--body-foreground-color-rgb), 0.15);
+    border-radius: 12px;
+  }
+
+  .hero-logo,
+  header,
+  .hero-image,
+  .downloads-buttons {
+    opacity: 0;
+    animation: slideDown 0.8s ease-out forwards;
+  }
+
+  /* Sequence the animations */
+  .hero-logo {
+    animation-delay: 0.1s;
+  }
+
+  header {
+    animation-delay: 0.3s;
+  }
+
+  .hero-image {
+    animation-delay: 0.5s;
+  }
+
+  .downloads-buttons {
+    display: inline-flex;
+    gap: 1em;
+    justify-content: center;
+    animation-delay: 0.6s;
+  }
+</style>

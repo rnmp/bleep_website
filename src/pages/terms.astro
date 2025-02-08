@@ -2,11 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Content from "../components/Content.astro";
 ---
 
 <Layout title="Terms of Use - Bleep">
   <SiteHeader />
-  <div class="terms-content">
+  <Content>
     <h1>Terms of Use</h1>
 
     <p><em>Last updated: July 13, 2024</em></p>
@@ -127,6 +128,6 @@ import SiteFooter from "../components/SiteFooter.astro";
     </p>
 
     <p>Bleep LLC</p>
-  </div>
+  </Content>
   <SiteFooter />
 </Layout>

@@ -1,20 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 ---
 
 <Layout title="Support - Bleep">
   <SiteHeader />
-  <main class="support">
-    <header>
-      <h1 class="support-title">Bug, idea or question?</h1>
-      <p class="support-subtitle">
-        Drop us a note and we'll back to you as soon as we can
-      </p>
-    </header>
+  <main class="support-body">
+    <h1>
+      <strong>Bug, idea or question?</strong> Drop me a note and I'll get back to
+      you as soon as I can. Typically within a day.
+    </h1>
     <form action="https://submit-form.com/R7bwjb69d" class="support-form">
-      <input type="text" id="name" name="name" placeholder="Name" required />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Name"
+        required
+        autofocus
+      />
       <input
         type="email"
         id="email"
@@ -24,8 +30,75 @@ import SiteFooter from "../components/SiteFooter.astro";
       />
       <textarea id="message" name="message" placeholder="Message" required
       ></textarea>
-      <button type="submit">Send</button>
+      <Button type="submit" variant="big">Send</Button>
     </form>
   </main>
   <SiteFooter />
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.2em;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  button {
+    padding: 0.5em 0.75em;
+    border-radius: 0.75em;
+    font-size: 1rem;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  button:focus {
+    outline: none !important;
+    border-color: var(--color-accent);
+    caret-color: var(--color-accent);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    border: 1px solid #e5e5e5;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 8em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      border-color: #333;
+    }
+  }
+
+  form button {
+    cursor: pointer;
+    border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
+    margin: 0px !important;
+  }
+</style>

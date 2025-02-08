@@ -1,8 +1,41 @@
-<footer class="site-footer">
-  <nav>
-    <a href="/support">Support</a>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-  </nav>
-  <a href="https://rolando.is">— R</a>
+---
+interface Props {
+  animate?: boolean;
+}
+
+const { animate = false } = Astro.props;
+---
+
+<footer class:list={["footer", { "animate-item": animate }]}>
+  <a href="/support">Support</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <span style="flex: 1"></span>
+  <small>
+    <span>Made by</span>
+    <a href="https://rolando.is"><strong>Rolando</strong></a>
+  </small>
 </footer>
+
+<style>
+  small {
+    font-size: unset;
+  }
+  .footer {
+    display: flex;
+    padding: 20px;
+    gap: 1em;
+    font-size: 0.75em;
+    opacity: 0.7;
+  }
+
+  .footer a {
+    font-weight: 600;
+  }
+
+  .footer.animate-item {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.8s;
+  }
+</style>
