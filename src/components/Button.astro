@@ -2,14 +2,13 @@
 interface Props {
   href?: string;
   type?: "button" | "submit";
-  variant?: "big";
 }
 
-const { href, variant, type } = Astro.props;
+const { href, type } = Astro.props;
 const Tag = href ? "a" : "button";
 ---
 
-<Tag href={href} class:list={["button", variant]} type={type}>
+<Tag href={href} class="button" type={type}>
   <slot />
 </Tag>
 
@@ -55,11 +54,5 @@ const Tag = href ? "a" : "button";
     .button {
       background-color: rgb(from var(--body-foreground-color) r g b / 0.1);
     }
-  }
-
-  /* Variant styles */
-  .big {
-    height: 3em;
-    font-size: 1em;
   }
 </style>
