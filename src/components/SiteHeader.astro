@@ -11,7 +11,8 @@ import Image from "astro/components/Image.astro";
 
 <style>
   .site-header a {
-    padding: 20px 20px 0;
+    padding: var(--safe-area-padding);
+    padding-bottom: 0;
     display: flex;
     align-items: center;
     gap: 0.5em;

@@ -5,9 +5,9 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<Layout title="Support - Bleep">
+<Layout title="Support · Bleep">
   <SiteHeader />
-  <main class="support-body">
+  <main>
     <h1>
       <strong>Bug, idea or question?</strong> Drop me a note and I'll get back to
       you as soon as I can. Typically within a day.
@@ -45,6 +45,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     gap: 2em;
     max-width: 500px;
     margin: 0 auto;
+    padding: 0 var(--safe-area-padding);
   }
 
   h1 {

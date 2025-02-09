@@ -7,7 +7,13 @@
     align-self: center;
     max-width: 540px;
     font-size: 0.9em;
-    padding: 80px 20px;
+    padding: 20px var(--safe-area-padding);
+  }
+
+  @media (min-width: 720px) {
+    .content {
+      padding: 80px var(--safe-area-padding);
+    }
   }
 
   :global(.content h1),

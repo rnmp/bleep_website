@@ -20,7 +20,7 @@ const Tag = href ? "a" : "button";
     height: 2em;
     background-color: rgb(from var(--body-foreground-color) r g b / 0.04);
     color: var(--body-foreground-color);
-    border-radius: 1em;
+    border-radius: 9999px;
     font-weight: 500;
     font-size: 0.85em;
     align-items: center;
@@ -33,6 +33,14 @@ const Tag = href ? "a" : "button";
     opacity: 0.9;
     color: white;
     background-color: var(--color-accent);
+  }
+
+  @media (min-width: 720px) {
+    .button {
+      font-size: 1em;
+      height: 3em;
+      padding: 0 1.5em;
+    }
   }
 
   button {

@@ -2,7 +2,15 @@
   --color-accent: #ff5252;
   --body-foreground-color: #292a4a;
   --body-foreground-color-rgb: 41, 42, 74;
-  /* Remove the separate button background variable and use rgba() with the foreground color */
+  --shadow-color-rgb: var(--body-foreground-color-rgb);
+
+  --safe-area-padding: 16px;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --safe-area-padding: 20px;
+  }
 }
 
 * {
@@ -23,7 +31,7 @@ body {
   font-size: 1em;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.5;
 }
 
@@ -37,6 +45,7 @@ body {
     --body-foreground-color: white;
     --body-foreground-color-rgb: 255, 255, 255;
     --body-background-color: #1C1919;
+    --shadow-color-rgb: 0, 0, 0;
   }
 }
 
@@ -57,9 +66,6 @@ main {
   justify-content: center;
   flex: 1;
 }
-
-
-
 
 @keyframes slideDown {
   from {

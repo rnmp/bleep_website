@@ -17,7 +17,7 @@ import Button from "../components/Button.astro";
       />
 
       <header>
-        <h1>The ultra-niche thoughtboard for creative thinkers</h1>
+        <h1>The ultra-niche thoughtboard <br />for creative thinkers</h1>
         <h2>Organize notes, links & images like never before</h2>
       </header>
     </section>
@@ -48,9 +48,12 @@ import Button from "../components/Button.astro";
 </Layout>
 
 <style>
+  main {
+    padding: 0 var(--safe-area-padding);
+  }
+
   .hero {
     text-align: center;
-    padding: 0 20px;
   }
 
   .hero-logo {
@@ -60,13 +63,29 @@ import Button from "../components/Button.astro";
   header h1 {
     font-family: "Corben", serif;
     font-weight: 400;
-    font-size: 1.65em;
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
   }
 
   header h2 {
-    opacity: 0.7;
+    opacity: 0.5;
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  @media (min-width: 720px) {
+    header h1 {
+      font-size: 1.65em;
+      margin-bottom: 0.25em;
+      br {
+        display: none;
+      }
+    }
+
+    header h2 {
+      font-size: 1.25rem;
+    }
   }
 
   .hero-image {
@@ -82,9 +101,15 @@ import Button from "../components/Button.astro";
     max-height: 100%;
     object-fit: contain;
     box-shadow:
-      0 0 0 1px rgba(var(--body-foreground-color-rgb), 0.1),
-      0 20px 40px -15px rgba(var(--body-foreground-color-rgb), 0.15);
-    border-radius: 12px;
+      0 0 0 1px rgba(var(--shadow-color-rgb), 0.1),
+      0 20px 40px -15px rgba(var(--shadow-color-rgb), 0.15);
+    border-radius: 4px;
+  }
+
+  @media (min-width: 720px) {
+    .hero-image img {
+      border-radius: 12px;
+    }
   }
 
   .hero-logo,
