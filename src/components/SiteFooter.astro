@@ -21,8 +21,8 @@ const { animate = false } = Astro.props;
   .footer {
     display: flex;
     padding: var(--safe-area-padding);
-    gap: 2em;
     font-size: 0.75em;
+    gap: 1em;
     color: var(--body-secondary-foreground-color);
   }
 
@@ -39,5 +39,12 @@ const { animate = false } = Astro.props;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
     animation-delay: 0.8s;
+  }
+
+  @media (min-width: 720px) {
+    .footer {
+      gap: 2em;
+      font-size: 0.85em;
+    }
   }
 </style>
