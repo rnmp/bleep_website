@@ -30,6 +30,7 @@ const articles = Object.values(
         articles.map((article) => (
           <li>
             <a href={article.url}>
+              {article.frontmatter.icon}{" "}
               {article.frontmatter.support_title || article.frontmatter.title}
             </a>
           </li>
@@ -39,7 +40,7 @@ const articles = Object.values(
 
     <h2>Common Questions</h2>
     <details>
-      <summary>Why is my data not synced between devices?</summary>
+      <summary>☁️ Why is my data not synced between devices?</summary>
       <p>
         Most likely, you don't have iCloud Drive enabled. Check out our <a
           href="/support/icloud">how-to guide</a
@@ -49,7 +50,7 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>Is my data on Bleep private?</summary>
+      <summary>🔒 Is my data on Bleep private?</summary>
       <p>
         Yes, your data can only be accessed by you. It's stored on your device.
         Bleep uses iCloud for syncing between devices, but it's encrypted
@@ -60,25 +61,25 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>Can I export/import my data?</summary>
+      <summary>💾 Can I export/import my data?</summary>
       <p>Not at the moment. But it will be added in a future update.</p>
     </details>
 
     <details>
-      <summary>Are you planning an iPad app?</summary>
+      <summary>📲 Are you planning an iPad app?</summary>
       <p>Yes, but I don't have a timeline to share yet.</p>
     </details>
 
     <details>
-      <summary>Do you have a web, Windows, Linux, or Android app?</summary>
+      <summary>💻 Do you have a web, Windows, Linux, or Android app?</summary>
       <p>
-        No, the current focus is on Mac and iPhone. Long-term, I'd love for
-        Bleep to be universal and on as many platforms as possible.
+        No, the current focus is on macOS and iOS. Long-term, I'd love for Bleep
+        to be universal and on as many platforms as possible.
       </p>
     </details>
 
     <details>
-      <summary>Do I need to subscribe to use Bleep?</summary>
+      <summary>💰 Do I need to subscribe to use Bleep?</summary>
       <p>
         No, Bleep is free on iPhone, and a one-time purchase on Mac. I may offer
         subscriptions in the future, but I plan to always offer the option to
@@ -109,10 +110,6 @@ const articles = Object.values(
     text-decoration: none;
   }
 
-  li::before {
-    content: "📒 ";
-  }
-
   details,
   li {
     padding-top: 1rem;
@@ -126,14 +123,6 @@ const articles = Object.values(
 
   details summary::-webkit-details-marker {
     display: none;
-  }
-
-  details summary::before {
-    content: "💭 ";
-  }
-
-  details[open] summary::before {
-    content: "💬 ";
   }
 
   summary,

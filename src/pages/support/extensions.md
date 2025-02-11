@@ -1,5 +1,6 @@
 ---
 layout: ../../layouts/SupportArticleLayout.astro
+icon: 🌐
 support_title: Save websites and images from your browser
 title: Browser Extension
 subtitle: Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, Firefox, and Safari.

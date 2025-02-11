@@ -1,5 +1,6 @@
 ---
 layout: ../../layouts/SupportArticleLayout.astro
+icon: ☁️
 support_title: Sync between your devices using iCloud
 title: iCloud Sync
 subtitle: Sync your notes, links, images, and rooms between your Mac and iPhone using iCloud.
@@ -18,7 +19,7 @@ As long as you have Bleep on your iPhone and Mac, you can [sync your data secure
 - You must be signed in with the same Apple ID on all devices
 - Changes may take a few moments to sync (up to a minute)
 
-## Confirm it's working
+### Confirm it's working
 
 1. Open Bleep on your Mac
 2. Go to Bleep > Settings
