@@ -5,7 +5,7 @@ title: iCloud Sync
 subtitle: Sync your notes, links, images, and rooms between your Mac and iPhone using iCloud.
 ---
 
-As long as you have Bleep on your iPhone and Mac, you can [sync your data securely](https://help.apple.com/icloud/mac/10.15/#/iclc68010) between them using iCloud. In most cases, this is already set up. But make sure to follow the steps below to ensure it's working.
+As long as you have Bleep on your iPhone and Mac, you can [sync your data securely](https://support.apple.com/en-us/102651) between them using iCloud. In most cases, this is already set up. But make sure to follow the steps below to ensure it's working.
 
 ## Set Up
 
