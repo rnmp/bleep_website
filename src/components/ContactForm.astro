@@ -1,0 +1,82 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  subtitle = "Drop me a note and I'll get back to you as soon as I can. Typically within a day.",
+} = Astro.props;
+
+import Button from "./Button.astro";
+---
+
+<p class="subtitle">
+  {subtitle}
+</p>
+<form action="https://submit-form.com/R7bwjb69d" class="support-form">
+  <input type="text" id="name" name="name" placeholder="Name" required />
+  <input type="email" id="email" name="email" placeholder="Email" required />
+  <textarea id="message" name="message" placeholder="Message" required
+  ></textarea>
+  <Button type="submit">Send</Button>
+</form>
+
+<style>
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--body-secondary-foreground-color);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  button {
+    padding: 0.5em 0.75em;
+    border-radius: 0.75em;
+    font-size: 1rem;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  button:focus {
+    outline: none !important;
+    border-color: var(--color-accent);
+    caret-color: var(--color-accent);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    border: 1px solid #e5e5e5;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 8em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      border-color: #333;
+    }
+  }
+
+  form button {
+    cursor: pointer;
+    border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
+    margin: 0px !important;
+  }
+</style>

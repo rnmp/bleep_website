@@ -3,110 +3,147 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Content from "../components/Content.astro";
+import ContactForm from "../components/ContactForm.astro";
+
+interface ArticleFrontmatter {
+  title: string;
+}
+
+interface Article {
+  url: string;
+  frontmatter: ArticleFrontmatter;
+}
+
+const articles = Object.values(
+  import.meta.glob<Article>("./support/*.md", { eager: true })
+);
 ---
 
 <Layout title="Support · Bleep">
   <SiteHeader />
-  <main>
-    <h1>
-      <strong>Bug, idea or question?</strong> Drop me a note and I'll get back to
-      you as soon as I can. Typically within a day.
-    </h1>
-    <form action="https://submit-form.com/R7bwjb69d" class="support-form">
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Name"
-        required
-        autofocus
-      />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email"
-        required
-      />
-      <textarea id="message" name="message" placeholder="Message" required
-      ></textarea>
-      <Button type="submit" variant="big">Send</Button>
-    </form>
-  </main>
+  <Content>
+    <h1>Support</h1>
+    <h2>How-To Guides</h2>
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <a href={article.url}>
+              {article.frontmatter.support_title || article.frontmatter.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Common Questions</h2>
+    <details>
+      <summary>Why is my data not synced between devices?</summary>
+      <p>
+        Most likely, you don't have iCloud Drive enabled. Check out our <a
+          href="/support/icloud">how-to guide</a
+        > to enable it. Please allow a few minutes for changes to sync between devices.
+        Especially if you're using a new device.
+      </p>
+    </details>
+
+    <details>
+      <summary>Is my data on Bleep private?</summary>
+      <p>
+        Yes, your data can only be accessed by you. It's stored on your device.
+        Bleep uses iCloud for syncing between devices, but it's encrypted
+        end-to-end. You can also review our <a href="/privacy"
+          >privacy policy.</a
+        >
+      </p>
+    </details>
+
+    <details>
+      <summary>Can I export/import my data?</summary>
+      <p>Not at the moment. But it will be added in a future update.</p>
+    </details>
+
+    <details>
+      <summary>Are you planning an iPad app?</summary>
+      <p>Yes, but I don't have a timeline to share yet.</p>
+    </details>
+
+    <details>
+      <summary>Do you have a web, Windows, Linux, or Android app?</summary>
+      <p>
+        No, the current focus is on Mac and iPhone. Long-term, I'd love for
+        Bleep to be universal and on as many platforms as possible.
+      </p>
+    </details>
+
+    <details>
+      <summary>Do I need to subscribe to use Bleep?</summary>
+      <p>
+        No, Bleep is free on iPhone, and a one-time purchase on Mac. I may offer
+        subscriptions in the future, but I plan to always offer the option to
+        purchase Bleep outright.
+      </p>
+    </details>
+
+    <h2>Need more help?</h2>
+    <ContactForm />
+  </Content>
   <SiteFooter />
 </Layout>
 
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 0 var(--safe-area-padding);
+  h2 {
+    margin-top: 2rem;
   }
 
-  h1 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.333;
-    margin-bottom: 0.2em;
-    color: var(--body-secondary-foreground-color);
+  ul {
+    margin-left: unset;
   }
 
-  h1 strong {
-    font-weight: 600;
-    color: var(--body-foreground-color);
+  li {
+    margin-bottom: 1rem;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1em;
-  }
-  input[type="text"],
-  input[type="email"],
-  textarea,
-  button {
-    padding: 0.5em 0.75em;
-    border-radius: 0.75em;
-    font-size: 1rem;
+  li a {
+    text-decoration: none;
   }
 
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  textarea:focus,
-  button:focus {
-    outline: none !important;
-    border-color: var(--color-accent);
-    caret-color: var(--color-accent);
+  li::before {
+    content: "📒 ";
   }
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    border: 1px solid #e5e5e5;
+  details,
+  li {
+    padding-top: 1rem;
+    border-top: 1px dashed var(--body-secondary-foreground-color);
+  }
+  details:not([open]) summary,
+  li {
+    list-style-type: none;
+    color: var(--link-color);
   }
 
-  textarea {
-    resize: vertical;
-    min-height: 8em;
+  details summary::-webkit-details-marker {
+    display: none;
   }
 
-  @media (prefers-color-scheme: dark) {
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      border-color: #333;
-    }
+  details summary::before {
+    content: "💭 ";
   }
 
-  form button {
+  details[open] summary::before {
+    content: "💬 ";
+  }
+
+  summary,
+  li {
+    font-weight: 500;
+    font-size: 1.1rem;
     cursor: pointer;
-    border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
-    margin: 0px !important;
+  }
+
+  details[open] summary {
+    margin-bottom: 0.5rem;
   }
 </style>

@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Content from "../components/Content.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} · Bleep`}>
+  <SiteHeader />
+  <Content>
+    <h1>{frontmatter.title}</h1>
+    {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
+    <slot />
+    <footer>
+      If you need further assistance, I got you! Please <a
+        href="/support/contact">reach out.</a
+      >
+    </footer>
+  </Content>
+  <SiteFooter />
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--body-secondary-foreground-color);
+  }
+
+  footer {
+    margin-top: 3rem;
+    color: var(--body-secondary-foreground-color);
+  }
+</style>

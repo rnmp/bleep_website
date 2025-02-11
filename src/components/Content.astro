@@ -4,6 +4,7 @@
 
 <style>
   .content {
+    flex: 1;
     align-self: center;
     max-width: 540px;
     font-size: 0.9em;
@@ -16,18 +17,40 @@
     }
   }
 
+  :global(.content a) {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+  }
+
   :global(.content h1),
   :global(.content h2) {
+    word-spacing: 0.075em;
     font-family: "Corben", serif;
     font-weight: 400;
+  }
+  :global(.content ul),
+  :global(.content ol) {
+    margin-left: 1.5rem;
   }
 
   :global(.content ul) {
     list-style-type: square;
-    margin-left: 1rem;
   }
 
   :global(.content > * + *) {
     margin-top: 1rem;
+  }
+
+  :global(.content img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  :global(.content hr) {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px dashed var(--body-secondary-foreground-color);
   }
 </style>
