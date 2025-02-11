@@ -3,16 +3,16 @@ layout: ../../layouts/SupportArticleLayout.astro
 icon: 🌐
 support_title: Save websites and images from your browser
 title: Browser Extension
-subtitle: Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, Firefox, and Safari.
+subtitle: Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, and Safari.
 image: ./extensions/context_menu.png
 ---
 
 ![Context menu](./extensions/context_menu.png)
 
-## Install on Chrome, Arc, or Firefox
+## Install on Chrome or Arc
 
 1. [Install extension from Chrome Web Store.](https://chromewebstore.google.com/detail/cjfkfilhmpodcciidnmoiojffkmkgepj)  
-   Compatible with Arc, and Firefox as well.
+   Compatible with Arc as well.
 2. That's it! You're good to go.
 
 ### Important
