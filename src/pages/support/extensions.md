@@ -11,7 +11,7 @@ image: ./extensions/context_menu.png
 
 ## Install on Chrome, Arc, or Firefox
 
-1. [Install extension from Chrome Web Store.](https://chromewebstore.google.com/detail/cjfkfilhmpodcciidnmoiojffkmkgepj/preview?hl=en-AU&authuser=0)  
+1. [Install extension from Chrome Web Store.](https://chromewebstore.google.com/detail/cjfkfilhmpodcciidnmoiojffkmkgepj)  
    Compatible with Arc, and Firefox as well.
 2. That's it! You're good to go.
 
