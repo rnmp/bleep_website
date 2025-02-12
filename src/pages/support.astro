@@ -27,14 +27,16 @@ const articles = Object.values(
     <h2>How-To Guides</h2>
     <ul>
       {
-        articles.map((article) => (
-          <li>
-            <a href={article.url}>
-              {article.frontmatter.icon}{" "}
-              {article.frontmatter.support_title || article.frontmatter.title}
-            </a>
-          </li>
-        ))
+        articles
+          .sort((a, b) => a.frontmatter.order - b.frontmatter.order)
+          .map((article) => (
+            <li>
+              <a href={article.url}>
+                {article.frontmatter.icon}{" "}
+                {article.frontmatter.support_title || article.frontmatter.title}
+              </a>
+            </li>
+          ))
       }
     </ul>
 
@@ -95,7 +97,7 @@ const articles = Object.values(
         well as assistive features around the content you add.
         <strong
           >However, I'd stick to local models for a better, private experience.
-          And most importantly, you'd get to toggle AI features as you see fit.</strong
+          And most importantly, you'd get to choose what AI features to use.</strong
         >
       </p>
     </details>

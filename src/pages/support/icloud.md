@@ -1,4 +1,5 @@
 ---
+order: 3
 layout: ../../layouts/SupportArticleLayout.astro
 icon: ☁️
 support_title: Sync between your devices using iCloud

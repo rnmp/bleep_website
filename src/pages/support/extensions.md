@@ -1,10 +1,10 @@
 ---
+order: 2
 layout: ../../layouts/SupportArticleLayout.astro
 icon: 🌐
-support_title: Save websites and images from your browser
-title: Browser Extension
+support_title: "Mac: save bookmarks & images from your browser"
+title: "Mac: Browser Extensions"
 subtitle: Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, and Safari.
-image: ./extensions/context_menu.png
 ---
 
 ![Context menu](./extensions/context_menu.png)
@@ -41,9 +41,11 @@ The Safari extension comes bundled with the Bleep macOS app. It should prompt yo
 
 ---
 
-# Get Started
+## Add stuff to Bleep
 
 ![Screenshot of the extension in use](./extensions/screenshot.png)
 
-- Click the Bleep icon on your browser’s toolbar to save the current website to Bleep. You may need to pin it in Chrome.
-- Right-click anywhere on the page and select "Add to Bleep" to save images (or the current website if not an image.)
+- Websites:
+  - Click the Bleep icon on your browser’s toolbar to save the current website to Bleep. You may need to pin it in Chrome.
+  - Right-click on a link (or current page) and select "Add to Bleep".
+- Images: right-click on an image and select "Add to Bleep".
