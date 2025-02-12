@@ -1,11 +1,12 @@
 ---
 interface Props {
-  title?: string;
   subtitle?: string;
+  autofocus?: boolean;
 }
 
 const {
   subtitle = "Drop me a note and I'll get back to you as soon as I can. Typically within a day.",
+  autofocus = false,
 } = Astro.props;
 
 import Button from "./Button.astro";
@@ -15,7 +16,14 @@ import Button from "./Button.astro";
   {subtitle}
 </p>
 <form action="https://submit-form.com/R7bwjb69d" class="support-form">
-  <input type="text" id="name" name="name" placeholder="Name" required />
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Name"
+    required
+    autofocus={autofocus}
+  />
   <input type="email" id="email" name="email" placeholder="Email" required />
   <textarea id="message" name="message" placeholder="Message" required
   ></textarea>
