@@ -2,8 +2,7 @@
 order: 2
 layout: ../../layouts/SupportArticleLayout.astro
 icon: 🌐
-support_title: "Mac: save bookmarks & images from your browser"
-title: "Mac: Browser Extensions"
+title: "Mac: Browsers Extensions"
 subtitle: Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, and Safari.
 ---
 

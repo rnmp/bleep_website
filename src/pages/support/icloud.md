@@ -2,7 +2,6 @@
 order: 3
 layout: ../../layouts/SupportArticleLayout.astro
 icon: ☁️
-support_title: Sync between your devices using iCloud
 title: iCloud Sync
 subtitle: Sync your notes, links, images, and rooms between your Mac and iPhone using iCloud.
 ---

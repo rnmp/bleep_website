@@ -2,8 +2,7 @@
 order: 1
 layout: ../../layouts/SupportArticleLayout.astro
 icon: 📱
-support_title: "iPhone: save bookmarks & images from anywhere"
-title: "iPhone: Share Extension"
+title: "iPhone: Share Menu Shortcut"
 subtitle: Save websites and images to Bleep from any app that supports sharing, including Safari.
 ---
 
@@ -16,7 +15,7 @@ subtitle: Save websites and images to Bleep from any app that supports sharing, 
 1. Make sure you have the latest version of Bleep installed.
 2. Go to Safari or your favorite browser.
 3. Tap on share icon (![share icon](./share_ios/share_icon.png)) on iOS.
-4. Tap on More (three dots) &rarr; Edit
+4. Tap on More (three dots) &rarr; Edit.
 5. Enable Bleep and add it to favorites (so it shows up first!)
 
 ## Going Forward…
