@@ -3,23 +3,25 @@ layout: ../../layouts/SupportArticleLayout.astro
 order: 1
 icon: "🔗"
 title: Bookmarking with Bleep
-subtitle: Save links quickly via the app, share menu (iPhone), or browser extensions (Mac).
+subtitle: Make the most of your links with these juicy tips.
 ---
 
-## Inside the app
+## Link Behavior
 
-You can save links via the Quick Add bar at the bottom of the screen.
+By default, Bleep will open links inside the app for convenience. If that's not your jam, go to Settings &rarr; Behavior &rarr; Open links in browser.
 
-![Quick Add bar](./links/quick_add.png)
+---
 
 ## iPhone: Share Menu Shortcut
 
-The easiest way to save links on iOS is to use the share sheet. Check out our [Share Extension guide](/support/share_ios) for more details.
+The most convenient way to save links on iPhone. [Learn more &rarr;](/support/share_ios)
 
 ![Share sheet](./links/share_sheet.png)
 
+---
+
 ## Mac: Browser Extensions
 
-For Mac, we offer a browser extension for Safari, Chrome, and Arc. Check out the [Browser Extensions guide](/support/extensions) for more details.
+Available for Safari, Chrome, and Arc. [Learn more &rarr;](/support/extensions)
 
 ![Safari extensions](./extensions/context_menu.png)
