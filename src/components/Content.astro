@@ -2,7 +2,7 @@
   <slot />
 </div>
 
-<style>
+<style is:global>
   .content {
     flex: 1;
     align-self: center;
@@ -17,46 +17,46 @@
     }
   }
 
-  :global(.content a) {
+  .content a {
     color: var(--link-color);
     text-decoration: underline;
     text-decoration-style: wavy;
   }
 
-  :global(.content h1),
-  :global(.content h2) {
+  .content h1,
+  .content h2 {
     word-spacing: 0.075em;
     font-family: "Corben", serif;
     font-weight: 400;
   }
-  :global(.content ul),
-  :global(.content ol) {
+  .content ul,
+  .content ol {
     margin-left: 1.5rem;
   }
 
-  :global(.content ul) {
+  .content ul {
     list-style-type: square;
   }
 
-  :global(.content > * + *) {
+  .content > * + * {
     margin-top: 1rem;
   }
 
-  :global(.content img),
-  :global(.content video) {
+  .content img,
+  .content video {
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: var(--safe-area-padding);
     margin: 0 auto;
   }
 
-  :global(.content hr) {
+  .content hr {
     margin: 2rem 0;
     border: 0;
     border-top: 1px dashed var(--body-secondary-foreground-color);
   }
 
-  :global(.content code) {
+  .content code {
     color: var(--color-accent);
     background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
     padding: 0.2em 0.4em;
@@ -67,7 +67,7 @@
       Menlo, Consolas, monospace;
   }
 
-  :global(.content table) {
+  .content table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -78,19 +78,19 @@
     margin: 1rem 0;
   }
 
-  :global(.content td:nth-child(3)),
-  :global(.content th:nth-child(3)) {
+  .content td:nth-child(3),
+  .content th:nth-child(3) {
     display: none;
   }
 
   @media (min-width: 720px) {
-    :global(.content td:nth-child(3)),
-    :global(.content th:nth-child(3)) {
+    .content td:nth-child(3),
+    .content th:nth-child(3) {
       display: table-cell;
     }
   }
 
-  :global(.content th) {
+  .content th {
     background-color: color-mix(
       in srgb,
       var(--body-foreground-color) 10%,
@@ -101,11 +101,11 @@
     font-weight: 500;
   }
 
-  :global(.content td) {
+  .content td {
     padding: 0.75rem 1rem;
   }
 
-  :global(.content tr:nth-child(even)) {
+  .content tr:nth-child(even) {
     background-color: color-mix(
       in srgb,
       var(--body-foreground-color) 5%,
@@ -113,23 +113,67 @@
     );
   }
 
-  :global(.content tr:nth-child(odd)) {
+  .content tr:nth-child(odd) {
     background-color: transparent;
   }
 
-  :global(.content tr:last-child td:first-child) {
+  .content tr:last-child td:first-child {
     border-bottom-left-radius: 11px;
   }
 
-  :global(.content tr:last-child td:last-child) {
+  .content tr:last-child td:last-child {
     border-bottom-right-radius: 11px;
   }
 
-  :global(.content th:first-child) {
+  .content th:first-child {
     border-top-left-radius: 11px;
   }
 
-  :global(.content th:last-child) {
+  .content th:last-child {
     border-top-right-radius: 11px;
   }
+
+  .content .video-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--link-color) 10%, transparent);
+    border-radius: var(--safe-area-padding);
+    padding: 1rem;
+  }
+
+  .content .video-wrapper video {
+    width: 300px;
+    max-width: 300px;
+    border-radius: 12px;
+  }
+
+  .content li img {
+    display: inline-block;
+    width: 24px;
+    border-radius: 8px !important;
+    vertical-align: middle;
+  }
 </style>
+
+<script>
+  const links = document.querySelectorAll(
+    '.content a[href$=".mov"], .content a[href$=".mp4"]'
+  );
+
+  links.forEach((link) => {
+    const videoUrl = link.getAttribute("href");
+    const videoContainer = document.createElement("div");
+    videoContainer.className = "video-wrapper";
+
+    const video = document.createElement("video");
+    video.setAttribute("controls", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.src = videoUrl ?? "";
+
+    videoContainer.appendChild(video);
+    link.parentNode?.replaceChild(videoContainer, link);
+  });
+</script>

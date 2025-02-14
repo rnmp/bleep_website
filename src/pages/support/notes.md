@@ -3,8 +3,20 @@ layout: ../../layouts/SupportArticleLayout.astro
 order: 1
 icon: 📒
 title: Format Your Notes
-subtitle: In addition to the formatting bar in the app, you can use these shortcuts to quickly style your notes.
+subtitle: Full-featured text formatting is available in the app, but you can also use shortcuts.
 ---
+
+## Formatting Bar
+
+[Toggling the formatting bar in iOS](./notes/formatting_ios.mov)
+
+Available on both iPhone and Mac.
+
+---
+
+## Shortcuts
+
+Skip the buttons and use these shortcuts to quickly style your notes.
 
 | Action                 | While typing | Keyboard (Mac) |
 | ---------------------- | ------------ | -------------- |
