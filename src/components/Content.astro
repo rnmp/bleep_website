@@ -171,12 +171,11 @@
     const video = document.createElement("video");
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
-    video.setAttribute("autoplay", "");
     video.setAttribute("loop", "");
     video.src = videoUrl ?? "";
 
     // Add click handler to toggle play/pause
-    video.addEventListener("click", () => {
+    videoContainer.addEventListener("click", () => {
       if (video.paused) {
         video.play();
       } else {
@@ -185,7 +184,58 @@
     });
 
     // Add pointer cursor to indicate clickable
-    video.style.cursor = "pointer";
+    videoContainer.style.cursor = "pointer";
+
+    // Add play button overlay
+    const playButton = document.createElement("div");
+    playButton.style.position = "absolute";
+    playButton.style.top = "50%";
+    playButton.style.left = "50%";
+    playButton.style.transform = "translate(-50%, -50%)";
+    playButton.style.fontSize = "32px";
+    playButton.style.color = "white";
+    playButton.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    playButton.style.backdropFilter = "blur(4px)";
+
+    playButton.style.width = "48px";
+    playButton.style.height = "48px";
+    playButton.style.borderRadius = "50%";
+    playButton.style.display = "flex";
+    playButton.style.alignItems = "center";
+    playButton.style.justifyContent = "center";
+    playButton.style.transition = "opacity 0.2s ease-in-out";
+    playButton.innerHTML = "<span style='margin-left: 3px'>▶</span>";
+    // Hide play button when video is playing (unless hovering)
+    video.addEventListener("play", () => {
+      playButton.style.opacity = "0";
+
+      // Show on hover while playing
+      videoContainer.addEventListener("mouseenter", () => {
+        if (!video.paused) playButton.style.opacity = "1";
+      });
+
+      videoContainer.addEventListener("mouseleave", () => {
+        if (!video.paused) playButton.style.opacity = "0";
+      });
+    });
+
+    // Always show play button when paused
+    video.addEventListener("pause", () => {
+      playButton.style.opacity = "1";
+    });
+
+    playButton.style.pointerEvents = "none"; // Let clicks pass through to video
+    videoContainer.style.position = "relative"; // For absolute positioning of play button
+    videoContainer.appendChild(playButton);
+
+    // Update play/pause icon based on video state
+    video.addEventListener("play", () => {
+      playButton.innerHTML = "⏸";
+    });
+
+    video.addEventListener("pause", () => {
+      playButton.innerHTML = "<span style='margin-left: 3px'>▶</span>";
+    });
 
     videoContainer.appendChild(video);
     link.parentNode?.replaceChild(videoContainer, link);
