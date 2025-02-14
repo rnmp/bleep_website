@@ -40,11 +40,11 @@ The Safari extension comes bundled with the Bleep macOS app. It should prompt yo
 
 ---
 
-## Add stuff to Bleep
+## Add Stuff to Bleep
 
 ![Screenshot of the extension in use](./extensions/screenshot.png)
 
-- Websites:
+- 🌐 Websites:
   - Click the Bleep icon on your browser’s toolbar to save the current website to Bleep. You may need to pin it in Chrome.
   - Right-click on a link (or current page) and select "Add to Bleep".
-- Images: right-click on an image and select "Add to Bleep".
+- 🎆 Images: right-click on an image and select "Add to Bleep".
