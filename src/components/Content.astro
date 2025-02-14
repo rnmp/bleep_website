@@ -78,6 +78,18 @@
     margin: 1rem 0;
   }
 
+  :global(.content td:nth-child(3)),
+  :global(.content th:nth-child(3)) {
+    display: none;
+  }
+
+  @media (min-width: 720px) {
+    :global(.content td:nth-child(3)),
+    :global(.content th:nth-child(3)) {
+      display: table-cell;
+    }
+  }
+
   :global(.content th) {
     background-color: color-mix(
       in srgb,
