@@ -13,6 +13,9 @@
 
   @media (min-width: 720px) {
     .content {
+      font-size: 1em;
+    }
+    .content {
       padding: 80px var(--safe-area-padding);
     }
   }
@@ -166,12 +169,23 @@
     videoContainer.className = "video-wrapper";
 
     const video = document.createElement("video");
-    video.setAttribute("controls", "");
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("autoplay", "");
     video.setAttribute("loop", "");
     video.src = videoUrl ?? "";
+
+    // Add click handler to toggle play/pause
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    // Add pointer cursor to indicate clickable
+    video.style.cursor = "pointer";
 
     videoContainer.appendChild(video);
     link.parentNode?.replaceChild(videoContainer, link);

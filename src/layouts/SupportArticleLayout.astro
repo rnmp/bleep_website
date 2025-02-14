@@ -14,8 +14,7 @@ const { frontmatter } = Astro.props;
     {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
     <slot />
     <footer>
-      If you need further assistance, I got you! Please <a
-        href="/support/contact">reach out.</a
+      Need more help? I got you! Please <a href="/support/contact">reach out.</a
       >
     </footer>
   </Content>
@@ -23,16 +22,18 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <style>
+  footer,
   .subtitle {
     font-size: 1.2rem;
     font-weight: 500;
-    margin-bottom: 2rem;
     color: var(--body-secondary-foreground-color);
+  }
+  .subtitle {
+    margin-bottom: 2rem;
   }
 
   footer {
     margin-top: 3rem;
-    color: var(--body-secondary-foreground-color);
   }
 
   a {

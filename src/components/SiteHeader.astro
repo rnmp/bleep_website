@@ -17,15 +17,38 @@ import Image from "astro/components/Image.astro";
     align-items: center;
     gap: 0.5em;
   }
+  .site-header {
+    display: flex;
+    justify-content: center;
+  }
+  @media (min-width: 720px) {
+    .site-header {
+      justify-content: flex-start;
+    }
+  }
   .site-header span {
+    display: none;
     font-family: "Corben", serif;
     font-weight: 400;
     font-size: 1.5rem;
     position: relative;
     top: -0.066em;
   }
+  @media (min-width: 720px) {
+    .site-header span {
+      display: block;
+    }
+  }
   .site-header img {
     display: block;
+    width: 48px;
+    height: 48px;
     filter: drop-shadow(0 0 12px rgb(from var(--color-accent) r g b / 0.4));
+  }
+  @media (min-width: 720px) {
+    .site-header img {
+      width: 32px;
+      height: 32px;
+    }
   }
 </style>
