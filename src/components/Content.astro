@@ -55,4 +55,69 @@
     border: 0;
     border-top: 1px dashed var(--body-secondary-foreground-color);
   }
+
+  :global(.content code) {
+    color: var(--color-accent);
+    background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+  }
+
+  :global(.content table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    border: 1px solid
+      color-mix(in srgb, var(--body-foreground-color) 10%, transparent);
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  :global(.content th) {
+    background-color: color-mix(
+      in srgb,
+      var(--body-foreground-color) 10%,
+      transparent
+    );
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+  }
+
+  :global(.content td) {
+    padding: 0.75rem 1rem;
+  }
+
+  :global(.content tr:nth-child(even)) {
+    background-color: color-mix(
+      in srgb,
+      var(--body-foreground-color) 5%,
+      transparent
+    );
+  }
+
+  :global(.content tr:nth-child(odd)) {
+    background-color: transparent;
+  }
+
+  :global(.content tr:last-child td:first-child) {
+    border-bottom-left-radius: 11px;
+  }
+
+  :global(.content tr:last-child td:last-child) {
+    border-bottom-right-radius: 11px;
+  }
+
+  :global(.content th:first-child) {
+    border-top-left-radius: 11px;
+  }
+
+  :global(.content th:last-child) {
+    border-top-right-radius: 11px;
+  }
 </style>
