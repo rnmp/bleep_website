@@ -175,14 +175,14 @@
     video.setAttribute("loop", "");
     video.src = videoUrl ?? "";
 
-    // // Add click handler to toggle play/pause
-    // video.addEventListener("click", () => {
-    //   if (video.paused) {
-    //     video.play();
-    //   } else {
-    //     video.pause();
-    //   }
-    // });
+    // Add click handler to toggle play/pause
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
 
     // Add pointer cursor to indicate clickable
     video.style.cursor = "pointer";
