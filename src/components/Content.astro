@@ -172,7 +172,7 @@
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("loop", "");
-    video.src = videoUrl ?? "";
+    video.src = `${videoUrl}#t=0.001`;
 
     // Add click handler to toggle play/pause
     videoContainer.addEventListener("click", () => {
