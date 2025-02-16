@@ -8,6 +8,9 @@ import ContactForm from "../components/ContactForm.astro";
 
 interface ArticleFrontmatter {
   title: string;
+  support_title?: string;
+  icon?: string;
+  order?: number;
 }
 
 interface Article {
@@ -28,11 +31,13 @@ const articles = Object.values(
     <ul>
       {
         articles
-          .sort((a, b) => a.frontmatter.order - b.frontmatter.order)
+          .sort(
+            (a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0)
+          )
           .map((article) => (
             <li>
               <a href={article.url}>
-                {article.frontmatter.icon}{" "}
+                <div class="emoji-square">{article.frontmatter.icon}</div>
                 {article.frontmatter.support_title || article.frontmatter.title}
               </a>
             </li>
@@ -42,7 +47,9 @@ const articles = Object.values(
 
     <h2>FAQs</h2>
     <details>
-      <summary>☁️ Why is my data not synced between devices?</summary>
+      <summary
+        ><div class="emoji-square">☁️</div> Why is my data not synced between devices?</summary
+      >
       <p>
         Most likely, you don't have iCloud Drive enabled. Check out the <a
           href="/support/icloud">how-to guide</a
@@ -52,7 +59,9 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>🔒 Is my data on Bleep private?</summary>
+      <summary
+        ><div class="emoji-square">🔒</div> Is my data on Bleep private?</summary
+      >
       <p>
         Yes, your data can only be accessed by you. It's stored on your device.
         Bleep uses iCloud for syncing between devices, but it's encrypted
@@ -63,12 +72,17 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>💾 Can I export/import my data?</summary>
+      <summary
+        ><div class="emoji-square">💾</div> Can I export/import my data?</summary
+      >
       <p>Not at the moment. But it will be added in a future update.</p>
     </details>
 
     <details>
-      <summary>💻 Do you have a web, Windows, Linux, or Android app?</summary>
+      <summary
+        ><div class="emoji-square">💻</div> Do you have a web, Windows, Linux, or
+        Android app?</summary
+      >
       <p>
         No, the current focus is on macOS and iOS. Long-term, I'd love for Bleep
         to be universal and on as many platforms as possible.
@@ -76,12 +90,16 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>📲 What about an iPad app?</summary>
+      <summary
+        ><div class="emoji-square">📲</div> What about an iPad app?</summary
+      >
       <p>Eventually, yes. But I don't have a timeline to share yet.</p>
     </details>
 
     <details>
-      <summary>💰 Do I need to subscribe to use Bleep?</summary>
+      <summary
+        ><div class="emoji-square">💰</div> Do I need to subscribe to use Bleep?</summary
+      >
       <p>
         No, Bleep is free on iPhone, and a one-time purchase on Mac. I may offer
         subscriptions in the future, but I plan to always offer the option to
@@ -90,7 +108,9 @@ const articles = Object.values(
     </details>
 
     <details>
-      <summary>🤖 What's your take on AI?</summary>
+      <summary
+        ><div class="emoji-square">🤖</div> What's your take on AI?</summary
+      >
       <p>
         Bleep does not use AI currently. Future updates (no timeline) may
         include use of AI for categorization, text and visual recognition, as
@@ -130,6 +150,7 @@ const articles = Object.values(
     padding-top: 1rem;
     border-top: 1px dashed var(--body-secondary-foreground-color);
   }
+
   details:not([open]) summary,
   li {
     list-style-type: none;
@@ -140,11 +161,24 @@ const articles = Object.values(
     display: none;
   }
 
+  .emoji-square {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(var(--body-secondary-foreground-color-rgb), 0.25);
+    border-radius: 8px;
+    margin-right: 0.5rem;
+  }
+
   summary,
   li {
     font-weight: 500;
     font-size: 1.1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   details[open] summary {

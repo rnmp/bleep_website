@@ -3,6 +3,7 @@
   --body-foreground-color: #292a4a;
   --body-foreground-color-rgb: 41, 42, 74;
   --body-secondary-foreground-color: #9899ad;
+  --body-secondary-foreground-color-rgb: 152, 153, 173;
   --link-color: #5f6fff;
   --shadow-color-rgb: var(--body-foreground-color-rgb);
 
@@ -20,6 +21,7 @@
     --body-foreground-color-rgb: 255, 255, 255;
     --body-background-color: #1C1919;
     --body-secondary-foreground-color: #666;
+    --body-secondary-foreground-color-rgb: 102, 102, 102;
   --link-color: #7CBDFF;
     --shadow-color-rgb: 0, 0, 0;
   }
