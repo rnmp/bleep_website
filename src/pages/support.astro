@@ -148,7 +148,22 @@ const articles = Object.values(
   details,
   li {
     padding-top: 1rem;
+    position: relative;
+  }
+
+  details::before,
+  li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    right: 0;
     border-top: 1px dashed var(--body-secondary-foreground-color);
+  }
+
+  li:first-child::before,
+  details:first-of-type::before {
+    display: none;
   }
 
   details:not([open]) summary,
