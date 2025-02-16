@@ -9,7 +9,7 @@ const { frontmatter } = Astro.props;
 <Layout title={`${frontmatter.title} · Bleep`}>
   <SiteHeader />
   <Content>
-    <a href="/support">&larr; Support</a>
+    <a href="/support">&larr; Guides</a>
     <h1>{frontmatter.title}</h1>
     {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
     <slot />
@@ -24,11 +24,11 @@ const { frontmatter } = Astro.props;
 <style>
   footer,
   .subtitle {
-    font-size: 1.2rem;
     font-weight: 500;
     color: var(--body-secondary-foreground-color);
   }
   .subtitle {
+    font-size: 1.2rem;
     margin-bottom: 2rem;
   }
 

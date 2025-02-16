@@ -6,7 +6,7 @@ title: "iPhone: Share Menu Shortcut"
 subtitle: Save websites and images to Bleep from any app that supports sharing, including Safari.
 ---
 
-[Video illustrating the share menu shortcut](/support/share_ios/share_extension.mp4)
+[Video illustrating the share menu shortcut](/support/share_ios/share_extension_portrait.mp4)
 
 ## One-time Setup
 

@@ -141,11 +141,14 @@
     justify-content: center;
     background-color: color-mix(in srgb, var(--link-color) 10%, transparent);
     border-radius: var(--safe-area-padding);
+  }
+
+  .content .video-wrapper.portrait {
     padding: 1rem;
   }
 
-  .content .video-wrapper video {
-    width: 300px;
+  .content .video-wrapper.portrait video {
+    min-width: 300px;
     max-width: 300px;
     border-radius: 12px;
   }
@@ -167,6 +170,11 @@
     const videoUrl = link.getAttribute("href");
     const videoContainer = document.createElement("div");
     videoContainer.className = "video-wrapper";
+
+    const isPortraitVideo = videoUrl?.includes("_portrait");
+    if (isPortraitVideo) {
+      videoContainer.classList.add("portrait");
+    }
 
     const video = document.createElement("video");
     video.setAttribute("muted", "");

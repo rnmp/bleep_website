@@ -8,7 +8,7 @@ subtitle: Full-featured text formatting is available in the app, but you can als
 
 ## Formatting Bar
 
-[Toggling the formatting bar in iOS](/support/notes/formatting_ios.mov)
+[Toggling the formatting bar in iOS](/support/notes/formatting_ios_portrait.mov)
 
 Available on both iPhone and Mac.
 
