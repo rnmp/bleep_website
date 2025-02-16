@@ -11,7 +11,7 @@ const title = "Visual organizer for creative minds";
   <main>
     <section class="hero">
       <Image
-        class="hero-logo"
+        class="hero-logo animate-item"
         src="/assets/icon_128x128@2x.png"
         alt="Bleep icon"
         width="72"
@@ -19,11 +19,15 @@ const title = "Visual organizer for creative minds";
       />
 
       <header>
-        <h1>Visual organizer <br />for creative minds</h1>
-        <h2>Your links, images & notes,<br /> together like never before</h2>
+        <h1 class="animate-item">
+          Visual organizer <br />for creative minds
+        </h1>
+        <h2 class="animate-item">
+          Your links, images & notes,<br /> together like never before
+        </h2>
       </header>
     </section>
-    <picture class="hero-image">
+    <picture class="hero-image animate-item">
       <source
         srcset="/assets/preview_dark.png"
         media="(prefers-color-scheme: dark)"
@@ -33,7 +37,7 @@ const title = "Visual organizer for creative minds";
         alt="A screenshot of the Bleep app featuring content cards in a square grid"
       />
     </picture>
-    <p class="downloads-buttons">
+    <p class="downloads-buttons animate-item">
       <Button
         href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
       >
@@ -48,6 +52,21 @@ const title = "Visual organizer for creative minds";
   </main>
   <SiteFooter animate />
 </Layout>
+
+<script>
+  // Check if animations have played this session
+  const hasAnimationsPlayed = sessionStorage.getItem("hasAnimationsPlayed");
+
+  if (!hasAnimationsPlayed) {
+    // Add animation classes to elements
+    document.querySelectorAll(".animate-item").forEach((element, index) => {
+      element.classList.add("animate");
+    });
+
+    // Store that animations have played
+    sessionStorage.setItem("hasAnimationsPlayed", "true");
+  }
+</script>
 
 <style>
   main {
@@ -76,7 +95,6 @@ const title = "Visual organizer for creative minds";
   }
 
   header h2 {
-    opacity: 0.5;
     font-weight: 500;
     font-size: 1rem;
     color: var(--body-secondary-foreground-color);
@@ -151,36 +169,33 @@ const title = "Visual organizer for creative minds";
     }
   }
 
-  .hero-logo,
-  header h1,
-  header h2,
-  .hero-image,
-  .downloads-buttons {
+  /* Set initial state for all animated elements */
+  .animate {
     opacity: 0;
   }
 
-  /* Sequence the animations with proportional durations */
-  .hero-logo {
+  /* Apply animations only when .animate class is present */
+  .hero-logo.animate {
     animation: slideUpAndScale 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.4s;
   }
 
-  header h1 {
+  header h1.animate {
     animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.4s;
   }
 
-  header h2 {
+  header h2.animate {
     animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.5s;
   }
 
-  .hero-image {
+  .hero-image.animate {
     animation: slideUp 0.5s ease-out forwards;
     animation-delay: 0.15s;
   }
 
-  .downloads-buttons {
+  .downloads-buttons.animate {
     animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.8s;
   }
