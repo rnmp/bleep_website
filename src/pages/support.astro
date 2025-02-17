@@ -138,16 +138,20 @@ const articles = Object.values(
   }
 
   li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   li a {
     text-decoration: none;
   }
 
+  details {
+    margin-top: 0.5rem;
+  }
+
   details,
   li {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     position: relative;
   }
 
@@ -185,6 +189,7 @@ const articles = Object.values(
     background-color: rgba(var(--body-secondary-foreground-color-rgb), 0.25);
     border-radius: 8px;
     margin-right: 0.5rem;
+    font-size: 0.9rem;
   }
 
   summary,
@@ -198,6 +203,10 @@ const articles = Object.values(
 
   details[open] summary {
     margin-bottom: 0.5rem;
+  }
+
+  details[open] p {
+    padding-bottom: 0.5rem;
   }
 
   details[open] p {
