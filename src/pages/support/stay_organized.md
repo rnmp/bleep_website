@@ -3,16 +3,16 @@ layout: ../../layouts/SupportArticleLayout.astro
 order: 0
 icon: 🍱
 title: Stay Organized
-subtitle: Learn the core mechanics of Bleep's visual grid and how to use them to your advantage.
+subtitle: Having a visual grid doesn't have to be overwhelming. Here's how to make it work for you.
 ---
 
 ![The Bleep app with a grid of content cards](./stay_organized/overview.png)
 
 ---
 
-## Rooms ≠ Folders
+## Make a Room
 
-Rooms are _like_ folders, but with a focus in mind. Make a room for a project, a theme, or even a mood. Pick a memorable name, an emoji or custom icon, and start collecting.
+Rooms are like folders, but with a focus in mind. Make a room for a project, a theme, or even a mood. Pick a memorable name, an emoji or custom icon, and start collecting.
 
 And yes, you can make rooms inside of rooms.
 
@@ -30,7 +30,7 @@ The order of your items will be unique to the room they're in.
 
 ![The Bleep app with a grid of content cards](./stay_organized/archive.png)
 
-## Archive > Trash
+## Don't Be Afraid to Archive
 
 In Bleep, you don't delete right away. You archive. This removes the decision paralysis that comes with deleting.
 
