@@ -1,5 +1,4 @@
 ---
-order: 1
 layout: ../../layouts/SupportArticleLayout.astro
 icon: 📱
 title: "iPhone: Share Menu Shortcut"

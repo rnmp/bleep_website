@@ -1,5 +1,4 @@
 ---
-order: 3
 layout: ../../layouts/SupportArticleLayout.astro
 icon: ☁️
 title: iCloud Sync

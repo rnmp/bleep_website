@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/SupportArticleLayout.astro
-order: 1
 icon: 📒
 title: Format Your Notes
 subtitle: Full-featured text formatting is available in the app, but you can also use shortcuts.

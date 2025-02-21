@@ -1,5 +1,4 @@
 ---
-order: 2
 layout: ../../layouts/SupportArticleLayout.astro
 icon: 🌐
 title: "Mac: Browsers Extensions"

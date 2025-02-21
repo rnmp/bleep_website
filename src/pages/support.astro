@@ -18,9 +18,15 @@ interface Article {
   frontmatter: ArticleFrontmatter;
 }
 
-const articles = Object.values(
-  import.meta.glob<Article>("./support/*.md", { eager: true })
-);
+const articles = [
+  await import("./support/stay_organized.md"),
+  await import("./support/links.md"),
+  await import("./support/images.mdx"),
+  await import("./support/notes.md"),
+  await import("./support/share_ios.md"),
+  await import("./support/extensions.md"),
+  await import("./support/icloud.md"),
+];
 ---
 
 <Layout title="Support · Bleep">
@@ -30,18 +36,14 @@ const articles = Object.values(
     <h2>Guides</h2>
     <ul>
       {
-        articles
-          .sort(
-            (a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0)
-          )
-          .map((article) => (
-            <li>
-              <a href={article.url}>
-                <div class="emoji-square">{article.frontmatter.icon}</div>
-                {article.frontmatter.support_title || article.frontmatter.title}
-              </a>
-            </li>
-          ))
+        articles.map((article) => (
+          <li>
+            <a href={article.url}>
+              <div class="emoji-square">{article.frontmatter.icon}</div>
+              {article.frontmatter.support_title || article.frontmatter.title}
+            </a>
+          </li>
+        ))
       }
     </ul>
 
@@ -190,6 +192,8 @@ const articles = Object.values(
     border-radius: 8px;
     margin-right: 0.5rem;
     font-size: 0.9rem;
+    position: relative;
+    top: -0.1rem;
   }
 
   summary,

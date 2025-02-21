@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/SupportArticleLayout.astro
-order: 1
 icon: "🔗"
 title: Bookmarking with Bleep
 subtitle: Make the most of your links with these juicy tips.

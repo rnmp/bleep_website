@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/SupportArticleLayout.astro
-order: 0
 icon: 🍱
 title: Stay Organized
 subtitle: Having a visual grid doesn't have to be overwhelming. Here's how to make it work for you.
