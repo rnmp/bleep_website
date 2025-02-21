@@ -1,22 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Content from "../components/Content.astro";
 import ContactForm from "../components/ContactForm.astro";
-
-interface ArticleFrontmatter {
-  title: string;
-  support_title?: string;
-  icon?: string;
-  order?: number;
-}
-
-interface Article {
-  url: string;
-  frontmatter: ArticleFrontmatter;
-}
 
 const articles = [
   await import("./support/stay_organized.md"),
@@ -34,18 +21,20 @@ const articles = [
   <Content>
     <h1>Support</h1>
     <h2>Guides</h2>
-    <ul>
-      {
-        articles.map((article) => (
-          <li>
-            <a href={article.url}>
-              <div class="emoji-square">{article.frontmatter.icon}</div>
-              {article.frontmatter.support_title || article.frontmatter.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <div>
+      <ul>
+        {
+          articles.map((article) => (
+            <li>
+              <a href={article.url}>
+                <div class="emoji-square">{article.frontmatter.icon}</div>
+                {article.frontmatter.support_title || article.frontmatter.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
 
     <h2>FAQs</h2>
     <details>
@@ -133,10 +122,6 @@ const articles = [
 <style>
   h2 {
     margin-top: 2rem;
-  }
-
-  ul {
-    margin-left: unset;
   }
 
   li {
