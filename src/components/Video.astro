@@ -1,0 +1,115 @@
+---
+interface Props {
+  src: string;
+  autoplay?: boolean;
+}
+
+const { src, autoplay = false } = Astro.props;
+const isPortrait = src.includes("_portrait");
+---
+
+<div
+  class:list={["video-wrapper", { portrait: isPortrait }]}
+  style="cursor: pointer; position: relative;"
+>
+  <video
+    muted
+    playsinline
+    loop
+    src={`${src}#t=0.001`}
+    {...autoplay ? { autoplay: true } : {}}></video>
+  <div class="play-button"></div>
+</div>
+
+<style>
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+  }
+
+  .play-button::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  /* Remove the :not([paused]) selector to always show when not playing */
+  video.playing + .play-button {
+    opacity: 0;
+  }
+
+  video.playing + .play-button::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M6 5h4v14H6V5zm8 0h4v14h-4V5z'/%3E%3C/svg%3E");
+  }
+
+  /* Only hide when actually playing */
+  video:not(.playing) + .play-button {
+    opacity: 1;
+  }
+
+  /* Show on hover only when playing */
+  .video-wrapper:hover .play-button {
+    opacity: 1;
+  }
+
+  .video-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--link-color) 10%, transparent);
+    border-radius: var(--safe-area-padding);
+  }
+
+  .video-wrapper.portrait {
+    padding: 1rem;
+  }
+
+  .video-wrapper.portrait video {
+    min-width: 300px;
+    max-width: 300px;
+    border-radius: 12px;
+  }
+</style>
+
+<script>
+  const videos = document.querySelectorAll(".video-wrapper");
+
+  videos.forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const playButton = wrapper.querySelector(".play-button");
+
+    if (!video || !playButton) return;
+
+    wrapper.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+    // Update play/pause icon based on video state
+    video.addEventListener("play", () => {
+      video.classList.add("playing");
+    });
+
+    video.addEventListener("pause", () => {
+      video.classList.remove("playing");
+    });
+  });
+</script>
