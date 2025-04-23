@@ -33,6 +33,14 @@
   }
 }
 
+@font-face {
+  font-family: "Jugendreisen";
+  src: url("/fonts/Jugendreisen-Small.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   font-family: Inter, -apple-system, sans-serif;
   margin: 0;
