@@ -7,5 +7,9 @@ export default defineConfig({
     build: {
         assets: 'assets'
     },
-    integrations: [mdx()]
+    integrations: [mdx()],
+    redirects: {
+        '/support/extensions/safari': '/support/extensions/#install-on-safari',
+        '/support/extensions/chrome': 'https://chromewebstore.google.com/detail/bleep-quick-save/cjfkfilhmpodcciidnmoiojffkmkgepj'
+    }
 }); 
