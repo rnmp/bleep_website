@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Button from "../components/Button.astro";
 
-const title = "Visual organizer for creative minds";
+const title = "Organize Your Ideas Visually";
 ---
 
 <Layout title={`Bleep · ${title}`}>
@@ -28,13 +28,14 @@ const title = "Visual organizer for creative minds";
         </h2>
       </header>
     </section>
-    <picture class="hero-image animate-item">
+
+    <picture class="screenshot animate-item">
       <source
-        srcset="/assets/preview_dark.png"
+        srcset="/assets/screenshot_dark.png"
         media="(prefers-color-scheme: dark)"
       />
       <img
-        src="/assets/preview_light.png"
+        src="/assets/screenshot_light.png"
         alt="A screenshot of the Bleep app featuring content cards in a square grid"
       />
     </picture>
@@ -129,14 +130,15 @@ const title = "Visual organizer for creative minds";
     }
   }
 
-  .hero-image {
+  .screenshot {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 3rem 0;
+    margin: 3rem auto;
+    position: relative;
   }
 
-  .hero-image img {
+  .screenshot img {
     max-width: 100%;
     max-height: 40vh;
     object-fit: contain;
@@ -147,7 +149,7 @@ const title = "Visual organizer for creative minds";
   }
 
   @media (min-width: 720px) {
-    .hero-image img {
+    .screenshot img {
       border-radius: 12px;
     }
   }
@@ -203,7 +205,7 @@ const title = "Visual organizer for creative minds";
     animation-delay: 0.5s;
   }
 
-  .hero-image.animate {
+  .screenshot.animate {
     animation: slideUp 0.5s ease-out forwards;
     animation-delay: 0.15s;
   }
@@ -211,5 +213,31 @@ const title = "Visual organizer for creative minds";
   .downloads-buttons.animate {
     animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.8s;
+  }
+  .screenshot img {
+    background: #EFEFF1;
+  }
+  .screenshot::after {
+    position: absolute;
+    content: "";
+    background: url("/assets/drag_light.png");
+    background-size: contain;
+    width: 81%;
+    padding-bottom: 86%;
+    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
+    transform: scale(0.35) translateX(-25%) translateY(-35%);
+    transform-origin: left bottom;
+    left: 0;
+    bottom: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .screenshot img {
+      background: #292929;
+      border-top: 1px solid #444;
+    }
+    .screenshot::after {
+      background: url("/assets/drag_dark.png");
+      background-size: contain;
+    }
   }
 </style>
