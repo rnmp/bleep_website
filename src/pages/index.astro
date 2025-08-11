@@ -29,16 +29,19 @@ const title = "Organize Your Ideas Visually";
       </header>
     </section>
 
-    <picture class="screenshot animate-item">
-      <source
-        srcset="/assets/screenshot_dark.png"
-        media="(prefers-color-scheme: dark)"
-      />
-      <img
-        src="/assets/screenshot_light.png"
-        alt="A screenshot of the Bleep app featuring content cards in a square grid"
-      />
-    </picture>
+    <div class="screenshot-container animate-item" data-parallax-container>
+      <picture class="screenshot" data-parallax-layer="near">
+        <source
+          srcset="/assets/screenshot_dark.png"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          src="/assets/screenshot_light.png"
+          alt="A screenshot of the Bleep app featuring content cards in a square grid"
+        />
+      </picture>
+      <div class="drag-image" data-parallax-layer="far"></div>
+    </div>
     <p class="downloads-buttons animate-item">
       <Button
         href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
@@ -67,6 +70,63 @@ const title = "Organize Your Ideas Visually";
 
     // Store that animations have played
     sessionStorage.setItem("hasAnimationsPlayed", "true");
+  }
+
+  // Parallax effect on mouse move
+  const parallaxContainer = document.querySelector('[data-parallax-container]');
+  
+  if (parallaxContainer) {
+    const nearLayer = parallaxContainer.querySelector('[data-parallax-layer="near"]');
+    const farLayer = parallaxContainer.querySelector('[data-parallax-layer="far"]');
+    
+    let isAnimating = false;
+    
+    parallaxContainer.addEventListener('mousemove', (e) => {
+      if (isAnimating) return;
+      isAnimating = true;
+      
+      requestAnimationFrame(() => {
+        const rect = parallaxContainer.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Calculate normalized offset from center (-1 to 1)
+        const offsetX = (e.clientX - centerX) / (rect.width / 2);
+        const offsetY = (e.clientY - centerY) / (rect.height / 2);
+        
+        // Apply different movement intensities for each layer
+        // Near layer (screenshot) moves less
+        const nearIntensity = 10; // pixels
+        const nearX = offsetX * nearIntensity;
+        const nearY = offsetY * nearIntensity;
+        
+        // Far layer (drag image) moves MUCH more - appears closer to viewer
+        const farIntensity = 50; // pixels - much larger radius for dramatic parallax
+        const farX = offsetX * farIntensity;
+        const farY = offsetY * farIntensity;
+        
+        // Apply transforms
+        if (nearLayer) {
+          nearLayer.style.transform = `translate(${nearX}px, ${nearY}px)`;
+        }
+        
+        if (farLayer) {
+          farLayer.style.transform = `scale(0.35) translateX(calc(-25% + ${farX}px)) translateY(calc(-35% + ${farY}px))`;
+        }
+        
+        isAnimating = false;
+      });
+    });
+    
+    // Reset on mouse leave
+    parallaxContainer.addEventListener('mouseleave', () => {
+      if (nearLayer) {
+        nearLayer.style.transform = '';
+      }
+      if (farLayer) {
+        farLayer.style.transform = 'scale(0.35) translateX(-25%) translateY(-35%)';
+      }
+    });
   }
 </script>
 
@@ -130,12 +190,19 @@ const title = "Organize Your Ideas Visually";
     }
   }
 
-  .screenshot {
+  .screenshot-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 3rem auto;
     position: relative;
+    perspective: 1000px;
+  }
+
+  .screenshot {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
   }
 
   .screenshot img {
@@ -151,6 +218,29 @@ const title = "Organize Your Ideas Visually";
   @media (min-width: 720px) {
     .screenshot img {
       border-radius: 12px;
+    }
+  }
+
+  .drag-image {
+    position: absolute;
+    background: url("/assets/drag_light.png");
+    background-size: contain;
+    width: 81%;
+    padding-bottom: 86%;
+    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
+    transform: scale(0.35) translateX(-25%) translateY(-35%);
+    transform-origin: left bottom;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .drag-image {
+      background: url("/assets/drag_dark.png");
+      background-size: contain;
     }
   }
 
@@ -205,7 +295,7 @@ const title = "Organize Your Ideas Visually";
     animation-delay: 0.5s;
   }
 
-  .screenshot.animate {
+  .screenshot-container.animate {
     animation: slideUp 0.5s ease-out forwards;
     animation-delay: 0.15s;
   }
@@ -217,27 +307,11 @@ const title = "Organize Your Ideas Visually";
   .screenshot img {
     background: #EFEFF1;
   }
-  .screenshot::after {
-    position: absolute;
-    content: "";
-    background: url("/assets/drag_light.png");
-    background-size: contain;
-    width: 81%;
-    padding-bottom: 86%;
-    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
-    transform: scale(0.35) translateX(-25%) translateY(-35%);
-    transform-origin: left bottom;
-    left: 0;
-    bottom: 0;
-  }
+  
   @media (prefers-color-scheme: dark) {
     .screenshot img {
       background: #292929;
       border-top: 1px solid #444;
-    }
-    .screenshot::after {
-      background: url("/assets/drag_dark.png");
-      background-size: contain;
     }
   }
 </style>
