@@ -99,8 +99,8 @@ const title = "Organize Your Ideas Visually";
         const offsetY = (e.clientY - centerY) / (viewportHeight / 2);
         
         // Apply different movement intensities for each layer
-        // Near layer (screenshot) moves less
-        const nearIntensity = 15; // pixels
+        // Near layer (screenshot) stays still - no movement
+        const nearIntensity = 0; // pixels - no movement for screenshot
         const nearX = offsetX * nearIntensity;
         const nearY = offsetY * nearIntensity;
         
