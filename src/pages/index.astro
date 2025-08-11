@@ -72,7 +72,7 @@ const title = "Organize Your Ideas Visually";
     sessionStorage.setItem("hasAnimationsPlayed", "true");
   }
 
-  // Parallax effect on mouse move
+  // Parallax effect on mouse move - triggered from anywhere in viewport
   const parallaxContainer = document.querySelector('[data-parallax-container]');
   
   if (parallaxContainer) {
@@ -81,7 +81,8 @@ const title = "Organize Your Ideas Visually";
     
     let isAnimating = false;
     
-    parallaxContainer.addEventListener('mousemove', (e) => {
+    // Listen to mouse movement on the entire document
+    document.addEventListener('mousemove', (e) => {
       if (isAnimating) return;
       isAnimating = true;
       
@@ -90,18 +91,21 @@ const title = "Organize Your Ideas Visually";
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
         
-        // Calculate normalized offset from center (-1 to 1)
-        const offsetX = (e.clientX - centerX) / (rect.width / 2);
-        const offsetY = (e.clientY - centerY) / (rect.height / 2);
+        // Calculate normalized offset from center relative to viewport
+        // Use viewport dimensions for more subtle movement across the whole page
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const offsetX = (e.clientX - centerX) / (viewportWidth / 2);
+        const offsetY = (e.clientY - centerY) / (viewportHeight / 2);
         
         // Apply different movement intensities for each layer
         // Near layer (screenshot) moves less
-        const nearIntensity = 10; // pixels
+        const nearIntensity = 15; // pixels
         const nearX = offsetX * nearIntensity;
         const nearY = offsetY * nearIntensity;
         
         // Far layer (drag image) moves MUCH more - appears closer to viewer
-        const farIntensity = 50; // pixels - much larger radius for dramatic parallax
+        const farIntensity = 60; // pixels - much larger radius for dramatic parallax
         const farX = offsetX * farIntensity;
         const farY = offsetY * farIntensity;
         
@@ -118,8 +122,8 @@ const title = "Organize Your Ideas Visually";
       });
     });
     
-    // Reset on mouse leave
-    parallaxContainer.addEventListener('mouseleave', () => {
+    // Optional: Reset when mouse leaves the viewport (won't trigger often)
+    document.addEventListener('mouseleave', () => {
       if (nearLayer) {
         nearLayer.style.transform = '';
       }
