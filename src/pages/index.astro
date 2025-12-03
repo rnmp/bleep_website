@@ -46,12 +46,7 @@ const title = "Organize Your Ideas Visually";
       <Button
         href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
       >
-        Get for iPhone &amp; iPad
-      </Button>
-      <Button
-        href="https://apps.apple.com/app/bleep-think-visually/id6478577586"
-      >
-        Get for Mac
+      Get for iPhone, iPad &amp; Mac
       </Button>
     </p>
   </main>
@@ -70,6 +65,25 @@ const title = "Organize Your Ideas Visually";
 
     // Store that animations have played
     sessionStorage.setItem("hasAnimationsPlayed", "true");
+  }
+
+  // Hue rotation effect on logo based on mouse position
+  const heroLogo = document.querySelector('.hero-logo img');
+  const heroLogoBefore = document.querySelector('.hero-logo');
+  if (heroLogo && heroLogoBefore) {
+    document.addEventListener('mousemove', (e) => {
+      // Calculate hue based on mouse X position (0-360 degrees)
+      const hue = (e.clientX / window.innerWidth) * 360;
+      heroLogo.style.filter = `hue-rotate(${hue}deg)`;
+      // Apply same hue rotation to the pseudo-element via CSS variable
+      heroLogoBefore.style.setProperty('--logo-hue', `${hue}deg`);
+    });
+    
+    // Reset on mouse leave
+    document.addEventListener('mouseleave', () => {
+      heroLogo.style.filter = '';
+      heroLogoBefore.style.setProperty('--logo-hue', '0deg');
+    });
   }
 
   // Parallax effect on mouse move - triggered from anywhere in viewport
@@ -155,13 +169,18 @@ const title = "Organize Your Ideas Visually";
     margin-bottom: 0.5rem;
     position: relative;
     z-index: 1;
+    --logo-hue: 0deg;
     &::before {
       content: "";
       position: absolute;
       inset: 0px;
       z-index: -1;
-      filter: blur(20px);
+      filter: blur(20px) hue-rotate(var(--logo-hue));
       background: rgb(from var(--color-accent) r g b / 0.4);
+      transition: filter 0.3s ease;
+    }
+    img {
+      transition: filter 0.3s ease;
     }
   }
 
