@@ -52,6 +52,48 @@ const questions = [
   <SiteFooter />
 </Layout>
 
+<script>
+  const form = document.querySelector('.survey-form') as HTMLFormElement;
+  const IDENTITY_KEY = 'bleep_user';
+  const DRAFT_KEY = 'bleep_survey_draft';
+
+  // Restore saved identity
+  try {
+    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+    if (identity.name) (form.querySelector('#name') as HTMLInputElement).value = identity.name;
+    if (identity.email) (form.querySelector('#email') as HTMLInputElement).value = identity.email;
+  } catch {}
+
+  // Restore saved draft answers
+  try {
+    const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+    for (const [name, value] of Object.entries(draft)) {
+      const el = form.querySelector(`[name="${name}"]`) as HTMLTextAreaElement | null;
+      if (el) el.value = value as string;
+    }
+  } catch {}
+
+  // Save on input
+  form.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    const name = target.name;
+    if (name === 'name' || name === 'email') {
+      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+      identity[name] = target.value;
+      localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
+    } else {
+      const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+      draft[name] = target.value;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    }
+  });
+
+  // Clear draft on successful submit (keep identity)
+  form.addEventListener('submit', () => {
+    localStorage.removeItem(DRAFT_KEY);
+  });
+</script>
+
 <style>
   .subtitle {
     font-size: 1.2rem;

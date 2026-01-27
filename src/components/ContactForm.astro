@@ -18,7 +18,6 @@ import Button from "./Button.astro";
       {subtitle}
     </p>
     <form action="https://submit-form.com/R7bwjb69d" class="support-form">
-      <input type="hidden" name="_redirect" value="false" />
       <input
         type="text"
         id="name"
@@ -46,20 +45,41 @@ import Button from "./Button.astro";
   const form = wrapper.querySelector('form')!;
   const formState = wrapper.querySelector('.form-state') as HTMLElement;
   const successState = wrapper.querySelector('.success-state') as HTMLElement;
+  const IDENTITY_KEY = 'bleep_user';
+
+  // Restore saved identity
+  try {
+    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+    if (identity.name) (form.querySelector('#name') as HTMLInputElement).value = identity.name;
+    if (identity.email) (form.querySelector('#email') as HTMLInputElement).value = identity.email;
+  } catch {}
+
+  // Save name/email on input
+  form.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    if (target.name === 'name' || target.name === 'email') {
+      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+      identity[target.name] = target.value;
+      localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
+    }
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
+    const data = Object.fromEntries(new FormData(form));
     try {
-      await fetch(form.action, {
+      const res = await fetch(form.action, {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       });
+      if (!res.ok) throw new Error();
       formState.hidden = true;
       successState.hidden = false;
     } catch {
-      // Fall back to default form submission
       form.submit();
     }
   });
