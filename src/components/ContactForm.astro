@@ -12,23 +12,58 @@ const {
 import Button from "./Button.astro";
 ---
 
-<p class="subtitle">
-  {subtitle}
-</p>
-<form action="https://submit-form.com/R7bwjb69d" class="support-form">
-  <input
-    type="text"
-    id="name"
-    name="name"
-    placeholder="Name"
-    required
-    autofocus={autofocus}
-  />
-  <input type="email" id="email" name="email" placeholder="Email" required />
-  <textarea id="message" name="message" placeholder="Message" required
-  ></textarea>
-  <Button type="submit">Send</Button>
-</form>
+<div class="contact-form-wrapper">
+  <div class="form-state">
+    <p class="subtitle">
+      {subtitle}
+    </p>
+    <form action="https://submit-form.com/R7bwjb69d" class="support-form">
+      <input type="hidden" name="_redirect" value="false" />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Name"
+        required
+        autofocus={autofocus}
+      />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <textarea id="message" name="message" placeholder="Message" required
+      ></textarea>
+      <Button type="submit">Send</Button>
+    </form>
+  </div>
+
+  <div class="success-state" hidden>
+    <p class="subtitle">Message sent! I'll get back to you soon.</p>
+    <p>Got a few more minutes? I'd really appreciate your thoughts in a quick survey.</p>
+    <Button href="/survey">Take the Survey</Button>
+  </div>
+</div>
+
+<script>
+  const wrapper = document.querySelector('.contact-form-wrapper')!;
+  const form = wrapper.querySelector('form')!;
+  const formState = wrapper.querySelector('.form-state') as HTMLElement;
+  const successState = wrapper.querySelector('.success-state') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      formState.hidden = true;
+      successState.hidden = false;
+    } catch {
+      // Fall back to default form submission
+      form.submit();
+    }
+  });
+</script>
 
 <style>
   .subtitle {
@@ -86,5 +121,9 @@ import Button from "./Button.astro";
     cursor: pointer;
     border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
     margin: 0px !important;
+  }
+
+  .success-state p {
+    margin-bottom: 1rem;
   }
 </style>

@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Content from "../components/Content.astro";
+import Button from "../components/Button.astro";
+
+const questions = [
+  { name: "living", label: "What do you do for a living?" },
+  { name: "heard", label: "How did you first hear about Bleep?" },
+  { name: "usage", label: "What do you use Bleep for, and how often do you reach for it?" },
+  { name: "moment", label: "Can you share a specific moment where Bleep really came through for you?" },
+  { name: "alternatives", label: "Have you tried other similar tools? What made Bleep stand out?" },
+  { name: "favorite", label: "What's your favorite feature or quality of Bleep?" },
+  { name: "clunky", label: "Is there anything that took a while to figure out or still feels clunky?" },
+  { name: "limitation", label: "What's a major limitation or clear opportunity you see for Bleep?" },
+  { name: "integrations", label: "Are there other tools you wish Bleep connected with or worked alongside?" },
+  { name: "describe", label: "How would you describe Bleep in about 10 words?" },
+  { name: "recommend", label: "Who would you recommend Bleep to?" },
+  { name: "anything_else", label: "Anything else you'd like to share that I didn't ask about?" },
+];
+---
+
+<Layout title="Survey · Bleep">
+  <SiteHeader />
+  <Content>
+    <h1>Make Bleep Better</h1>
+    <p class="subtitle">
+    Thank you for being here. You have no idea how helpful it is for Bleep and for me to learn more about you, the things you like, dislike, etc.
+    <br />
+    <br />
+    — R
+    </p>
+    <form action="https://submit-form.com/mXWDenIIc" class="survey-form">
+      <div class="question">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" required />
+      </div>
+      <div class="question">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required />
+      </div>
+      {questions.map((q) => (
+        <div class="question">
+          <label for={q.name}>{q.label}</label>
+          <textarea id={q.name} name={q.name} rows="3"></textarea>
+        </div>
+      ))}
+      <Button type="submit">Submit</Button>
+    </form>
+  </Content>
+  <SiteFooter />
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--body-secondary-foreground-color);
+  }
+
+  .survey-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2.5em;
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  label {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 0.5em 0.75em;
+    border-radius: 0.75em;
+    font-size: 1rem;
+    border: 1px solid #e5e5e5;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 4em;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: none !important;
+    border-color: var(--color-accent);
+    caret-color: var(--color-accent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      border-color: #333;
+    }
+  }
+
+  .survey-form button {
+    cursor: pointer;
+    border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
+    margin: 0px !important;
+  }
+</style>
