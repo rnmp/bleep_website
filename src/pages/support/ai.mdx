@@ -1,0 +1,33 @@
+---
+layout: ../../layouts/SupportArticleLayout.astro
+icon: 🤖
+title: Bleep MCP Server (Alpha)
+subtitle: Bleep is completely private by default, but you can easily chat about your items with your favorite AI tool.
+---
+
+_Note: this guide is still being worked on. It lacks a bit of details so I'm trusting you to be tech savvy enough to proceed! — R_
+
+The Bleep [MCP Server](https://modelcontextprotocol.io) lets your favorite AI tools (ChatGPT, Claude, etc.) read and search your Bleep data. All without Bleep itself needing to know anything about AI.
+
+## Easy Setup
+
+1. Add the following to [your agent’s config](https://modelcontextprotocol.io/docs/develop/connect-local-servers):
+
+    ```json
+    {
+      "mcpServers": {
+        "bleep": {
+          "command": "npx",
+          "args": ["bleep-mcp"]
+        }
+      }
+    }
+    ```
+2. Ask AI some questions! Some examples:
+   - _What can you do with Bleep?_
+   - _What can you say about me from the rooms I have in Bleep?_
+   - _Which from recent notes in Bleep are too vague?_
+
+## Privacy
+
+The MCP server runs **locally on your machine**. Your data never leaves your computer unless you explicitly send it to an AI provider through your client. Bleep itself does not transmit any data to external services.

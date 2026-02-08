@@ -71,6 +71,57 @@
       Menlo, Consolas, monospace;
   }
 
+  .content pre {
+    position: relative;
+    background-color: color-mix(in srgb, var(--link-color) 10%, transparent);
+    border-radius: var(--safe-area-padding);
+    padding: 1.25rem;
+    overflow-x: auto;
+  }
+
+  .content pre code {
+    color: inherit;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.9em;
+    font-weight: 500;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+      Menlo, Consolas, monospace;
+    line-height: 1.4;
+  }
+
+  .content pre code * {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    line-height: inherit;
+  }
+
+  .content li pre {
+    margin: 0.5rem 0;
+  }
+
+  .content pre .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: color-mix(in srgb, var(--body-foreground-color) 8%, transparent);
+    border: none;
+    border-radius: 8px;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+    color: var(--body-secondary-foreground-color);
+    font-size: 0.75em;
+    font-family: Inter, -apple-system, sans-serif;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+
+  .content pre .copy-btn:hover {
+    background: color-mix(in srgb, var(--body-foreground-color) 15%, transparent);
+    color: var(--body-foreground-color);
+  }
+
   .content table {
     width: 100%;
     border-collapse: separate;
@@ -144,3 +195,18 @@
     vertical-align: middle;
   }
 </style>
+
+<script>
+  document.querySelectorAll(".content pre").forEach((pre) => {
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", () => {
+      const code = pre.querySelector("code");
+      navigator.clipboard.writeText(code ? code.textContent : pre.textContent);
+      btn.textContent = "Copied!";
+      setTimeout(() => (btn.textContent = "Copy"), 1500);
+    });
+    pre.appendChild(btn);
+  });
+</script>
