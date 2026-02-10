@@ -1,0 +1,68 @@
+---
+interface Props {
+  heading?: string;
+  subheading?: string;
+}
+
+const { heading, subheading } = Astro.props;
+---
+
+<section class="feature-grid-section">
+  {(heading || subheading) && (
+    <div class="feature-grid-header">
+      {heading && <h3>{heading}</h3>}
+      {subheading && <p>{subheading}</p>}
+    </div>
+  )}
+  <div class="feature-grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .feature-grid-section {
+    padding: 3rem 0;
+  }
+
+  .feature-grid-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-grid-header h3 {
+    font-family: "Jugendreisen", serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.4em;
+  }
+
+  @media (min-width: 768px) {
+    .feature-grid-header h3 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .feature-grid-header p {
+    color: var(--body-secondary-foreground-color);
+    font-size: 0.95rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 540px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

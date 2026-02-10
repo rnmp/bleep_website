@@ -3,53 +3,126 @@ import Image from "astro/components/Image.astro";
 ---
 
 <header class="site-header">
-  <a title="Go back to homepage" href="/">
-    <Image src="/assets/icon_128x128@2x.png" alt="" width="32" height="32" />
-    <span>Bleep</span>
-  </a>
+  <div class="nav-pill">
+    <a class="logo" title="Go back to homepage" href="/">
+      <Image src="/assets/icon_128x128@2x.png" alt="" width="28" height="28" />
+      <span>Bleep</span>
+    </a>
+    <nav>
+      <a href="#">Features</a>
+      <a href="/support">Guides</a>
+      <a href="#">Pricing</a>
+    </nav>
+    <a
+      class="cta"
+      href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
+    >
+      Download
+    </a>
+  </div>
 </header>
 
 <style>
-  .site-header a {
-    padding: var(--safe-area-padding);
-    padding-bottom: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
   .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 12px 16px;
     display: flex;
     justify-content: center;
+    pointer-events: none;
   }
-  @media (min-width: 720px) {
-    .site-header {
-      justify-content: flex-start;
+
+  .nav-pill {
+    pointer-events: auto;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgb(255 255 255 / 0.7);
+    border: 1px solid rgb(0 0 0 / 0.08);
+    border-radius: 999px;
+    padding: 12px 12px 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 16px rgb(0 0 0 / 0.06);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .nav-pill nav {
+    display: flex;
+    flex: 1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nav-pill {
+      background: rgb(40 40 40 / 0.65);
+      border-color: rgb(255 255 255 / 0.1);
+      box-shadow: 0 2px 16px rgb(0 0 0 / 0.2);
     }
   }
-  .site-header span {
-    display: none;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+    display: block;
+  }
+
+  .logo span {
     font-family: "Jugendreisen", serif;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     position: relative;
-    top: 0.15em;
-    left: 0.15em;
+    top: 0.1em;
   }
-  @media (min-width: 720px) {
-    .site-header span {
-      display: block;
+
+  nav {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      display: flex;
     }
   }
-  .site-header img {
-    display: block;
-    width: 48px;
-    height: 48px;
-    filter: drop-shadow(0 0 12px rgb(from var(--color-accent) r g b / 0.4));
+
+  nav a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--body-secondary-foreground-color);
+    white-space: nowrap;
   }
-  @media (min-width: 720px) {
-    .site-header img {
-      width: 32px;
-      height: 32px;
+
+  nav a:hover {
+    color: var(--body-foreground-color);
+  }
+
+  .cta {
+    background: black;
+    color: white;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta {
+    background: white;
+    color: black;
     }
   }
 </style>

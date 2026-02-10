@@ -1,0 +1,87 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageDark?: string;
+  reverse?: boolean;
+}
+
+const { title, description, image, imageDark, reverse = false } = Astro.props;
+---
+
+<section class:list={["feature-row", { reverse }]}>
+  <div class="feature-text">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+  {image && (
+    <div class="feature-media">
+      <picture>
+        {imageDark && (
+          <source srcset={imageDark} media="(prefers-color-scheme: dark)" />
+        )}
+        <img src={image} alt="" loading="lazy" />
+      </picture>
+    </div>
+  )}
+</section>
+
+<style>
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .feature-row {
+      flex-direction: row;
+      gap: 3rem;
+    }
+
+    .feature-row.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .feature-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .feature-text h3 {
+    font-family: "Jugendreisen", serif;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  @media (min-width: 768px) {
+    .feature-text h3 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .feature-text p {
+    color: var(--body-secondary-foreground-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .feature-media {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .feature-media img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 1px rgba(var(--shadow-color-rgb), 0.08),
+      0 8px 24px -8px rgba(var(--shadow-color-rgb), 0.12);
+  }
+</style>

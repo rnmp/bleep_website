@@ -1,0 +1,87 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  description: string;
+  image?: string;
+  imageDark?: string;
+}
+
+const { label, title, description, image, imageDark } = Astro.props;
+---
+
+<section class="feature-showcase">
+  <div class="showcase-text">
+    {label && <span class="label">{label}</span>}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+  {image && (
+    <div class="showcase-media">
+      <picture>
+        {imageDark && (
+          <source srcset={imageDark} media="(prefers-color-scheme: dark)" />
+        )}
+        <img src={image} alt="" loading="lazy" />
+      </picture>
+    </div>
+  )}
+</section>
+
+<style>
+  .feature-showcase {
+    padding: 4rem 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .showcase-text {
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .showcase-text h3 {
+    font-family: "Jugendreisen", serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  @media (min-width: 768px) {
+    .showcase-text h3 {
+      font-size: 2rem;
+    }
+  }
+
+  .showcase-text p {
+    color: var(--body-secondary-foreground-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .showcase-media {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .showcase-media img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 1px rgba(var(--shadow-color-rgb), 0.08),
+      0 16px 40px -12px rgba(var(--shadow-color-rgb), 0.15);
+  }
+</style>

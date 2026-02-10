@@ -1,13 +1,19 @@
 ---
 import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Button from "../components/Button.astro";
+import FeatureRow from "../components/FeatureRow.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FeatureShowcase from "../components/FeatureShowcase.astro";
 
 const title = "Organize Your Ideas Visually";
 ---
 
 <Layout title={`Bleep · ${title}`}>
+  <SiteHeader />
   <main>
     <section class="hero">
       <div class="hero-logo animate-item">
@@ -21,10 +27,10 @@ const title = "Organize Your Ideas Visually";
 
       <header>
         <h1 class="animate-item">
-          Your New Idea Palace
+Beautiful. Private. Yours.
         </h1>
         <h2 class="animate-item">
-          Organize bookmarks, get inspired, and<br />make your own personal collection
+          Visual bookmarking app for Apple devices<br />that syncs privately via iCloud.
         </h2>
       </header>
     </section>
@@ -49,6 +55,49 @@ const title = "Organize Your Ideas Visually";
       Get for iPhone, iPad &amp; Mac
       </Button>
     </p>
+
+    <div class="features">
+      <FeatureGrid heading="Everything You Need" subheading="Built for creative thinkers">
+        <FeatureCard
+          icon="🎨"
+          title="Visual Canvas"
+          description="Arrange bookmarks, images, and notes on a freeform spatial canvas."
+        />
+        <FeatureCard
+          icon="🔗"
+          title="Smart Links"
+          description="Save any URL and get rich previews automatically."
+        />
+        <FeatureCard
+          icon="☁️"
+          title="iCloud Sync"
+          description="Access your collections across iPhone, iPad, and Mac."
+        />
+      </FeatureGrid>
+
+      <FeatureShowcase
+        label="Organize"
+        title="Your Ideas, Your Way"
+        description="Create rooms, group by topic, and build a personal library of inspiration that grows with you."
+        image="/assets/screenshot_light.png"
+        imageDark="/assets/screenshot_dark.png"
+      />
+
+      <FeatureRow
+        title="Save From Anywhere"
+        description="Use the share sheet on iOS or the browser extension on Mac to clip links, images, and articles in one tap."
+        image="/assets/screenshot_light.png"
+        imageDark="/assets/screenshot_dark.png"
+      />
+
+      <FeatureRow
+        title="Built for Focus"
+        description="No algorithmic feeds. No social pressure. Just your ideas in a calm, private space."
+        image="/assets/screenshot_light.png"
+        imageDark="/assets/screenshot_dark.png"
+        reverse
+      />
+    </div>
   </main>
   <SiteFooter animate />
 </Layout>
@@ -143,7 +192,7 @@ const title = "Organize Your Ideas Visually";
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3.5em;
+    padding-top: 10em;
   }
 
   .hero-logo {
@@ -176,7 +225,7 @@ const title = "Organize Your Ideas Visually";
     font-weight: 500;
     font-size: 1rem;
     color: var(--body-secondary-foreground-color);
-    line-height: 1.2;
+    line-height: 1.5;
   }
 
   @media (min-width: 720px) {
@@ -251,6 +300,12 @@ const title = "Organize Your Ideas Visually";
     display: flex;
     gap: 1em;
     justify-content: center;
+  }
+
+  .features {
+    max-width: 860px;
+    margin: 2rem auto 0;
+    padding: 0 var(--safe-area-padding);
   }
 
   @keyframes slideUp {
