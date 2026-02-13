@@ -1,0 +1,78 @@
+---
+const quotes = [
+  "Amazing app, native, simple, does what you want it to do, does not disturb you with useless features.",
+  "Bleep is a simple & straightforward way to organize our messy thoughts, while keeping a trail of those moments we cherish dearly.",
+  "Awesome app with very clean & beautiful interface. I'm so happy I found this!",
+  "I'm a product designer, and I usually go around collecting notes, references, links to interesting things. Bleep has allowed me to organize myself better.",
+  "No useless features or AI stuff — just my links, screenshots, and notes in a sleek, easy-to-use interface that keeps improving. Exactly what I was looking for!",
+];
+---
+
+<section class="testimonials">
+  <div class="testimonials-inner">
+    {quotes.map((quote) => (
+      <blockquote>&ldquo;{quote}&rdquo;</blockquote>
+    ))}
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: #1a1a1a;
+    padding: 5rem var(--safe-area-padding);
+  }
+
+  .testimonials-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    columns: 1;
+    column-gap: 3rem;
+  }
+
+  blockquote {
+    font-family: "Jugendreisen", serif;
+    font-weight: 400;
+    color: white;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    text-align: center;
+    break-inside: avoid;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  blockquote:last-child {
+    margin-bottom: 0;
+  }
+
+  blockquote::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: 0 auto 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials {
+      padding: 6rem var(--safe-area-padding);
+    }
+
+    .testimonials-inner {
+      columns: 2;
+    }
+
+    blockquote {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .testimonials {
+      background: #111;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+</style>

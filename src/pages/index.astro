@@ -3,11 +3,8 @@ import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import Button from "../components/Button.astro";
 import FeatureRow from "../components/FeatureRow.astro";
-import FeatureGrid from "../components/FeatureGrid.astro";
-import FeatureCard from "../components/FeatureCard.astro";
-import FeatureShowcase from "../components/FeatureShowcase.astro";
+import Testimonials from "../components/Testimonials.astro";
 
 const title = "Organize Your Ideas Visually";
 ---
@@ -16,88 +13,63 @@ const title = "Organize Your Ideas Visually";
   <SiteHeader />
   <main>
     <section class="hero">
-      <div class="hero-logo animate-item">
-        <Image
-          src="/assets/icon_128x128@2x.png"
-          alt="Abstract lowercase letter 'b' representing Bleep"
-          width="64"
-          height="64"
-        />
-      </div>
+      <div class="hero-gradient"></div>
 
       <header>
+
+        <picture class="hero-logo animate-item">
+          <source srcset="/assets/app_icon_dark@2x.png" media="(prefers-color-scheme: dark)" />
+          <img src="/assets/app_icon@2x.png" alt="An app icon representing the letter B in abstract form" />
+        </picture>
+
         <h1 class="animate-item">
-Beautiful. Private. Yours.
+          Beautiful. Private. Organized.
         </h1>
         <h2 class="animate-item">
-          Visual bookmarking app for Apple devices<br />that syncs privately via iCloud.
+          Visual bookmarking app that works offline<br />and syncs securely via iCloud
         </h2>
+
+      <a class="cta-button animate-item" href="https://apps.apple.com/app/bleep-think-visually/id1638417383">
+        Get Bleep for iOS &amp; Mac
+      </a>
       </header>
+
+        <picture class="hero-devices animate-item">
+          <source srcset="/assets/hero_devices_dark.png" media="(prefers-color-scheme: dark)" />
+          <img src="/assets/hero_devices_light.png" alt="Bleep running on MacBook, iPad, and iPhone" />
+        </picture>
     </section>
 
-    <div class="screenshot-container animate-item" data-parallax-container>
-      <picture class="screenshot" data-parallax-layer="near">
-        <source
-          srcset="/assets/screenshot_dark.png"
-          media="(prefers-color-scheme: dark)"
-        />
-        <img
-          src="/assets/screenshot_light.png"
-          alt="A screenshot of the Bleep app featuring content cards in a square grid"
-        />
-      </picture>
-      <div class="drag-image" data-parallax-layer="far"></div>
-    </div>
-    <p class="downloads-buttons animate-item">
-      <Button
-        href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
-      >
-      Get for iPhone, iPad &amp; Mac
-      </Button>
-    </p>
-
     <div class="features">
-      <FeatureGrid heading="Everything You Need" subheading="Built for creative thinkers">
-        <FeatureCard
-          icon="🎨"
-          title="Visual Canvas"
-          description="Arrange bookmarks, images, and notes on a freeform spatial canvas."
-        />
-        <FeatureCard
-          icon="🔗"
-          title="Smart Links"
-          description="Save any URL and get rich previews automatically."
-        />
-        <FeatureCard
-          icon="☁️"
-          title="iCloud Sync"
-          description="Access your collections across iPhone, iPad, and Mac."
-        />
-      </FeatureGrid>
+      <div class="features-header">
+        <span class="features-label">FEATURES</span>
+        <h2>Have Fun With Your Thoughts</h2>
+      </div>
 
-      <FeatureShowcase
-        label="Organize"
-        title="Your Ideas, Your Way"
-        description="Create rooms, group by topic, and build a personal library of inspiration that grows with you."
-        image="/assets/screenshot_light.png"
-        imageDark="/assets/screenshot_dark.png"
+      <FeatureRow
+        title="Capture Anything"
+        description="Share links quickly via extensions, and drag and drop directly into Bleep."
+        image="/assets/feature_capture_light.png"
+        imageDark="/assets/feature_capture_dark.png"
       />
 
       <FeatureRow
-        title="Save From Anywhere"
-        description="Use the share sheet on iOS or the browser extension on Mac to clip links, images, and articles in one tap."
-        image="/assets/screenshot_light.png"
-        imageDark="/assets/screenshot_dark.png"
-      />
-
-      <FeatureRow
-        title="Built for Focus"
-        description="No algorithmic feeds. No social pressure. Just your ideas in a calm, private space."
-        image="/assets/screenshot_light.png"
-        imageDark="/assets/screenshot_dark.png"
+        title="Organize Visually"
+        description="Rich previews for each of your items so you can see what you have at a glance. Rearrange by dragging and organize into rooms."
+        image="/assets/feature_organize_light.png"
+        imageDark="/assets/feature_organize_dark.png"
         reverse
       />
+
+      <FeatureRow
+        title="Write, Browse, Explore"
+        description="Bleep is not just for bookmarks, it's for ideas that come in many shapes and forms. You can add notes, view images in a gallery, etc."
+        image="/assets/feature_flexible_light.png"
+        imageDark="/assets/feature_flexible_dark.png"
+      />
     </div>
+
+    <Testimonials />
   </main>
   <SiteFooter animate />
 </Layout>
@@ -115,72 +87,11 @@ Beautiful. Private. Yours.
     // Store that animations have played
     sessionStorage.setItem("hasAnimationsPlayed", "true");
   }
-
-  // Parallax effect on mouse move - triggered from anywhere in viewport
-  const parallaxContainer = document.querySelector('[data-parallax-container]');
-  
-  if (parallaxContainer) {
-    const nearLayer = parallaxContainer.querySelector('[data-parallax-layer="near"]');
-    const farLayer = parallaxContainer.querySelector('[data-parallax-layer="far"]');
-    
-    let isAnimating = false;
-    
-    // Listen to mouse movement on the entire document
-    document.addEventListener('mousemove', (e) => {
-      if (isAnimating) return;
-      isAnimating = true;
-      
-      requestAnimationFrame(() => {
-        const rect = parallaxContainer.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        // Calculate normalized offset from center relative to viewport
-        // Use viewport dimensions for more subtle movement across the whole page
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const offsetX = (e.clientX - centerX) / (viewportWidth / 2);
-        const offsetY = (e.clientY - centerY) / (viewportHeight / 2);
-        
-        // Apply different movement intensities for each layer
-        // Near layer (screenshot) stays still - no movement
-        const nearIntensity = 5; // pixels - no movement for screenshot
-        const nearX = offsetX * nearIntensity;
-        const nearY = offsetY * nearIntensity;
-        
-        // Far layer (drag image) moves MUCH more - appears closer to viewer
-        const farIntensity = 60; // pixels - much larger radius for dramatic parallax
-        const farX = offsetX * farIntensity;
-        const farY = offsetY * farIntensity;
-        
-        // Apply transforms
-        if (nearLayer) {
-          nearLayer.style.transform = `translate(${nearX}px, ${nearY}px)`;
-        }
-        
-        if (farLayer) {
-          farLayer.style.transform = `scale(0.35) translateX(calc(-25% + ${farX}px)) translateY(calc(-35% + ${farY}px))`;
-        }
-        
-        isAnimating = false;
-      });
-    });
-    
-    // Optional: Reset when mouse leaves the viewport (won't trigger often)
-    document.addEventListener('mouseleave', () => {
-      if (nearLayer) {
-        nearLayer.style.transform = '';
-      }
-      if (farLayer) {
-        farLayer.style.transform = 'scale(0.35) translateX(-25%) translateY(-35%)';
-      }
-    });
-  }
 </script>
 
 <style>
   main {
-    padding: 0 var(--safe-area-padding);
+    /* padding: 0 var(--safe-area-padding); */
   }
 
   h1 {
@@ -188,19 +99,64 @@ Beautiful. Private. Yours.
   }
 
   .hero {
+    position: relative;
+    overflow: hidden;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+
+  @media (prefers-color-scheme: dark) {
+    .hero {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100dvw;
+    height: 100dvw;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+    background: radial-gradient(ellipse at 50% 52%, rgba(112, 176, 227, 0.4) 0%, rgba(94, 158, 209, 0.06) 70%);
+    pointer-events: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-gradient {
+      background: radial-gradient(ellipse at 50% 52%, rgba(94, 158, 209, 0.5) 0%, rgba(94, 158, 209, 0) 70%);
+    }
+  }
+
+
+  .hero header {
+    margin-top: 130px;
+    flex-shrink: 0;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .hero > *:not(.hero-gradient) {
+    position: relative;
+    z-index: 1;
   }
 
   .hero-logo {
-    margin-bottom: 0.5rem;
+    display: block;
+    margin-bottom: 32px;
     position: relative;
     z-index: 1;
     &::before {
-      content: "";
+      /* content: ""; */
       position: absolute;
       inset: 0px;
       z-index: -1;
@@ -210,96 +166,82 @@ Beautiful. Private. Yours.
     }
     img {
       transition: filter 0.3s ease;
+    width: 66px;
+    height: 66px;
     }
   }
 
   header h1 {
     font-family: "Jugendreisen", serif;
     font-weight: 400;
-    font-size: 1.5em;
+    font-size: 2em;
     line-height: 1.2;
-    margin-bottom: 0.5em;
+    margin-bottom: 16px;
+    letter-spacing: -1.44%;
+    word-spacing: -1.44%;
   }
 
   header h2 {
-    font-weight: 500;
-    font-size: 1rem;
-    color: var(--body-secondary-foreground-color);
+    font-weight: 450;
+    font-size: 1.15rem;
+    color: #647082;
     line-height: 1.5;
   }
 
-  @media (min-width: 720px) {
-    .hero-logo {
-      margin-bottom: 1.75rem;
+  @media (prefers-color-scheme: dark) {
+    header h2 {
+      color: #cfebfe;
     }
+  }
+
+  @media (min-width: 720px) {
     header h1 {
-      font-size: 2em;
-      margin-bottom: 0.25em;
+      font-size: 3rem;
     }
 
     header h2 {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
     }
   }
 
-  .screenshot-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3rem auto;
-    position: relative;
-    perspective: 1000px;
+  /* CTA Button */
+  .cta-button {
+    display: inline-block;
+    margin-top: 32px;
+    background: white;
+    color: black;
+    font-weight: 550;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    padding: 10px 24px;
+    border: 1px solid #acc7dd6e;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .screenshot {
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change: transform;
-  }
-
-  .screenshot img {
-    max-width: 100%;
-    max-height: 40vh;
-    object-fit: contain;
-    box-shadow:
-      0 0 0 1px rgba(var(--shadow-color-rgb), 0.1),
-      0 20px 40px -15px rgba(var(--shadow-color-rgb), 0.15);
-    border-radius: 6px;
-  }
-
-  @media (min-width: 720px) {
-    .screenshot img {
-      border-radius: 12px;
-    }
-  }
-
-  .drag-image {
-    position: absolute;
-    background: url("/assets/drag_light.png");
-    background-size: contain;
-    width: 81%;
-    padding-bottom: 86%;
-    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
-    transform: scale(0.35) translateX(-25%) translateY(-35%);
-    transform-origin: left bottom;
-    left: 0;
-    bottom: 0;
-    pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change: transform;
+  .cta-button:hover {
+    color: black;
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   }
 
   @media (prefers-color-scheme: dark) {
-    .drag-image {
-      background: url("/assets/drag_dark.png");
-      background-size: contain;
+    .cta-button {
+      border-color: transparent;
     }
   }
 
-  .downloads-buttons {
-    display: flex;
-    gap: 1em;
-    justify-content: center;
+  /* Device Mockup */
+  .hero-devices {
+    flex: 1;
+    height: 500px
+  }
+
+  .hero-devices img {
+    display: block;
+    height: 100%;
+    width: auto;
   }
 
   .features {
@@ -308,6 +250,34 @@ Beautiful. Private. Yours.
     padding: 0 var(--safe-area-padding);
   }
 
+  .features-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .features-label {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .features-header h2 {
+    font-family: "Jugendreisen", serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 0.25em;
+  }
+
+  @media (min-width: 720px) {
+    .features-header h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* Animations */
   @keyframes slideUp {
     from {
       opacity: 0;
@@ -353,23 +323,13 @@ Beautiful. Private. Yours.
     animation-delay: 0.5s;
   }
 
-  .screenshot-container.animate {
-    animation: slideUp 0.5s ease-out forwards;
-    animation-delay: 0.15s;
+  .cta-button.animate {
+    animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.6s;
   }
 
-  .downloads-buttons.animate {
-    animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    animation-delay: 0.8s;
-  }
-  .screenshot img {
-    background: #EFEFF1;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .screenshot img {
-      background: #292929;
-      border-top: 1px solid #444;
-    }
+  .hero-devices.animate {
+    animation: slideUp 0.5s ease-out forwards;
+    animation-delay: 0.7s;
   }
 </style>

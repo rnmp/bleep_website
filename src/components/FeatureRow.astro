@@ -75,13 +75,22 @@ const { title, description, image, imageDark, reverse = false } = Astro.props;
   .feature-media {
     flex: 1;
     min-width: 0;
+    border-radius: 32px;
+    overflow: hidden;
+    background: rgba(40, 40, 40, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .feature-media {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
   }
 
   .feature-media img {
     width: 100%;
-    border-radius: 12px;
-    box-shadow:
-      0 0 0 1px rgba(var(--shadow-color-rgb), 0.08),
-      0 8px 24px -8px rgba(var(--shadow-color-rgb), 0.12);
+    display: block;
   }
 </style>
