@@ -12,38 +12,38 @@ const title = "Organize Your Ideas Visually";
 <Layout title={`Bleep · ${title}`}>
   <SiteHeader />
   <main>
-    <section class="hero">
+    <section class="relative overflow-hidden text-center flex flex-col items-center border-b border-black/10 dark:border-white/10">
       <div class="hero-gradient"></div>
 
-      <header>
+      <header class="mt-[130px] shrink-0 h-[400px] flex items-center justify-center flex-col relative z-1">
 
-        <picture class="hero-logo animate-item">
+        <picture class="block mb-12 relative z-1">
           <source srcset="/assets/app_icon_dark@2x.png" media="(prefers-color-scheme: dark)" />
-          <img src="/assets/app_icon@2x.png" alt="An app icon representing the letter B in abstract form" />
+          <img class="w-[66px] h-[66px] transition-[filter] duration-300 drop-shadow-xl drop-shadow-[#ff5252]/20 dark:drop-shadow-black/20" src="/assets/app_icon@2x.png" alt="An app icon representing the letter B in abstract form" />
         </picture>
 
-        <h1 class="animate-item">
+        <h1 class="font-serif font-normal leading-16 text-3xl md:text-5xl mb-4 tracking-tight animate-item">
           Beautiful. Private. Organized.
         </h1>
-        <h2 class="animate-item">
+        <h2 class="font-[450] text-lg md:text-xl text-[#647082] dark:text-[#cfebfe] leading-normal animate-item">
           Visual bookmarking app that works offline<br />and syncs securely via iCloud
         </h2>
 
-      <a class="cta-button animate-item" href="https://apps.apple.com/app/bleep-think-visually/id1638417383">
+        <a class="inline-block leading-4 mt-8 bg-white text-black font-[550] text-[0.95rem] rounded-full py-2.5 px-6 ring ring-black/8 dark:border-transparent shadow-[0_0_8px_rgb(0_0_0/0.05)] no-underline transition-[transform,box-shadow] duration-200 animate-item" href="https://apps.apple.com/app/bleep-think-visually/id1638417383">
         Get Bleep for iOS &amp; Mac
       </a>
       </header>
 
-        <picture class="hero-devices animate-item">
+        <picture class="flex-1 relative z-1 animate-item">
           <source srcset="/assets/hero_devices_dark.png" media="(prefers-color-scheme: dark)" />
-          <img src="/assets/hero_devices_light.png" alt="Bleep running on MacBook, iPad, and iPhone" />
+          <img class="block h-[500px] object-scale-down" src="/assets/hero_devices_light.png" alt="Bleep running on MacBook, iPad, and iPhone" />
         </picture>
     </section>
 
-    <div class="features">
-      <div class="features-header">
-        <span class="features-label">FEATURES</span>
-        <h2>Have Fun With Your Thoughts</h2>
+    <div class="max-w-[860px] mx-auto mt-8 px-[var(--safe-area-padding)]">
+      <div class="text-center mb-4">
+        <span class="text-[var(--color-accent)] uppercase tracking-[0.08em] text-sm font-bold">FEATURES</span>
+        <h2 class="font-serif font-normal text-2xl md:text-[2.5rem] leading-[1.2] mt-1">Have Fun With Your Thoughts</h2>
       </div>
 
       <FeatureRow
@@ -90,31 +90,11 @@ const title = "Organize Your Ideas Visually";
 </script>
 
 <style>
-  main {
-    /* padding: 0 var(--safe-area-padding); */
-  }
-
   h1 {
     word-spacing: 0.075em;
   }
 
-  .hero {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-
-  @media (prefers-color-scheme: dark) {
-    .hero {
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-
+  /* Hero gradient - complex radial gradient with viewport units */
   .hero-gradient {
     position: absolute;
     inset: 0;
@@ -134,156 +114,12 @@ const title = "Organize Your Ideas Visually";
     }
   }
 
-
-  .hero header {
-    margin-top: 130px;
-    flex-shrink: 0;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .hero > *:not(.hero-gradient) {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-logo {
-    display: block;
-    margin-bottom: 32px;
-    position: relative;
-    z-index: 1;
-    &::before {
-      /* content: ""; */
-      position: absolute;
-      inset: 0px;
-      z-index: -1;
-      filter: blur(20px);
-      background: rgb(from var(--color-accent) r g b / 0.4);
-      transition: filter 0.3s ease;
-    }
-    img {
-      transition: filter 0.3s ease;
-    width: 66px;
-    height: 66px;
-    }
-  }
-
-  header h1 {
-    font-family: "Jugendreisen", serif;
-    font-weight: 400;
-    font-size: 2em;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    letter-spacing: -1.44%;
-    word-spacing: -1.44%;
-  }
-
-  header h2 {
-    font-weight: 450;
-    font-size: 1.15rem;
-    color: #647082;
-    line-height: 1.5;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    header h2 {
-      color: #cfebfe;
-    }
-  }
-
-  @media (min-width: 720px) {
-    header h1 {
-      font-size: 3rem;
-    }
-
-    header h2 {
-      font-size: 1.25rem;
-    }
-  }
-
-  /* CTA Button */
-  .cta-button {
-    display: inline-block;
-    margin-top: 32px;
-    background: white;
-    color: black;
-    font-weight: 550;
-    font-size: 0.95rem;
-    border-radius: 999px;
-    padding: 10px 24px;
-    border: 1px solid #acc7dd6e;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .cta-button:hover {
-    color: black;
-    transform: scale(1.03);
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .cta-button {
-      border-color: transparent;
-    }
-  }
-
-  /* Device Mockup */
-  .hero-devices {
-    flex: 1;
-    height: 500px
-  }
-
-  .hero-devices img {
-    display: block;
-    height: 100%;
-    width: auto;
-  }
-
-  .features {
-    max-width: 860px;
-    margin: 2rem auto 0;
-    padding: 0 var(--safe-area-padding);
-  }
-
-  .features-header {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .features-label {
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.875rem;
-    font-weight: 700;
-  }
-
-  .features-header h2 {
-    font-family: "Jugendreisen", serif;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-top: 0.25em;
-  }
-
-  @media (min-width: 720px) {
-    .features-header h2 {
-      font-size: 2.5rem;
-    }
-  }
-
-  /* Animations */
+  /* Animation keyframes and delays */
   @keyframes slideUp {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -295,40 +131,37 @@ const title = "Organize Your Ideas Visually";
       opacity: 0;
       transform: translateY(20px) scale(0.9);
     }
-
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
   }
 
-  /* Set initial state for all animated elements */
   .animate {
     opacity: 0;
   }
 
-  /* Apply animations only when .animate class is present */
-  .hero-logo.animate {
+  picture.animate:first-of-type {
     animation: slideUpAndScale 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.4s;
   }
 
-  header h1.animate {
+  h1.animate {
     animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.4s;
   }
 
-  header h2.animate {
+  h2.animate {
     animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.5s;
   }
 
-  .cta-button.animate {
+  a.animate {
     animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.6s;
   }
 
-  .hero-devices.animate {
+  picture.animate:last-of-type {
     animation: slideUp 0.5s ease-out forwards;
     animation-delay: 0.7s;
   }

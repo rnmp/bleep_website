@@ -1,129 +1,26 @@
----
----
-
-<header class="site-header">
-  <div class="nav-pill">
-    <a class="logo" title="Go back to homepage" href="/">
-      <svg class="logo-mark" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<header class="fixed top-2 left-0 w-full z-10 px-4 py-3 flex justify-center pointer-events-none">
+  <div class="pointer-events-auto backdrop-blur-[24px] bg-white/70 ring ring-black/8 rounded-full pl-4 pr-3 py-3 flex items-center gap-5 shadow-[0_2px_16px_rgb(0_0_0/0.06)] w-full max-w-[800px] dark:bg-[rgb(40_40_40/0.65)] dark:ring-white/10 dark:shadow-[0_2px_16px_rgb(0_0_0/0.2)]">
+    <div class="flex flex-1">
+    <a class="flex items-center gap-2" title="Go back to homepage" href="/">
+      <svg class="text-[var(--color-accent)] block" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="7.4" height="19" rx="3.7" fill="currentColor" />
         <rect x="8" y="7" width="12" height="12" rx="6" fill="currentColor" />
       </svg>
-      <span>Bleep</span>
+      <span class="font-serif font-normal text-2xl relative top-[0.1em] tracking-tight">Bleep</span>
     </a>
-    <nav>
-      <a href="#">Features</a>
-      <a href="/support">Guides</a>
-      <a href="/pricing">Pricing</a>
+    </div>
+    <nav class="hidden md:flex flex-1 items-center justify-center gap-10">
+      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="#">Features</a>
+      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="/pricing">Pricing</a>
+      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="/support">Support</a>
     </nav>
+    <div class="flex flex-1 justify-end">
     <a
-      class="cta"
+      class="inline-block leading-3 bg-white text-black font-[550] text-[0.95rem] rounded-full py-2.5 px-6 dark:border-transparent ring ring-black/8 no-underline transition-[transform,box-shadow] duration-200 hover:text-black "
       href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
     >
       Get it
     </a>
+    </div>
   </div>
 </header>
-
-<style>
-  .site-header {
-    position: fixed;
-    top: 8px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    padding: 12px 16px;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-  }
-
-  .nav-pill {
-    pointer-events: auto;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    background: rgb(255 255 255 / 0.7);
-    border: 1px solid rgb(0 0 0 / 0.08);
-    border-radius: 999px;
-    padding: 12px 12px 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 2px 16px rgb(0 0 0 / 0.06);
-    width: 100%;
-    max-width: 800px;
-  }
-
-  .nav-pill nav {
-    display: flex;
-    flex: 1;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .nav-pill {
-      background: rgb(40 40 40 / 0.65);
-      border-color: rgb(255 255 255 / 0.1);
-      box-shadow: 0 2px 16px rgb(0 0 0 / 0.2);
-    }
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .logo-mark {
-    color: var(--color-accent);
-    display: block;
-  }
-
-  .logo span {
-    font-family: "Jugendreisen", serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    position: relative;
-    top: 0.1em;
-  }
-
-  nav {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  @media (min-width: 768px) {
-    nav {
-      display: flex;
-    }
-  }
-
-  nav a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--body-secondary-foreground-color);
-    white-space: nowrap;
-  }
-
-  nav a:hover {
-    color: var(--body-foreground-color);
-  }
-
-  .cta {
-    background: black;
-    color: white;
-    border-radius: 999px;
-    padding: 6px 16px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: opacity 0.2s ease;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .cta {
-    background: white;
-    color: black;
-    }
-  }
-</style>

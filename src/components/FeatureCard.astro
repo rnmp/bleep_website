@@ -8,51 +8,8 @@ interface Props {
 const { icon, title, description } = Astro.props;
 ---
 
-<div class="feature-card">
-  <span class="feature-icon">{icon}</span>
-  <h4>{title}</h4>
-  <p>{description}</p>
+<div class="p-6 rounded-2xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.03)] border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] transition-[border-color] duration-200 hover:border-[rgb(from_var(--color-accent)_r_g_b/0.3)] dark:bg-white/4 dark:border-white/7 dark:hover:border-[rgb(from_var(--color-accent)_r_g_b/0.4)]">
+  <span class="block text-2xl mb-3">{icon}</span>
+  <h4 class="font-semibold text-[0.95rem] mb-1.5">{title}</h4>
+  <p class="text-[var(--body-secondary-foreground-color)] text-sm leading-normal">{description}</p>
 </div>
-
-<style>
-  .feature-card {
-    padding: 1.5rem;
-    border-radius: 16px;
-    background: rgb(from var(--body-foreground-color) r g b / 0.03);
-    border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.06);
-    transition: border-color 0.2s ease;
-  }
-
-  .feature-card:hover {
-    border-color: rgb(from var(--color-accent) r g b / 0.3);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .feature-card {
-      background: rgb(255 255 255 / 0.04);
-      border-color: rgb(255 255 255 / 0.07);
-    }
-
-    .feature-card:hover {
-      border-color: rgb(from var(--color-accent) r g b / 0.4);
-    }
-  }
-
-  .feature-icon {
-    display: block;
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  h4 {
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 0.35em;
-  }
-
-  p {
-    color: var(--body-secondary-foreground-color);
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
-</style>
