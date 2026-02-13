@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import Content from "../components/Content.astro";
 import ContactForm from "../components/ContactForm.astro";
 
 const articles = [
@@ -18,166 +17,121 @@ const articles = [
 
 <Layout title="Support · Bleep">
   <SiteHeader />
-  <Content>
-    <h1>Support</h1>
-    <h2>Guides</h2>
-    <div>
-      <ul>
-        {
-          articles.map((article) => (
-            <li>
-              <a href={article.url}>
-                <div class="emoji-square">{article.frontmatter.icon}</div>
-                {article.frontmatter.support_title || article.frontmatter.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+  <main class="flex-1">
+    <!-- Header -->
+    <div class="pt-[120px] md:pt-[140px] pb-6 text-center">
+      <h1 class="font-serif font-normal text-4xl md:text-5xl tracking-tight">Support</h1>
     </div>
 
-    <h2>FAQs</h2>
-    <details>
-      <summary
-        ><div class="emoji-square">☁️</div> Why is my data not synced between devices?</summary
-      >
-      <p>
-        Most likely, you don't have iCloud Drive enabled. Check out the <a
-          href="/support/icloud">how-to guide</a
-        > to enable it. Please allow a few minutes for changes to sync between devices.
-        Especially if you're using a new device.
-      </p>
-    </details>
+    <div class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16">
 
-    <details>
-      <summary
-        ><div class="emoji-square">🔒</div> Is my data on Bleep private?</summary
-      >
-      <p>
-        Yes, your data can only be accessed by you. It's stored on your device.
-        Bleep uses iCloud for syncing between devices, but it's encrypted
-        end-to-end. You can also review the <a href="/privacy"
-          >privacy policy.</a
-        >
-      </p>
-    </details>
+      <!-- Guides -->
+      <section class="mb-12">
+        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">Guides</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {articles.map((article) => (
+            <a
+              href={article.url}
+              class="group flex items-center gap-3 p-4 rounded-2xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.03)] border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] transition-all duration-200 hover:border-[rgb(from_var(--color-accent)_r_g_b/0.3)] hover:shadow-sm no-underline dark:bg-white/4 dark:border-white/7 dark:hover:border-[rgb(from_var(--color-accent)_r_g_b/0.4)]"
+            >
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">{article.frontmatter.icon}</span>
+              <span class="font-medium text-[0.95rem] text-[var(--body-foreground-color)] group-hover:text-[var(--color-accent)] transition-colors duration-200">{article.frontmatter.support_title || article.frontmatter.title}</span>
+            </a>
+          ))}
+        </div>
+      </section>
 
-    <details>
-      <summary
-        ><div class="emoji-square">💾</div> Can I export/import my data?</summary
-      >
-      <p>Not at the moment. But it will be added in a future update.</p>
-    </details>
+      <!-- FAQs -->
+      <section class="mb-12">
+        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">FAQs</span>
+        <div class="rounded-2xl border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] overflow-hidden dark:border-white/7">
 
-    <details>
-      <summary
-        ><div class="emoji-square">💻</div> Do you have a web, Windows, Linux, or
-        Android app?</summary
-      >
-      <p>
-        No, the current focus is on macOS and iOS. Long-term, I'd love for Bleep
-        to be universal and on as many platforms as possible.
-      </p>
-    </details>
+          <details class="group faq-item">
+            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">☁️</span>
+              <span class="flex-1">Why is my data not synced between devices?</span>
+              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
+              Most likely, you don't have iCloud Drive enabled. Check out the <a class="text-[var(--link-color)] underline decoration-wavy" href="/support/icloud">how-to guide</a> to enable it. Please allow a few minutes for changes to sync between devices, especially if you're using a new device.
+            </div>
+          </details>
 
-    <details>
-      <summary
-        ><div class="emoji-square">🤖</div> What's your take on AI?</summary
-      >
-      <p>
-      While Bleep is designed for privacy and simplicity, <em>optional</em> AI features may be added in the future using local models. 
-      </p>
-      <p>
-        Bleep also offers an MCP server which you can use to connect with your favorite AI tools. <a href="/support/ai">Learn more &rarr;</a>
-      </p>
-    </details>
+          <details class="group faq-item">
+            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">🔒</span>
+              <span class="flex-1">Is my data on Bleep private?</span>
+              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
+              Yes, your data can only be accessed by you. It's stored on your device. Bleep uses iCloud for syncing between devices, but it's encrypted end-to-end. You can also review the <a class="text-[var(--link-color)] underline decoration-wavy" href="/privacy">privacy policy.</a>
+            </div>
+          </details>
 
-    <h2>Need Help?</h2>
-    <ContactForm />
-  </Content>
+          <details class="group faq-item">
+            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">💾</span>
+              <span class="flex-1">Can I export/import my data?</span>
+              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
+              Not at the moment. But it will be added in a future update.
+            </div>
+          </details>
+
+          <details class="group faq-item">
+            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">💻</span>
+              <span class="flex-1">Do you have a web, Windows, Linux, or Android app?</span>
+              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
+              No, the current focus is on macOS and iOS. Long-term, I'd love for Bleep to be universal and on as many platforms as possible.
+            </div>
+          </details>
+
+          <details class="group faq-item">
+            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">🤖</span>
+              <span class="flex-1">What's your take on AI?</span>
+              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed space-y-2">
+              <p>While Bleep is designed for privacy and simplicity, <em>optional</em> AI features may be added in the future using local models.</p>
+              <p>Bleep also offers an MCP server which you can use to connect with your favorite AI tools. <a class="text-[var(--link-color)] underline decoration-wavy" href="/support/ai">Learn more &rarr;</a></p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section>
+        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">Need Help?</span>
+        <ContactForm />
+      </section>
+
+    </div>
+  </main>
   <SiteFooter />
 </Layout>
 
 <style>
-  h2 {
-    margin-top: 2rem;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-  }
-
-  li a {
-    text-decoration: none;
-  }
-
-  details {
-    margin-top: 0.5rem;
-  }
-
-  details,
-  li {
-    padding-top: 0.5rem;
-    position: relative;
-  }
-
-  details::before,
-  li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 2.5rem;
-    right: 0;
-    border-top: 1px dashed var(--body-secondary-foreground-color);
-  }
-
-  li:first-child::before,
-  details:first-of-type::before {
-    display: none;
-  }
-
-  details:not([open]) summary,
-  li {
-    list-style-type: none;
-    color: var(--link-color);
-  }
-
   details summary::-webkit-details-marker {
     display: none;
   }
 
-  .emoji-square {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    background-color: rgba(var(--body-secondary-foreground-color-rgb), 0.25);
-    border-radius: 8px;
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-    position: relative;
-    top: -0.1rem;
+  details summary {
+    list-style: none;
   }
 
-  summary,
-  li {
-    font-weight: 500;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+  .faq-item + .faq-item {
+    border-top: 1px solid rgb(from var(--body-foreground-color) r g b / 0.06);
   }
 
-  details[open] summary {
-    margin-bottom: 0.5rem;
-  }
-
-  details[open] p {
-    padding-bottom: 0.5rem;
-  }
-
-  details[open] p {
-    padding-left: 2.5rem;
+  @media (prefers-color-scheme: dark) {
+    .faq-item + .faq-item {
+      border-color: rgb(255 255 255 / 0.07);
+    }
   }
 </style>
