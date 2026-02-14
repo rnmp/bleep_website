@@ -1,9 +1,12 @@
 @import "../style.css" layer(base);
 @import "tailwindcss";
 
+
 @theme {
+  --color-accent: #ff5252;
   --font-serif: "Jugendreisen", serif;
   --font-sans: "Inter", -apple-system, sans-serif;
+
 
   --animate-slide-up: slide-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   --animate-slide-up-scale: slide-up-scale 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;

@@ -5,15 +5,16 @@ interface Props {
   image?: string;
   imageDark?: string;
   reverse?: boolean;
+  class?: string;
 }
 
-const { title, description, image, imageDark, reverse = false } = Astro.props;
+const { title, description, image, imageDark, reverse = false, class: className } = Astro.props;
 ---
 
-<section class:list={["feature-row", { reverse }]}>
-  <div class="feature-text">
-    <h3>{title}</h3>
-    <p>{description}</p>
+<section class:list={["flex flex-col items-center gap-8 px-10 md:px-0 md:flex-row md:gap-16", { "md:flex-row-reverse": reverse }, className]}>
+  <div class="md:flex-1 min-w-0 md:px-8">
+    <h3 class="text-3xl font-serif mb-4 tracking-wide">{title}</h3>
+    <p class="font-medium text-xl text-[var(--body-secondary-foreground-color)]">{description}</p>
   </div>
   {image && (
     <div class="feature-media">
@@ -28,50 +29,6 @@ const { title, description, image, imageDark, reverse = false } = Astro.props;
 </section>
 
 <style>
-  .feature-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 3rem 0;
-  }
-
-  @media (min-width: 768px) {
-    .feature-row {
-      flex-direction: row;
-      gap: 3rem;
-    }
-
-    .feature-row.reverse {
-      flex-direction: row-reverse;
-    }
-  }
-
-  .feature-text {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .feature-text h3 {
-    font-family: "Jugendreisen", serif;
-    font-weight: 400;
-    font-size: 1.35rem;
-    line-height: 1.2;
-    margin-bottom: 0.5em;
-  }
-
-  @media (min-width: 768px) {
-    .feature-text h3 {
-      font-size: 1.6rem;
-    }
-  }
-
-  .feature-text p {
-    color: var(--body-secondary-foreground-color);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
   .feature-media {
     flex: 1;
     min-width: 0;
@@ -88,7 +45,6 @@ const { title, description, image, imageDark, reverse = false } = Astro.props;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
-
   .feature-media img {
     width: 100%;
     display: block;

@@ -6,7 +6,7 @@ interface Props {
 const { animate = false } = Astro.props;
 ---
 
-<footer class:list={["footer", { "animate-item": animate }]}>
+<footer class:list={["footer max-w-4xl w-full mx-auto", { "animate-item": animate }]}>
   <a href="/support">Support</a>
   <a href="/privacy">Privacy</a>
   <a href="/terms">Terms</a>

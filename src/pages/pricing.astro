@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Testimonials from "../components/Testimonials.astro";
 ---
 
 <Layout title="Bleep · Pricing">
@@ -50,15 +51,12 @@ import SiteFooter from "../components/SiteFooter.astro";
         Get it on the App Store
       </a>
     </section>
+    <Testimonials />
   </main>
   <SiteFooter />
 </Layout>
 
 <style>
-  main {
-    padding: 0 var(--safe-area-padding);
-  }
-
   .pricing {
     max-width: 480px;
     margin: 0 auto;

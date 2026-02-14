@@ -54,7 +54,7 @@ body {
 }
 
 body {
-  color: var(--body-foreground-color);
+  /* color: var(--body-foreground-color); */
   background-color: var(--body-background-color);
   font-size: 1em;
   display: flex;

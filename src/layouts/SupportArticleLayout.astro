@@ -10,7 +10,7 @@ const { frontmatter } = Astro.props;
   <SiteHeader />
   <Content>
     <a href="/support">&larr; Guides</a>
-    <h1>{frontmatter.title}</h1>
+    <h1 class="text-3xl">{frontmatter.title}</h1>
     {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
     <slot />
     <footer>
