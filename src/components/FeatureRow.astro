@@ -1,4 +1,5 @@
 ---
+import Surface from "../components/Surface.astro";
 interface Props {
   title: string;
   description: string;
@@ -17,35 +18,19 @@ const { title, description, image, imageDark, reverse = false, class: className 
     <p class="font-medium text-xl text-[var(--body-secondary-foreground-color)]">{description}</p>
   </div>
   {image && (
-    <div class="feature-media">
+    <Surface class="flex-1 min-w-0 overflow-hidden">
       <picture>
         {imageDark && (
           <source srcset={imageDark} media="(prefers-color-scheme: dark)" />
         )}
         <img src={image} alt="" loading="lazy" />
       </picture>
-    </div>
+    </Surface>
   )}
 </section>
 
 <style>
-  .feature-media {
-    flex: 1;
-    min-width: 0;
-    border-radius: 32px;
-    overflow: hidden;
-    background: rgba(40, 40, 40, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .feature-media {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  }
-  .feature-media img {
+  img {
     width: 100%;
     display: block;
   }

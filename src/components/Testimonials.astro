@@ -1,34 +1,69 @@
 ---
-import Surface from "./Surface.astro"
+import Surface from "./Surface.astro";
 const quotes = [
-["Bleep is a simple & straightforward way to organize our messy thoughts, while keeping a trail of those moments we cherish dearly.", "sentinele"],
-["Amazing app, native, simple, does what you want it to do, does not disturb you with useless features.", "Zak"],
-["No useless features or AI stuff — just my links, screenshots, and notes in a sleek, easy-to-use interface that keeps improving. Exactly what I was looking for!", "Jess"],
-["Awesome app with very clean & beautiful interface. I'm so happy I found this!", "sup"],
-["I'm a product designer, and I usually go around collecting notes, references, links to interesting things. Bleep has allowed me to organize myself better.","soycanopa"]
+  [
+    "Bleep is a simple & straightforward way to organize our messy thoughts, while keeping a trail of those moments we cherish dearly.",
+    "sentinele",
+  ],
+  [
+    "Amazing app, native, simple, does what you want it to do, does not disturb you with useless features.",
+    "Zak",
+  ],
+  [
+    "No useless features or AI stuff — just my links, screenshots, and notes in a sleek, easy-to-use interface that keeps improving. Exactly what I was looking for!",
+    "Jess",
+  ],
+  [
+    "Awesome app with very clean & beautiful interface. I'm so happy I found this!",
+    "sup",
+  ],
+  [
+    "I'm a product designer, and I usually go around collecting notes, references, links to interesting things. Bleep has allowed me to organize myself better.",
+    "soycanopa",
+  ],
 ];
 ---
 
-<section class="py-22 relative flex flex-col gap-20 items-center overflow-hidden hero-gradient px-20">
+<section
+  class="py-22 relative flex flex-col gap-20 items-center overflow-hidden hero-gradient px-20"
+>
   <header class="text-center">
-    <h1 class="text-[var(--color-accent)] uppercase tracking-[.5em] text-sm font-bold text-violet-900/60 dark:text-violet-300 mb-3">Reviews</h1>
-  <h2 class="font-serif font-normal text-2xl md:text-[2.5rem] leading-[1.2]">Hear From Others</h2>
+    <h1
+      class="text-[var(--color-accent)] uppercase tracking-[.5em] text-sm font-bold text-violet-900/60 dark:text-violet-300 mb-3"
+    >
+      Reviews
+    </h1>
+    <h2 class="font-serif font-normal text-2xl md:text-[2.5rem] leading-[1.2]">
+      Designed for a Peace of Mind
+    </h2>
   </header>
-      <svg class="hidden">
-        <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-        </filter>
-      </svg>
-      <div class="hero-noise"></div>
-  <div class="flex flex-wrap justify-center gap-4">
-    {quotes.map(([quote, author], index) => (
-    <Surface class:list={["max-w-sm text-center bg-white dark:bg-gray-500 shadow-sm rounded-4xl px-5 pb-3 pt-6 flex flex-col gap-2"]}>
-    <blockquote class="font-serif text-pretty flex-1">
-      &ldquo;{quote}&rdquo;
-    </blockquote>
-    <cite class="text-sm font-semibold not-italic text-violet-900/60 dark:text-violet-300">{author}</cite>
-    </Surface>
-    ))}
+  <svg class="hidden">
+    <filter id="noise">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.65"
+        numOctaves="3"
+        stitchTiles="stitch"></feTurbulence>
+    </filter>
+  </svg>
+  <div class="hero-noise"></div>
+  <div class="max-w-5xl flex flex-wrap justify-center gap-4">
+    {
+      quotes.map(([quote, author], index) => (
+        <Surface
+          class:list={[
+            "max-w-xs text-center bg-white dark:bg-gray-500 px-5 pb-3 pt-6 flex flex-col gap-2",
+          ]}
+        >
+          <blockquote class="font-light text-pretty flex-1">
+            &ldquo;{quote}&rdquo;
+          </blockquote>
+          <cite class="text-sm font-semibold not-italic text-violet-900/60 dark:text-violet-300">
+            {author}
+          </cite>
+        </Surface>
+      ))
+    }
   </div>
 </section>
 
@@ -41,7 +76,11 @@ const quotes = [
 
   /* Hero gradient - complex radial gradient with viewport units */
   .hero-gradient {
-      background: radial-gradient(circle at 50% 52%, rgba(167, 0, 255, 0.1) 0%, rgba(94, 158, 209, 0) 70%);
+    background: radial-gradient(
+      circle at 50% 52%,
+      rgba(167, 0, 255, 0.1) 0%,
+      rgba(94, 158, 209, 0) 70%
+    );
   }
 
   .hero-noise {
@@ -52,5 +91,4 @@ const quotes = [
     opacity: 0.05;
     pointer-events: none;
   }
-
 </style>

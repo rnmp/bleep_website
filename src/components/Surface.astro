@@ -6,21 +6,11 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class:list={["bg-[#282828]/4 dark:bg-white/4", className]}>
+<div
+  class:list={[
+    "rounded-3xl bg-[#282828]/4 dark:bg-white/4 ring ring-black/8 dark:ring-white/10 shadow-lg",
+    className,
+  ]}
+>
   <slot />
 </div>
-
-<style>
-  div {
-    border-radius: 32px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    div {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  }
-</style>
