@@ -9,24 +9,45 @@ interface Props {
   class?: string;
 }
 
-const { title, description, image, imageDark, reverse = false, class: className } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageDark,
+  reverse = false,
+  class: className,
+} = Astro.props;
 ---
 
-<section class:list={["flex flex-col items-center gap-8 px-10 md:px-0 md:flex-row md:gap-16", { "md:flex-row-reverse": reverse }, className]}>
+<section
+  class:list={[
+    "flex flex-col items-center gap-6 px-6 md:px-10 md:px-0 md:flex-row md:gap-16",
+    { "md:flex-row-reverse": reverse },
+    className,
+  ]}
+>
   <div class="md:flex-1 min-w-0 md:px-8">
-    <h3 class="text-3xl font-serif mb-4 tracking-wide">{title}</h3>
-    <p class="font-medium text-xl text-[var(--body-secondary-foreground-color)]">{description}</p>
+    <h3 class="text-xl md:text-3xl font-serif mb-2 md:mb-4 tracking-wide">
+      {title}
+    </h3>
+    <p
+      class="font-medium md:text-xl text-[var(--body-secondary-foreground-color)]"
+    >
+      {description}
+    </p>
   </div>
-  {image && (
-    <Surface class="flex-1 min-w-0 overflow-hidden">
-      <picture>
-        {imageDark && (
-          <source srcset={imageDark} media="(prefers-color-scheme: dark)" />
-        )}
-        <img src={image} alt="" loading="lazy" />
-      </picture>
-    </Surface>
-  )}
+  {
+    image && (
+      <Surface class="flex-1 min-w-0 overflow-hidden">
+        <picture>
+          {imageDark && (
+            <source srcset={imageDark} media="(prefers-color-scheme: dark)" />
+          )}
+          <img src={image} alt="" loading="lazy" />
+        </picture>
+      </Surface>
+    )
+  }
 </section>
 
 <style>
