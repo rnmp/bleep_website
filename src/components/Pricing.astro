@@ -1,0 +1,256 @@
+---
+import Surface from "../components/Surface.astro";
+---
+
+<div
+  class="relative md:mx-auto pb-20 md:pb-40 flex flex-col items-center gap-10"
+>
+  <div class="absolute -top-31" id="pricing"></div>
+  <div class="text-center flex flex-col items-center">
+    <span
+      class="text-[var(--color-accent)] uppercase tracking-[.5em] text-sm font-bold"
+    >
+      Pricing
+    </span>
+    <h2
+      class="font-serif font-normal text-3xl md:text-[2.5rem] leading-[1.2] mt-8 mb-8"
+    >
+      Organize Your <br class="md:hidden" />Ideas Visually
+    </h2>
+
+    <fieldset
+      id="plan_timeframe_selector"
+      class="text-xs font-semibold p-1 rounded-full bg-black/4 dark:bg-white/4 flex"
+    >
+      <label
+        for="plan_timeframe_monthly"
+        class="has-checked:bg-white dark:has-checked:bg-white/30 has-checked:text-accent dark:has-checked:text-white has-checked:ring has-checked:ring-black/8 dark:has-checked:ring-white/50 px-3 py-1 inline-block rounded-full cursor-pointer"
+      >
+        <input
+          class="hidden"
+          type="radio"
+          id="plan_timeframe_monthly"
+          name="plan_timeframe"
+          value="monthly"
+        />
+        Monthly
+      </label>
+      <label
+        for="plan_timeframe_annually"
+        class="has-checked:bg-white dark:has-checked:bg-white/30 has-checked:text-accent dark:has-checked:text-white has-checked:ring has-checked:ring-black/8 dark:has-checked:ring-white/50 px-3 py-1 inline-block rounded-full cursor-pointer"
+      >
+        <input
+          class="hidden"
+          type="radio"
+          checked
+          id="plan_timeframe_annually"
+          name="plan_timeframe"
+          value="annually"
+        />
+        Yearly
+      </label>
+      <label
+        for="plan_timeframe_lifetime"
+        class="has-checked:bg-white dark:has-checked:bg-white/30 has-checked:text-accent dark:has-checked:text-white has-checked:ring has-checked:ring-black/8 dark:has-checked:ring-white/50 px-3 py-1 inline-block rounded-full cursor-pointer"
+      >
+        <input
+          class="hidden"
+          type="radio"
+          name="plan_timeframe"
+          id="plan_timeframe_lifetime"
+          value="lifetime"
+        />
+        Lifetime
+      </label>
+    </fieldset>
+  </div>
+
+  <div class="flex flex-row gap-4 w-full p-6 overflow-auto">
+    <Surface class="w-72 p-7 shrink-0 pb-8 flex flex-col text-start gap-5">
+      <h3 class="mb-1 font-bold">Bleep Demo</h3>
+      <h3 class="font-serif text-3xl">Free</h3>
+      <ul class="text-sm flex flex-col gap-1">
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Save 50 links, images & notes
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Organize into 5 rooms
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Browser extension
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          100% private, no sign ups
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Access items offline
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Sync devices via iCloud
+        </li>
+      </ul>
+      <a
+        class="inline-block leading-4 text-center bg-white text-black font-semibold ring ring-black/8 text-[0.95rem] rounded-full py-2.5 px-6 no-underline"
+        href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
+      >
+        Try Bleep for Free
+      </a>
+    </Surface>
+    <Surface class="w-72 p-7 pb-8 shrink-0 flex flex-col text-start gap-5">
+      <h2 class="mb-1 font-bold">Bleep Unlimited</h2>
+      <h3 class="flex items-end gap-2">
+        <span id="plan_price_amount" class="font-serif text-3xl"> $29.99 </span>
+        <span
+          id="plan_price_description"
+          class="text-sm text-gray-600 dark:text-gray-400">billed yearly</span
+        >
+      </h3>
+      <ul class="text-sm flex flex-col gap-1">
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Unlimited links, images & notes
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Unlimited rooms
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Browser extension
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          100% private, no sign ups
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Access items offline
+        </li>
+        <li class="flex items-center gap-2">
+          <svg
+            class="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><polyline points="20 6 9 17 4 12"></polyline></svg
+          >
+          Sync devices via iCloud
+        </li>
+      </ul>
+      <a
+        class="inline-block leading-4 text-center bg-white text-black font-semibold ring ring-black/8 text-[0.95rem] rounded-full py-2.5 px-6 no-underline"
+        href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
+      >
+        Try Bleep for Free
+      </a>
+    </Surface>
+  </div>
+</div>
