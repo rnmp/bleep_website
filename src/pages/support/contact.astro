@@ -2,27 +2,24 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
+import Surface from "../../components/Surface.astro";
 import ContactForm from "../../components/ContactForm.astro";
 import Content from "../../components/Content.astro";
 ---
 
 <Layout title="Contact · Bleep">
   <SiteHeader />
-  <Content>
-    <h1>Bug, idea, or question?</h1>
-    <ContactForm autofocus />
-  </Content>
+  <main
+    class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
+  >
+    <Surface class="p-4 md:p-7">
+      <h1
+        class="font-serif font-normal text-2xl md:text-3xl tracking-tight pb-6"
+      >
+        Bug, idea, or question?
+      </h1>
+      <ContactForm autofocus />
+    </Surface>
+  </main>
   <SiteFooter />
 </Layout>
-<style>
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 0 var(--safe-area-padding);
-  }
-</style>

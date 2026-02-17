@@ -14,7 +14,7 @@ import Button from "./Button.astro";
 
 <div class="contact-form-wrapper">
   <div class="form-state">
-    <p class="subtitle">
+    <p class="subtitle text-xl font-medium">
       {subtitle}
     </p>
     <form action="https://submit-form.com/R7bwjb69d" class="support-form">
@@ -26,7 +26,13 @@ import Button from "./Button.astro";
         required
         autofocus={autofocus}
       />
-      <input type="email" id="email" name="email" placeholder="Email" required />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
       <textarea id="message" name="message" placeholder="Message" required
       ></textarea>
       <Button type="submit">Send</Button>
@@ -35,45 +41,50 @@ import Button from "./Button.astro";
 
   <div class="success-state" hidden>
     <p class="subtitle">Message sent! I'll get back to you soon.</p>
-    <p>Got a few more minutes? I'd really appreciate your thoughts in a quick survey.</p>
+    <p>
+      Got a few more minutes? I'd really appreciate your thoughts in a quick
+      survey.
+    </p>
     <Button href="/survey">Take the Survey</Button>
   </div>
 </div>
 
 <script>
-  const wrapper = document.querySelector('.contact-form-wrapper')!;
-  const form = wrapper.querySelector('form')!;
-  const formState = wrapper.querySelector('.form-state') as HTMLElement;
-  const successState = wrapper.querySelector('.success-state') as HTMLElement;
-  const IDENTITY_KEY = 'bleep_user';
+  const wrapper = document.querySelector(".contact-form-wrapper")!;
+  const form = wrapper.querySelector("form")!;
+  const formState = wrapper.querySelector(".form-state") as HTMLElement;
+  const successState = wrapper.querySelector(".success-state") as HTMLElement;
+  const IDENTITY_KEY = "bleep_user";
 
   // Restore saved identity
   try {
-    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
-    if (identity.name) (form.querySelector('#name') as HTMLInputElement).value = identity.name;
-    if (identity.email) (form.querySelector('#email') as HTMLInputElement).value = identity.email;
+    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || "{}");
+    if (identity.name)
+      (form.querySelector("#name") as HTMLInputElement).value = identity.name;
+    if (identity.email)
+      (form.querySelector("#email") as HTMLInputElement).value = identity.email;
   } catch {}
 
   // Save name/email on input
-  form.addEventListener('input', (e) => {
+  form.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement;
-    if (target.name === 'name' || target.name === 'email') {
-      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+    if (target.name === "name" || target.name === "email") {
+      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || "{}");
       identity[target.name] = target.value;
       localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
     }
   });
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));
     try {
       const res = await fetch(form.action, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(data),
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
       if (!res.ok) throw new Error();
@@ -87,8 +98,6 @@ import Button from "./Button.astro";
 
 <style>
   .subtitle {
-    font-size: 1.2rem;
-    font-weight: 500;
     margin-bottom: 2rem;
     color: var(--body-secondary-foreground-color);
   }
@@ -122,6 +131,7 @@ import Button from "./Button.astro";
   input[type="email"],
   textarea {
     border: 1px solid #e5e5e5;
+    background: var(--color-white);
   }
 
   textarea {
@@ -134,6 +144,7 @@ import Button from "./Button.astro";
     input[type="email"],
     textarea {
       border-color: #333;
+      background: rgb(from var(--color-white) r g b / 0.04);
     }
   }
 

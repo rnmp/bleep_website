@@ -1,44 +1,102 @@
-<header class="fixed top-2 left-0 w-full z-10 px-4 py-3 flex justify-center pointer-events-none">
-  <div id="header-pill" class="pointer-events-auto backdrop-blur-[24px] bg-white/70 ring ring-black/8 rounded-full pl-4 pr-3 py-2.5 flex flex-col gap-0 shadow-[0_2px_16px_rgb(0_0_0/0.06)] w-full max-w-[800px] dark:bg-[rgb(40_40_40/0.65)] dark:ring-white/10 dark:shadow-[0_2px_16px_rgb(0_0_0/0.2)] transition-[border-radius] duration-200">
+<header
+  class="fixed top-2 left-0 w-full z-10 px-4 py-3 flex justify-center pointer-events-none"
+>
+  <div
+    id="header-pill"
+    class="pointer-events-auto backdrop-blur-[24px] bg-white/70 ring ring-black/8 rounded-full pl-4 pr-3 py-2.5 flex flex-col gap-0 shadow-[0_2px_16px_rgb(0_0_0/0.06)] w-full max-w-200 dark:bg-[rgb(40_40_40/0.65)] dark:ring-white/10 dark:shadow-[0_2px_16px_rgb(0_0_0/0.2)] transition-[border-radius] duration-200"
+  >
     <div class="flex items-center gap-5">
       <div class="flex flex-1">
-      <a class="flex items-center gap-2" title="Go back to homepage" href="/">
-        <svg class="text-[var(--color-accent)] block" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="7.4" height="19" rx="3.7" fill="currentColor" />
-          <rect x="8" y="7" width="12" height="12" rx="6" fill="currentColor" />
-        </svg>
-        <span class="font-serif font-normal text-2xl relative top-[0.1em] tracking-tight">Bleep</span>
-      </a>
+        <a class="flex items-center gap-2" title="Go back to homepage" href="/">
+          <svg
+            class="text-[var(--color-accent)] block"
+            width="20"
+            height="19"
+            viewBox="0 0 20 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="7.4" height="19" rx="3.7" fill="currentColor"></rect>
+            <rect x="8" y="7" width="12" height="12" rx="6" fill="currentColor"
+            ></rect>
+          </svg>
+          <span
+            class="font-serif font-normal text-2xl relative top-[0.1em] tracking-tight"
+            >Bleep</span
+          >
+        </a>
       </div>
-      <nav class="hidden md:flex flex-1 items-center justify-center gap-10">
-        <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="/#features">Features</a>
-        <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="/#pricing">Pricing</a>
-        <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)]" href="/support">Support</a>
+      <nav class="hidden sm:flex flex-1 items-center justify-center gap-10">
+        <a
+          class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent"
+          href="/#features">Features</a
+        >
+        <a
+          class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent"
+          href="/#pricing">Pricing</a
+        >
+        <a
+          class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent"
+          href="/support">Support</a
+        >
       </nav>
       <div class="flex flex-1 justify-end items-center gap-2">
         <a
-          class="hidden md:inline-block leading-3 bg-black dark:bg-white text-white dark:text-black font-[550] text-[0.95rem] rounded-full py-2.5 px-4 dark:border-transparent no-underline transition-[transform,box-shadow] duration-200 hover:text-black "
+          class="hidden shadow sm:inline-block leading-3 bg-white text-black ring ring-black/8 font-[550] text-[0.95rem] rounded-full py-2.5 px-4 no-underline duration-200 hover:text-black"
           href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
         >
           Get Bleep
         </a>
-        <button id="menu-toggle" class="md:hidden flex items-center justify-center w-9 h-9 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Toggle menu" aria-expanded="false">
-          <svg id="menu-icon" class="w-5 h-5 text-[#666] dark:text-[#999]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="4" y1="7" x2="20" y2="7" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="17" x2="20" y2="17" />
+        <button
+          id="menu-toggle"
+          class="sm:hidden flex items-center justify-center w-9 h-9 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg
+            id="menu-icon"
+            class="w-5 h-5 text-zinc-600 dark:text-zinc-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
           </svg>
-          <svg id="close-icon" class="w-5 h-5 text-[#666] dark:text-[#999] hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="6" y1="6" x2="18" y2="18" />
-            <line x1="6" y1="18" x2="18" y2="6" />
+          <svg
+            id="close-icon"
+            class="w-5 h-5 text-zinc-600 dark:text-zinc-400 hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="6" y1="18" x2="18" y2="6"></line>
           </svg>
         </button>
       </div>
     </div>
-    <nav id="mobile-nav" class="hidden md:hidden flex-col items-center gap-1 pt-3 pb-1 border-t border-black/8 dark:border-white/10 mt-2.5">
-      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)] py-2 w-full text-center" href="/#features">Features</a>
-      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)] py-2 w-full text-center" href="/#pricing">Pricing</a>
-      <a class="font-semibold text-[#666666] dark:text-[#999] hover:text-[var(--body-foreground-color)] py-2 w-full text-center" href="/support">Support</a>
+    <nav
+      id="mobile-nav"
+      class="hidden sm:hidden flex-col items-center gap-1 pt-3 pb-1 border-t border-black/8 dark:border-white/10 mt-2.5"
+    >
+      <a
+        class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2"
+        href="/#features">Features</a
+      >
+      <a
+        class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2"
+        href="/#pricing">Pricing</a
+      >
+      <a
+        class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2"
+        href="/support">Support</a
+      >
       <a
         class="inline-block leading-3 bg-black dark:bg-white text-white dark:text-black font-[550] text-[0.95rem] rounded-full py-2.5 px-4 dark:border-transparent no-underline transition-[transform,box-shadow] duration-200 hover:text-black mt-2"
         href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
@@ -50,35 +108,35 @@
 </header>
 
 <script>
-  const toggle = document.getElementById('menu-toggle');
-  const pill = document.getElementById('header-pill');
-  const mobileNav = document.getElementById('mobile-nav');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  const toggle = document.getElementById("menu-toggle");
+  const pill = document.getElementById("header-pill");
+  const mobileNav = document.getElementById("mobile-nav");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
 
   function setOpen(open) {
-    toggle.setAttribute('aria-expanded', String(open));
-    menuIcon.classList.toggle('hidden', open);
-    closeIcon.classList.toggle('hidden', !open);
+    toggle.setAttribute("aria-expanded", String(open));
+    menuIcon.classList.toggle("hidden", open);
+    closeIcon.classList.toggle("hidden", !open);
     if (open) {
-      mobileNav.classList.remove('hidden');
-      mobileNav.classList.add('flex');
-      pill.classList.remove('rounded-full');
-      pill.classList.add('rounded-[28px]');
+      mobileNav.classList.remove("hidden");
+      mobileNav.classList.add("flex");
+      pill.classList.remove("rounded-full");
+      pill.classList.add("rounded-[28px]");
     } else {
-      mobileNav.classList.add('hidden');
-      mobileNav.classList.remove('flex');
-      pill.classList.remove('rounded-[28px]');
-      pill.classList.add('rounded-full');
+      mobileNav.classList.add("hidden");
+      mobileNav.classList.remove("flex");
+      pill.classList.remove("rounded-[28px]");
+      pill.classList.add("rounded-full");
     }
   }
 
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') !== 'true';
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
     setOpen(open);
   });
 
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setOpen(false));
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
   });
 </script>

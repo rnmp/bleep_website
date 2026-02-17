@@ -21,18 +21,16 @@ const {
 
 <section
   class:list={[
-    "flex flex-col items-center gap-6 px-6 md:px-10 md:px-0 md:flex-row md:gap-16",
-    { "md:flex-row-reverse": reverse },
+    "flex flex-col items-center gap-6 px-6 sm:px-10 sm:px-0 sm:flex-row sm:gap-8 md:gap-16",
+    { "sm:flex-row-reverse": reverse },
     className,
   ]}
 >
-  <div class="md:flex-1 min-w-0 md:px-8">
-    <h3 class="text-xl md:text-3xl font-serif mb-2 md:mb-4 tracking-wide">
+  <div class="sm:flex-1 min-w-0">
+    <h3 class="text-xl sm:text-3xl font-serif mb-2 sm:mb-4 tracking-wide">
       {title}
     </h3>
-    <p
-      class="font-medium md:text-xl text-[var(--body-secondary-foreground-color)]"
-    >
+    <p class="font-[450] sm:text-xl text-gray-400">
       {description}
     </p>
   </div>

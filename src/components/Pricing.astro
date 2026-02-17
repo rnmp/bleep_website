@@ -3,7 +3,7 @@ import Surface from "../components/Surface.astro";
 ---
 
 <div
-  class="relative md:mx-auto pb-20 md:pb-40 flex flex-col items-center gap-10"
+  class="relative sm:mx-auto pb-20 sm:pb-40 flex flex-col items-center gap-10"
 >
   <div class="absolute -top-31" id="pricing"></div>
   <div class="text-center flex flex-col items-center">
@@ -13,9 +13,9 @@ import Surface from "../components/Surface.astro";
       Pricing
     </span>
     <h2
-      class="font-serif font-normal text-3xl md:text-[2.5rem] leading-[1.2] mt-8 mb-8"
+      class="font-serif font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8 mb-8"
     >
-      Organize Your <br class="md:hidden" />Ideas Visually
+      Organize Your <br class="sm:hidden" />Ideas Visually
     </h2>
 
     <fieldset
@@ -66,7 +66,9 @@ import Surface from "../components/Surface.astro";
   </div>
 
   <div class="flex flex-row gap-4 w-full p-6 overflow-auto">
-    <Surface class="w-72 p-7 shrink-0 pb-8 flex flex-col text-start gap-5">
+    <Surface
+      class="w-67 sm:w-72 p-5 pb-6 sm:p-7 shrink-0 sm:pb-8 flex flex-col text-start gap-5"
+    >
       <h3 class="mb-1 font-bold">Bleep Demo</h3>
       <h3 class="font-serif text-3xl">Free</h3>
       <ul class="text-sm flex flex-col gap-1">
@@ -156,7 +158,9 @@ import Surface from "../components/Surface.astro";
         Try Bleep for Free
       </a>
     </Surface>
-    <Surface class="w-72 p-7 pb-8 shrink-0 flex flex-col text-start gap-5">
+    <Surface
+      class="w-67 sm:w-72 p-5 pb-6 sm:p-7 shrink-0 sm:pb-8 flex flex-col text-start gap-5"
+    >
       <h2 class="mb-1 font-bold">Bleep Unlimited</h2>
       <h3 class="flex items-end gap-2">
         <span id="plan_price_amount" class="font-serif text-3xl"> $29.99 </span>

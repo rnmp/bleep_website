@@ -1,5 +1,6 @@
 @import "../style.css" layer(base);
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 
 @theme {

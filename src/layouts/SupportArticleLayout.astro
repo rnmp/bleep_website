@@ -3,21 +3,30 @@ import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Content from "../components/Content.astro";
+import Surface from "../components/Surface.astro";
 const { frontmatter } = Astro.props;
 ---
 
 <Layout title={`${frontmatter.title} · Bleep`}>
   <SiteHeader />
-  <Content>
-    <a href="/support">&larr; Guides</a>
-    <h1 class="text-3xl">{frontmatter.title}</h1>
-    {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
-    <slot />
-    <footer>
-      Need more help? I got you! Please <a href="/support/contact">reach out.</a
-      >
-    </footer>
-  </Content>
+
+  <main
+    class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
+  >
+    <Surface class="p-4 md:p-7">
+      <Content>
+        <a href="/support">&larr; Guides</a>
+        <h1 class="text-3xl">{frontmatter.title}</h1>
+        {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
+        <slot />
+        <footer>
+          Need more help? I got you! Please <a href="/support/contact"
+            >reach out.</a
+          >
+        </footer>
+      </Content>
+    </Surface>
+  </main>
   <SiteFooter />
 </Layout>
 

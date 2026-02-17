@@ -3,7 +3,7 @@ import Surface from "./Surface.astro";
 const quotes = [
   [
     "Bleep is a simple & straightforward way to organize our messy thoughts, while keeping a trail of those moments we cherish dearly.",
-    "Sentinelite, US",
+    "SENTINELITE, US",
   ],
   [
     "Amazing app, native, simple, does what you want it to do, does not disturb you with useless features.",
@@ -33,8 +33,8 @@ const quotes = [
     >
       Reviews
     </h1>
-    <h2 class="font-serif font-normal text-3xl md:text-[2.5rem] leading-[1.2]">
-      Designed for a <br class="md:hidden" />Peace of Mind
+    <h2 class="font-serif font-normal text-3xl sm:text-[2.5rem] leading-[1.2]">
+      Designed for a <br class="sm:hidden" />Peace of Mind
     </h2>
   </header>
   <svg class="hidden">
@@ -47,12 +47,12 @@ const quotes = [
     </filter>
   </svg>
   <div class="hero-noise"></div>
-  <div class="md:max-w-5xl flex flex-wrap justify-center gap-4">
+  <div class="sm:max-w-5xl flex flex-wrap justify-center gap-4">
     {
       quotes.map(([quote, author], index) => (
         <Surface
           class:list={[
-            "md:max-w-xs text-center bg-white dark:bg-gray-500 px-5 pb-3 pt-6 flex flex-col gap-2",
+            "sm:max-w-xs text-center bg-white dark:bg-gray-500 px-5 pb-3 pt-6 flex flex-col gap-2",
           ]}
         >
           <blockquote class="font-light text-pretty flex-1">

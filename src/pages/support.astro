@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Surface from "../components/Surface.astro";
 import ContactForm from "../components/ContactForm.astro";
 
 const articles = [
@@ -12,109 +13,215 @@ const articles = [
   await import("./support/share_ios.mdx"),
   await import("./support/extensions.mdx"),
   await import("./support/icloud.mdx"),
+  await import("./support/ai.mdx"),
 ];
 ---
 
 <Layout title="Support · Bleep">
   <SiteHeader />
-  <main class="flex-1">
-    <!-- Header -->
-    <div class="pt-[120px] md:pt-[140px] pb-6 text-center">
-      <h1 class="font-serif font-normal text-4xl md:text-5xl tracking-tight">Support</h1>
-    </div>
+  <main
+    class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
+  >
+    <h1 class="font-serif font-normal text-2xl md:text-3xl tracking-tight pb-6">
+      Guides
+    </h1>
 
-    <div class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16">
-
-      <!-- Guides -->
-      <section class="mb-12">
-        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">Guides</span>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {articles.map((article) => (
-            <a
+    <!-- Guides -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {
+          articles.map((article) => (
+            <Surface
+              as="a"
               href={article.url}
-              class="group flex gap-3 p-4 rounded-2xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.03)] border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] transition-all duration-200 hover:border-[rgb(from_var(--color-accent)_r_g_b/0.3)] hover:shadow-sm no-underline dark:bg-white/4 dark:border-white/7 dark:hover:border-[rgb(from_var(--color-accent)_r_g_b/0.4)]"
+              class="group flex flex-col gap-3 p-4 rounded-2xl transition-all duration-200 no-underline shadow-xs rounded-xl"
             >
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">{article.frontmatter.icon}</span>
+              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-lg bg-black/4 text-lg dark:bg-white/8">
+                {article.frontmatter.icon}
+              </span>
               <div class="min-w-0">
-                <span class="block font-medium text-[0.95rem] text-[var(--body-foreground-color)] group-hover:text-[var(--color-accent)] transition-colors duration-200">{article.frontmatter.support_title || article.frontmatter.title}</span>
-                {article.frontmatter.subtitle && <span class="block text-xs text-[var(--body-secondary-foreground-color)] leading-snug mt-0.5">{article.frontmatter.subtitle}</span>}
+                <span class="block font-medium text-black dark:text-white transition-colors duration-200">
+                  {article.frontmatter.support_title ||
+                    article.frontmatter.title}
+                </span>
+                {article.frontmatter.subtitle && (
+                  <span class="block text-sm text-zinc-500 dark:text-zinc-400 leading-snug mt-0.5">
+                    {article.frontmatter.subtitle}
+                  </span>
+                )}
               </div>
-            </a>
-          ))}
-        </div>
-      </section>
+            </Surface>
+          ))
+        }
+      </div>
+    </section>
 
-      <!-- FAQs -->
-      <section class="mb-12">
-        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">FAQs</span>
-        <div class="rounded-2xl border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] overflow-hidden dark:border-white/7">
+    <!-- FAQs -->
+    <section class="mb-12">
+      <h1
+        class="font-serif font-normal text-2xl md:text-3xl tracking-tight pb-6"
+      >
+        FAQs
+      </h1>
+      <div
+        class="rounded-2xl border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] overflow-hidden dark:border-white/7"
+      >
+        <details class="group faq-item">
+          <summary
+            class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
+          >
+            <span
+              class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8"
+              >☁️</span
+            >
+            <span class="flex-1"
+              >Why is my data not synced between devices?</span
+            >
+            <svg
+              class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div
+            class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed"
+          >
+            Most likely, you don't have iCloud Drive enabled. Check out the <a
+              class="text-[var(--link-color)] underline decoration-wavy"
+              href="/support/icloud">how-to guide</a
+            > to enable it. Please allow a few minutes for changes to sync between
+            devices, especially if you're using a new device.
+          </div>
+        </details>
 
-          <details class="group faq-item">
-            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">☁️</span>
-              <span class="flex-1">Why is my data not synced between devices?</span>
-              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
-              Most likely, you don't have iCloud Drive enabled. Check out the <a class="text-[var(--link-color)] underline decoration-wavy" href="/support/icloud">how-to guide</a> to enable it. Please allow a few minutes for changes to sync between devices, especially if you're using a new device.
-            </div>
-          </details>
+        <details class="group faq-item">
+          <summary
+            class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
+          >
+            <span
+              class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8"
+              >🔒</span
+            >
+            <span class="flex-1">Is my data on Bleep private?</span>
+            <svg
+              class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div
+            class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed"
+          >
+            Yes, your data can only be accessed by you. It's stored on your
+            device. Bleep uses iCloud for syncing between devices, but it's
+            encrypted end-to-end. You can also review the <a
+              class="text-[var(--link-color)] underline decoration-wavy"
+              href="/privacy">privacy policy.</a
+            >
+          </div>
+        </details>
 
-          <details class="group faq-item">
-            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">🔒</span>
-              <span class="flex-1">Is my data on Bleep private?</span>
-              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
-              Yes, your data can only be accessed by you. It's stored on your device. Bleep uses iCloud for syncing between devices, but it's encrypted end-to-end. You can also review the <a class="text-[var(--link-color)] underline decoration-wavy" href="/privacy">privacy policy.</a>
-            </div>
-          </details>
+        <details class="group faq-item">
+          <summary
+            class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
+          >
+            <span
+              class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8"
+              >💾</span
+            >
+            <span class="flex-1">Can I export/import my data?</span>
+            <svg
+              class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div
+            class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed"
+          >
+            Not at the moment. But it will be added in a future update.
+          </div>
+        </details>
 
-          <details class="group faq-item">
-            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">💾</span>
-              <span class="flex-1">Can I export/import my data?</span>
-              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
-              Not at the moment. But it will be added in a future update.
-            </div>
-          </details>
+        <details class="group faq-item">
+          <summary
+            class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
+          >
+            <span
+              class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8"
+              >💻</span
+            >
+            <span class="flex-1"
+              >Do you have a web, Windows, Linux, or Android app?</span
+            >
+            <svg
+              class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div
+            class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed"
+          >
+            No, the current focus is on macOS and iOS. Long-term, I'd love for
+            Bleep to be universal and on as many platforms as possible.
+          </div>
+        </details>
 
-          <details class="group faq-item">
-            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">💻</span>
-              <span class="flex-1">Do you have a web, Windows, Linux, or Android app?</span>
-              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed">
-              No, the current focus is on macOS and iOS. Long-term, I'd love for Bleep to be universal and on as many platforms as possible.
-            </div>
-          </details>
+        <details class="group faq-item">
+          <summary
+            class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
+          >
+            <span
+              class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8"
+              >🤖</span
+            >
+            <span class="flex-1">What's your take on AI?</span>
+            <svg
+              class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div
+            class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed space-y-2"
+          >
+            <p>
+              While Bleep is designed for privacy and simplicity, <em
+                >optional</em
+              > AI features may be added in the future using local models.
+            </p>
+            <p>
+              Bleep also offers an MCP server which you can use to connect with
+              your favorite AI tools. <a
+                class="text-[var(--link-color)] underline decoration-wavy"
+                href="/support/ai">Learn more &rarr;</a
+              >
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
 
-          <details class="group faq-item">
-            <summary class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200 hover:bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.02)] dark:hover:bg-white/3">
-              <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[rgb(from_var(--body-foreground-color)_r_g_b/0.05)] text-lg dark:bg-white/8">🤖</span>
-              <span class="flex-1">What's your take on AI?</span>
-              <svg class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-4 pb-4 pl-[4.25rem] text-[0.9rem] text-[var(--body-secondary-foreground-color)] leading-relaxed space-y-2">
-              <p>While Bleep is designed for privacy and simplicity, <em>optional</em> AI features may be added in the future using local models.</p>
-              <p>Bleep also offers an MCP server which you can use to connect with your favorite AI tools. <a class="text-[var(--link-color)] underline decoration-wavy" href="/support/ai">Learn more &rarr;</a></p>
-            </div>
-          </details>
-
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section>
-        <span class="block text-[var(--color-accent)] uppercase tracking-[0.08em] text-xs font-bold mb-4">Need Help?</span>
-        <ContactForm />
-      </section>
-
-    </div>
+    <!-- Contact -->
+    <Surface class="p-4 md:p-7 shadow-sm">
+      <h1
+        class="font-serif font-normal text-2xl md:text-3xl tracking-tight pb-6"
+      >
+        Need help?
+      </h1>
+      <ContactForm />
+    </Surface>
   </main>
   <SiteFooter />
 </Layout>

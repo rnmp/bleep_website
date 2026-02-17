@@ -3,21 +3,15 @@
 </div>
 
 <style is:global>
-
   .content {
     flex: 1;
     align-self: center;
-    max-width: 540px;
     font-size: 0.9em;
-    padding: 20px var(--safe-area-padding);
   }
 
   @media (min-width: 720px) {
     .content {
       font-size: 1em;
-    }
-    .content {
-      padding: 80px var(--safe-area-padding);
     }
   }
 
@@ -36,6 +30,14 @@
   .content > ul,
   .content > ol {
     margin-left: 1.5rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content ol {
+    list-style-type: decimal;
   }
 
   .content ul {
@@ -67,8 +69,9 @@
     border-radius: 4px;
     font-size: 0.9em;
     font-weight: 500;
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
+    font-family:
+      "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono", Menlo,
+      Consolas, monospace;
   }
 
   .content pre {
@@ -86,8 +89,9 @@
     border-radius: 0;
     font-size: 0.9em;
     font-weight: 500;
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
+    font-family:
+      "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono", Menlo,
+      Consolas, monospace;
     line-height: 1.4;
   }
 
@@ -106,19 +110,32 @@
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: color-mix(in srgb, var(--body-foreground-color) 8%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--body-foreground-color) 8%,
+      transparent
+    );
     border: none;
     border-radius: 8px;
     padding: 0.35rem 0.5rem;
     cursor: pointer;
     color: var(--body-secondary-foreground-color);
     font-size: 0.75em;
-    font-family: Inter, -apple-system, sans-serif;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    font-family:
+      Inter,
+      -apple-system,
+      sans-serif;
+    transition:
+      color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
   }
 
   .content pre .copy-btn:hover {
-    background: color-mix(in srgb, var(--body-foreground-color) 15%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--body-foreground-color) 15%,
+      transparent
+    );
     color: var(--body-foreground-color);
   }
 
