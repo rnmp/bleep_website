@@ -3,7 +3,7 @@
 >
   <div
     id="header-pill"
-    class="pointer-events-auto backdrop-blur-[24px] bg-white/70 ring ring-black/8 rounded-full pl-4 pr-3 py-2.5 flex flex-col gap-0 shadow-[0_2px_16px_rgb(0_0_0/0.06)] w-full max-w-200 dark:bg-[rgb(40_40_40/0.65)] dark:ring-white/10 dark:shadow-[0_2px_16px_rgb(0_0_0/0.2)] transition-[border-radius] duration-200"
+    class="pointer-events-auto backdrop-blur-[24px] bg-white/70 ring ring-black/8 rounded-[28px] pl-4 pr-3 py-2.5 flex flex-col gap-0 shadow-[0_2px_16px_rgb(0_0_0/0.06)] w-full max-w-200 dark:bg-[rgb(40_40_40/0.65)] dark:ring-white/10 dark:shadow-[0_2px_16px_rgb(0_0_0/0.2)] transition-[border-radius] duration-200"
   >
     <div class="flex items-center gap-5">
       <div class="flex flex-1">
@@ -121,13 +121,9 @@
     if (open) {
       mobileNav.classList.remove("hidden");
       mobileNav.classList.add("flex");
-      pill.classList.remove("rounded-full");
-      pill.classList.add("rounded-[28px]");
     } else {
       mobileNav.classList.add("hidden");
       mobileNav.classList.remove("flex");
-      pill.classList.remove("rounded-[28px]");
-      pill.classList.add("rounded-full");
     }
   }
 
