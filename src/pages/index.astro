@@ -1,5 +1,6 @@
 ---
 import Image from "astro/components/Image.astro";
+import Content from "../components/Content.astro";
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -122,66 +123,112 @@ const title = "So Many Ideas, So Little Room?";
 
     <Pricing />
     <Testimonials />
+    <div
+      class="relative max-w-4xl mx-auto pt-15 md:pt-20 pb-15 md:pb-40 flex flex-col gap-10 md:gap-20"
+    >
+      <h2
+        class="font-serif font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8 text-center"
+      >
+        Ready to Bleep?
+      </h2>
+
+      <div class="flex items-end gap-4">
+        <div class="size-12 sm:size-16">
+          <img src="https://rolando.is/avatar.png" />
+        </div>
+        <div class="mx-auto max-w-72 flex flex-col gap-4">
+          <div
+            class="px-4 py-3 bg-gray-100 dark:bg-zinc-800 ring ring-black/8 rounded-3xl shadow-md"
+          >
+            <Content>
+              <p>
+                Hey! I'm Rolando. I made Bleep because I wanted to organize my
+                life visually and creatively.
+              </p>
+
+              <p>
+                All the other tools out there were either too cluttered or
+                complex. I wanted something minimalist, yet useful. Beautiful,
+                yet flexible.
+              </p>
+
+              <p>
+                Read more about <a href="/why">why I built Bleep</a>. Also,
+                please
+                <a href="/support/contact">reach out</a> with questions or ideas!
+                Let's make Bleep better together.
+              </p>
+            </Content>
+          </div>
+        </div>
+      </div>
+      <a
+        class="inline-block leading-4 text-center bg-white text-black font-semibold shadow-sm ring ring-black/8 text-[0.95rem] rounded-full py-2.5 px-6 no-underline"
+        href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
+      >
+        Get Bleep for iOS & Mac
+      </a>
+    </div>
+    <SiteFooter animate />
   </main>
-  <SiteFooter animate />
-</Layout>
 
-<script>
-  plan_timeframe_selector.addEventListener("change", (event) => {
-    const [amount, description] = (() => {
-      switch (event.target.value) {
-        case "monthly":
-          return ["$3.99", "billed monthly"];
-        case "lifetime":
-          return ["$99.99", "billed once"];
-        default:
-          return ["$29.99", "billed yearly"];
-      }
-    })();
+  <script>
+    plan_timeframe_selector.addEventListener("change", (event) => {
+      const [amount, description] = (() => {
+        switch (event.target.value) {
+          case "monthly":
+            return ["$3.99", "billed monthly"];
+          case "lifetime":
+            return ["$99.99", "billed once"];
+          default:
+            return ["$29.99", "billed yearly"];
+        }
+      })();
 
-    plan_price_amount.innerHTML = amount;
-    plan_price_description.innerHTML = description;
-  });
-</script>
+      plan_price_amount.innerHTML = amount;
+      plan_price_description.innerHTML = description;
+    });
+  </script>
 
-<style>
-  h1 {
-    word-spacing: 0.075em;
-  }
+  <style>
+    h1 {
+      word-spacing: 0.075em;
+    }
 
-  /* Hero gradient - complex radial gradient with viewport units */
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 2000px;
-    height: 2000px;
-    left: 50%;
-    transform: translate(-50%);
-    background: radial-gradient(
-      circle at 50% 52%,
-      rgba(94, 158, 209, 0.5) 0%,
-      rgba(94, 158, 209, 0) 70%
-    );
-    pointer-events: none;
-  }
-
-  .hero-noise {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    filter: url(#noise);
-    opacity: 0.05;
-    pointer-events: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
+    /* Hero gradient - complex radial gradient with viewport units */
     .hero-gradient {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 2000px;
+      height: 2000px;
+      left: 50%;
+      transform: translate(-50%);
       background: radial-gradient(
         circle at 50% 52%,
         rgba(94, 158, 209, 0.5) 0%,
         rgba(94, 158, 209, 0) 70%
       );
+      pointer-events: none;
     }
-  }
-</style>
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      filter: url(#noise);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .hero-gradient {
+        background: radial-gradient(
+          circle at 50% 52%,
+          rgba(94, 158, 209, 0.5) 0%,
+          rgba(94, 158, 209, 0) 70%
+        );
+      }
+    }
+  </style>
+</Layout>

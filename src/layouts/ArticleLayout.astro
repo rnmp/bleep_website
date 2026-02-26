@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Content from "../components/Content.astro";
+import Surface from "../components/Surface.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} · Bleep`}>
+  <SiteHeader />
+
+  <main
+    class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px] leading-7"
+  >
+    <Surface class="p-4 md:p-7">
+      <header class="py-8">
+        <h1 class="text-3xl text-center">{frontmatter.title}</h1>
+        {
+          frontmatter.subtitle && (
+            <p class="subtitle mt-1 text-center">{frontmatter.subtitle}</p>
+          )
+        }
+      </header>
+      <Content>
+        <slot />
+        <footer class="flex flex-col gap-2 text-sm items-center font-semibold">
+          <img
+            src="https://rolando.is/avatar.png"
+            alt="Rolando"
+            class="avatar"
+          />
+          <span>Rolando</span>
+        </footer>
+      </Content>
+    </Surface>
+  </main>
+  <SiteFooter />
+</Layout>
+
+<style>
+  .subtitle {
+    font-weight: 500;
+    color: var(--body-secondary-foreground-color);
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+</style>
