@@ -8,16 +8,46 @@ import Button from "../components/Button.astro";
 const questions = [
   { name: "living", label: "What do you do for a living?" },
   { name: "heard", label: "How did you first hear about Bleep?" },
-  { name: "usage", label: "What do you use Bleep for, and how often do you reach for it?" },
-  { name: "moment", label: "Can you share a specific moment where Bleep really came through for you?" },
-  { name: "alternatives", label: "Have you tried other similar tools? What made Bleep stand out?" },
-  { name: "favorite", label: "What's your favorite feature or quality of Bleep?" },
-  { name: "clunky", label: "Is there anything that took a while to figure out or still feels clunky?" },
-  { name: "limitation", label: "What's a major limitation or clear opportunity you see for Bleep?" },
-  { name: "integrations", label: "Are there other tools you wish Bleep connected with or worked alongside?" },
-  { name: "describe", label: "How would you describe Bleep in about 10 words?" },
+  {
+    name: "usage",
+    label: "What do you use Bleep for, and how often do you reach for it?",
+  },
+  {
+    name: "moment",
+    label:
+      "Can you share a specific moment where Bleep really came through for you?",
+  },
+  {
+    name: "alternatives",
+    label: "Have you tried other similar tools? What made Bleep stand out?",
+  },
+  {
+    name: "favorite",
+    label: "What's your favorite feature or quality of Bleep?",
+  },
+  {
+    name: "clunky",
+    label:
+      "Is there anything that took a while to figure out or still feels clunky?",
+  },
+  {
+    name: "limitation",
+    label: "What's a major limitation or clear opportunity you see for Bleep?",
+  },
+  {
+    name: "integrations",
+    label:
+      "Are there other tools you wish Bleep connected with or worked alongside?",
+  },
+  {
+    name: "describe",
+    label: "How would you describe Bleep in about 10 words?",
+  },
   { name: "recommend", label: "Who would you recommend Bleep to?" },
-  { name: "anything_else", label: "Anything else you'd like to share that I didn't ask about?" },
+  {
+    name: "anything_else",
+    label: "Anything else you'd like to share that I didn't ask about?",
+  },
 ];
 ---
 
@@ -27,26 +57,33 @@ const questions = [
     class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
   >
     <Surface class="p-4 md:p-7">
-      <h1
-        class="font-serif font-normal text-2xl md:text-3xl tracking-tight pb-6"
-      >
+      <h1 class="font-display font-normal text-2xl md:text-3xl pb-6">
         Make Bleep Better
       </h1>
       <p class="subtitle text-xl font-medium">
-        Thank you for being here. You have no idea how helpful it is for Bleep and for me to learn more about you, the things you like, dislike, etc.
+        Thank you for being here. You have no idea how helpful it is for Bleep
+        and for me to learn more about you, the things you like, dislike, etc.
         <br />
         <br />
         — R
       </p>
       <form action="https://submit-form.com/mXWDenIIc" class="survey-form">
         <input type="text" id="name" name="name" placeholder="Name" required />
-        <input type="email" id="email" name="email" placeholder="Email" required />
-        {questions.map((q) => (
-          <div class="question">
-            <label for={q.name}>{q.label}</label>
-            <textarea id={q.name} name={q.name} rows="3"></textarea>
-          </div>
-        ))}
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        {
+          questions.map((q) => (
+            <div class="question">
+              <label for={q.name}>{q.label}</label>
+              <textarea id={q.name} name={q.name} rows="3" />
+            </div>
+          ))
+        }
         <Button type="submit">Submit</Button>
       </form>
     </Surface>
@@ -55,43 +92,47 @@ const questions = [
 </Layout>
 
 <script>
-  const form = document.querySelector('.survey-form') as HTMLFormElement;
-  const IDENTITY_KEY = 'bleep_user';
-  const DRAFT_KEY = 'bleep_survey_draft';
+  const form = document.querySelector(".survey-form") as HTMLFormElement;
+  const IDENTITY_KEY = "bleep_user";
+  const DRAFT_KEY = "bleep_survey_draft";
 
   // Restore saved identity
   try {
-    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
-    if (identity.name) (form.querySelector('#name') as HTMLInputElement).value = identity.name;
-    if (identity.email) (form.querySelector('#email') as HTMLInputElement).value = identity.email;
+    const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || "{}");
+    if (identity.name)
+      (form.querySelector("#name") as HTMLInputElement).value = identity.name;
+    if (identity.email)
+      (form.querySelector("#email") as HTMLInputElement).value = identity.email;
   } catch {}
 
   // Restore saved draft answers
   try {
-    const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+    const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || "{}");
     for (const [name, value] of Object.entries(draft)) {
-      const el = form.querySelector(`[name="${name}"]`) as HTMLTextAreaElement | null;
+      const el = form.querySelector(
+        `[name="${name}"]`,
+      ) as HTMLTextAreaElement | null;
       if (el) el.value = value as string;
     }
   } catch {}
 
   // Save on input
-  form.addEventListener('input', (e) => {
+  form.addEventListener("input", (e) => {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     const name = target.name;
-    if (name === 'name' || name === 'email') {
-      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || '{}');
+    if (name === "name" || name === "email") {
+      const identity = JSON.parse(localStorage.getItem(IDENTITY_KEY) || "{}");
       identity[name] = target.value;
       localStorage.setItem(IDENTITY_KEY, JSON.stringify(identity));
     } else {
-      const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+      const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || "{}");
       draft[name] = target.value;
       localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
     }
   });
 
   // Clear draft on successful submit (keep identity)
-  form.addEventListener('submit', () => {
+  form.addEventListener("submit", () => {
     localStorage.removeItem(DRAFT_KEY);
   });
 </script>

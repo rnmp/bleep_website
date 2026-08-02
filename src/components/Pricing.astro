@@ -5,15 +5,13 @@ import Surface from "../components/Surface.astro";
 <div class="relative sm:mx-auto pb-20 flex flex-col items-center gap-10">
   <div class="absolute -top-31" id="pricing"></div>
   <div class="text-center flex flex-col items-center">
-    <span
-      class="text-[var(--color-accent)] uppercase tracking-[.5em] text-sm font-bold"
-    >
+    <span class="font-display-caps text-[var(--color-accent)] text-sm">
       Pricing
     </span>
     <h2
-      class="font-serif font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8 mb-8"
+      class="font-display font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8 mb-8"
     >
-      Organize Your <br class="sm:hidden" />Ideas Visually
+      Organize your <br class="sm:hidden" />ideas visually
     </h2>
 
     <fieldset
@@ -68,7 +66,7 @@ import Surface from "../components/Surface.astro";
       class="w-67 sm:w-72 p-5 pb-6 sm:p-7 shrink-0 sm:pb-8 flex flex-col text-start gap-5"
     >
       <h3 class="mb-1 font-bold">Bleep Demo</h3>
-      <h3 class="font-serif text-3xl">Free</h3>
+      <h3 class="font-display text-3xl">Free</h3>
       <ul class="text-sm flex flex-col gap-1">
         <li class="flex items-center gap-2">
           <svg
@@ -161,7 +159,9 @@ import Surface from "../components/Surface.astro";
     >
       <h2 class="mb-1 font-bold">Bleep Unlimited</h2>
       <h3 class="flex items-end gap-2">
-        <span id="plan_price_amount" class="font-serif text-3xl"> $29.99 </span>
+        <span id="plan_price_amount" class="font-display text-3xl">
+          $29.99
+        </span>
         <span
           id="plan_price_description"
           class="text-sm text-gray-600 dark:text-gray-400">billed yearly</span
