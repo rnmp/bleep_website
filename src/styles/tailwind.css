@@ -4,7 +4,7 @@
 
 @theme {
   --color-accent: #ff5252;
-  --font-serif: "Jugendreisen", serif;
+  --font-display: "Manrope", sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
 
 
@@ -42,4 +42,14 @@
       opacity: 1;
     }
   }
+}
+
+.font-display {
+  letter-spacing: var(--manrope-letter-spacing);
+  word-spacing: var(--manrope-word-spacing);
+}
+
+.font-display-caps {
+  font-family: var(--font-display);
+  font-weight: 600;
 }
