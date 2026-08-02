@@ -51,5 +51,7 @@
 
 .font-display-caps {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.333em;
+  text-transform: uppercase;
 }
