@@ -7,7 +7,7 @@
   --link-color: #5f6fff;
   --shadow-color-rgb: var(--body-foreground-color-rgb);
   --manrope-letter-spacing: -0.0416667em;
-  --manrope-word-spacing: 0.05em;
+  --manrope-word-spacing: 0.125em;
 
   --safe-area-padding: 16px;
 }
