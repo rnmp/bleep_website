@@ -39,15 +39,6 @@ const quotes = [
       What’s the word?
     </h2>
   </header>
-  <svg class="hidden">
-    <filter id="noise">
-      <feTurbulence
-        type="fractalNoise"
-        baseFrequency="0.65"
-        numOctaves="3"
-        stitchTiles="stitch"></feTurbulence>
-    </filter>
-  </svg>
   <div class="hero-noise"></div>
   <div class="sm:max-w-5xl flex flex-wrap justify-center gap-4">
     {
@@ -89,7 +80,9 @@ const quotes = [
     position: absolute;
     inset: 0;
     z-index: 0;
-    filter: url(#noise);
+    background: url("/assets/noise.webp") repeat;
+    background-size: 256px 256px;
+    mix-blend-mode: overlay;
     opacity: 0.05;
     pointer-events: none;
   }
