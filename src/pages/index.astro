@@ -1,6 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
 import Content from "../components/Content.astro";
+import SmartBreak from "../components/SmartBreak.astro";
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -39,9 +40,8 @@ const title = "So Many Ideas, So Little Room?";
         <h1
           class="font-display font-normal md:leading-16 text-3xl md:text-5xl mb-4 px-4 tracking-wide"
         >
-          Bleep is the ultra-niche thought-board<br
-            class="hidden md:block"
-          />for creative people like you and me
+          Bleep is the ultra-niche thought-board<SmartBreak />for creative
+          people like you and me
         </h1>
 
         <a
@@ -76,9 +76,8 @@ const title = "So Many Ideas, So Little Room?";
         <h2
           class="font-display font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8"
         >
-          An all-in-one visual bookmarking app that<br
-            class="hidden md:block"
-          />works offline &amp; syncs privately via iCloud
+          An all-in-one visual bookmarking app that<SmartBreak />works offline
+          &amp; syncs privately via iCloud
         </h2>
       </div>
 
