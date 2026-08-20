@@ -25,13 +25,13 @@ const title = "So Many Ideas, So Little Room?";
       <header
         class="mt-32 shrink-0 h-[500px] flex items-center justify-center flex-col relative z-1"
       >
-        <picture class="block mb-12 relative z-1">
+        <picture class="app-icon-shadow block mb-12 relative z-1">
           <source
             srcset="/assets/app_icon@2x.png"
             media="(prefers-color-scheme: dark)"
           />
           <img
-            class="w-[66px] h-[66px] transition-[filter] duration-300 drop-shadow-xl drop-shadow-slate-500/20 dark:drop-shadow-black/20"
+            class="block w-[66px] h-[66px]"
             src="/assets/app_icon@2x.png"
             alt="An app icon representing the letter B in abstract form"
           />
@@ -177,6 +177,17 @@ const title = "So Many Ideas, So Little Room?";
   </script>
 
   <style>
+    .app-icon-shadow::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      z-index: -1;
+      border-radius: 18px;
+      background: rgb(100 116 139 / 20%);
+      box-shadow: 0 10px 24px 8px rgb(100 116 139 / 20%);
+      pointer-events: none;
+    }
+
     /* Hero gradient - complex radial gradient with viewport units */
     .hero-gradient {
       position: absolute;
@@ -206,6 +217,11 @@ const title = "So Many Ideas, So Little Room?";
     }
 
     @media (prefers-color-scheme: dark) {
+      .app-icon-shadow::before {
+        background: rgb(0 0 0 / 20%);
+        box-shadow: 0 10px 24px 8px rgb(0 0 0 / 20%);
+      }
+
       .hero-gradient {
         background: radial-gradient(
           circle at 50% 52%,
