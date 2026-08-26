@@ -8,10 +8,10 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={`${frontmatter.title} · Bleep`}>
-  <SiteHeader />
+  <SiteHeader fixed={false} />
 
   <main
-    class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
+    class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16 pt-8 md:pt-16"
   >
     <Surface class="p-4 md:p-7">
       <Content>

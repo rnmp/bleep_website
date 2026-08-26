@@ -1,5 +1,16 @@
+---
+interface Props {
+  fixed?: boolean;
+}
+
+const { fixed = true } = Astro.props;
+---
+
 <header
-  class="fixed top-2 left-0 w-full z-10 px-4 py-3 flex justify-center pointer-events-none"
+  class:list={[
+    "left-0 w-full z-10 px-4 flex justify-center pointer-events-none",
+    fixed ? "fixed top-2 py-3" : "relative pt-5 pb-3",
+  ]}
 >
   <div
     id="header-pill"

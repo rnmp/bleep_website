@@ -18,9 +18,9 @@ const articles = [
 ---
 
 <Layout title="Support · Bleep">
-  <SiteHeader />
+  <SiteHeader fixed={false} />
   <main
-    class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-[120px] md:pt-[140px]"
+    class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-8 md:pt-16"
   >
     <h1 class="font-display font-normal text-2xl md:text-3xl pb-6">Guides</h1>
 
@@ -60,7 +60,7 @@ const articles = [
       <div
         class="rounded-2xl border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] overflow-hidden dark:border-white/7"
       >
-        <details class="group faq-item">
+        <details id="syncing-between-devices" class="group faq-item">
           <summary
             class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
           >
@@ -70,6 +70,12 @@ const articles = [
             >
             <span class="flex-1"
               >Why is my data not synced between devices?</span
+            >
+            <a
+              class="faq-link shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[var(--body-secondary-foreground-color)] opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity no-underline"
+              href="#syncing-between-devices"
+              aria-label="Link to why data is not syncing between devices"
+              title="Link to this answer">#</a
             >
             <svg
               class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
@@ -90,7 +96,7 @@ const articles = [
           </div>
         </details>
 
-        <details class="group faq-item">
+        <details id="data-privacy" class="group faq-item">
           <summary
             class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
           >
@@ -99,6 +105,12 @@ const articles = [
               >🔒</span
             >
             <span class="flex-1">Is my data on Bleep private?</span>
+            <a
+              class="faq-link shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[var(--body-secondary-foreground-color)] opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity no-underline"
+              href="#data-privacy"
+              aria-label="Link to whether data on Bleep is private"
+              title="Link to this answer">#</a
+            >
             <svg
               class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
               fill="none"
@@ -119,7 +131,7 @@ const articles = [
           </div>
         </details>
 
-        <details class="group faq-item">
+        <details id="export-import" class="group faq-item">
           <summary
             class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
           >
@@ -128,6 +140,12 @@ const articles = [
               >💾</span
             >
             <span class="flex-1">Can I export/import my data?</span>
+            <a
+              class="faq-link shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[var(--body-secondary-foreground-color)] opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity no-underline"
+              href="#export-import"
+              aria-label="Link to whether data can be exported or imported"
+              title="Link to this answer">#</a
+            >
             <svg
               class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
               fill="none"
@@ -143,7 +161,7 @@ const articles = [
           </div>
         </details>
 
-        <details class="group faq-item">
+        <details id="other-platforms" class="group faq-item">
           <summary
             class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
           >
@@ -153,6 +171,12 @@ const articles = [
             >
             <span class="flex-1"
               >Do you have a web, Windows, Linux, or Android app?</span
+            >
+            <a
+              class="faq-link shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[var(--body-secondary-foreground-color)] opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity no-underline"
+              href="#other-platforms"
+              aria-label="Link to whether Bleep is available on other platforms"
+              title="Link to this answer">#</a
             >
             <svg
               class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
@@ -170,7 +194,7 @@ const articles = [
           </div>
         </details>
 
-        <details class="group faq-item">
+        <details id="ai" class="group faq-item">
           <summary
             class="flex items-center gap-3 p-4 cursor-pointer font-medium text-[0.95rem] select-none transition-colors duration-200"
           >
@@ -179,6 +203,12 @@ const articles = [
               >🤖</span
             >
             <span class="flex-1">What's your take on AI?</span>
+            <a
+              class="faq-link shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[var(--body-secondary-foreground-color)] opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity no-underline"
+              href="#ai"
+              aria-label="Link to Bleep's take on AI"
+              title="Link to this answer">#</a
+            >
             <svg
               class="shrink-0 w-4 h-4 text-[var(--body-secondary-foreground-color)] transition-transform duration-200 group-open:rotate-180"
               fill="none"
@@ -218,6 +248,32 @@ const articles = [
   <SiteFooter />
 </Layout>
 
+<script>
+  const openFaqFromHash = () => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    const faq = document.getElementById(decodeURIComponent(id));
+    if (
+      faq instanceof HTMLDetailsElement &&
+      faq.classList.contains("faq-item")
+    ) {
+      faq.open = true;
+    }
+  };
+
+  document.querySelectorAll(".faq-link").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const faq = link.closest("details");
+      if (faq instanceof HTMLDetailsElement) faq.open = true;
+    });
+  });
+
+  openFaqFromHash();
+  window.addEventListener("hashchange", openFaqFromHash);
+</script>
+
 <style>
   details summary::-webkit-details-marker {
     display: none;
@@ -229,6 +285,10 @@ const articles = [
 
   .faq-item + .faq-item {
     border-top: 1px solid rgb(from var(--body-foreground-color) r g b / 0.06);
+  }
+
+  .faq-item {
+    scroll-margin-top: 1rem;
   }
 
   @media (prefers-color-scheme: dark) {
