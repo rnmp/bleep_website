@@ -18,11 +18,24 @@ import Button from "./Button.astro";
       {subtitle}
     </p>
     <form action="https://submit-form.com/R7bwjb69d" class="support-form">
+      <div class="honeypot" aria-hidden="true">
+        <label for="company-website">Leave this field empty</label>
+        <input
+          type="text"
+          id="company-website"
+          name="_honeypot"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
       <input
         type="text"
         id="name"
         name="name"
+        aria-label="Name"
         placeholder="Name"
+        autocomplete="name"
+        maxlength="100"
         required
         autofocus={autofocus}
       />
@@ -30,12 +43,22 @@ import Button from "./Button.astro";
         type="email"
         id="email"
         name="email"
+        aria-label="Email"
         placeholder="Email"
+        autocomplete="email"
+        maxlength="254"
         required
       />
-      <textarea id="message" name="message" placeholder="Message" required
-      ></textarea>
+      <textarea
+        id="message"
+        name="message"
+        aria-label="Message"
+        placeholder="How can I help? (at least 20 characters)"
+        minlength="20"
+        maxlength="5000"
+        required></textarea>
       <Button type="submit">Send</Button>
+      <p class="form-error" role="alert" aria-live="polite" hidden></p>
     </form>
   </div>
 
@@ -54,7 +77,14 @@ import Button from "./Button.astro";
   const form = wrapper.querySelector("form")!;
   const formState = wrapper.querySelector(".form-state") as HTMLElement;
   const successState = wrapper.querySelector(".success-state") as HTMLElement;
+  const honeypot = form.querySelector("#company-website") as HTMLInputElement;
+  const submitButton = form.querySelector(
+    'button[type="submit"]',
+  ) as HTMLButtonElement;
+  const formError = form.querySelector(".form-error") as HTMLParagraphElement;
   const IDENTITY_KEY = "bleep_user";
+  const MINIMUM_COMPLETION_TIME = 3000;
+  const formLoadedAt = Date.now();
 
   // Restore saved identity
   try {
@@ -77,6 +107,24 @@ import Button from "./Button.astro";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Most form bots complete hidden fields. Pretend the submission succeeded so
+    // they do not learn that the trap stopped the request.
+    if (honeypot.value) {
+      formState.hidden = true;
+      successState.hidden = false;
+      return;
+    }
+
+    formError.hidden = true;
+    if (Date.now() - formLoadedAt < MINIMUM_COMPLETION_TIME) {
+      formError.textContent = "Please take a moment to review your message.";
+      formError.hidden = false;
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.setAttribute("aria-busy", "true");
     const data = Object.fromEntries(new FormData(form));
     try {
       const res = await fetch(form.action, {
@@ -91,7 +139,12 @@ import Button from "./Button.astro";
       formState.hidden = true;
       successState.hidden = false;
     } catch {
-      form.submit();
+      formError.textContent =
+        "Your message couldn't be sent. Please wait a moment and try again.";
+      formError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
+      submitButton.removeAttribute("aria-busy");
     }
   });
 </script>
@@ -107,6 +160,14 @@ import Button from "./Button.astro";
     flex-direction: column;
     width: 100%;
     gap: 1em;
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   input[type="text"],
@@ -152,6 +213,16 @@ import Button from "./Button.astro";
     cursor: pointer;
     border: 1px solid rgb(from var(--body-foreground-color) r g b / 0.04);
     margin: 0px !important;
+  }
+
+  form button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
+  .form-error {
+    margin: 0;
+    color: var(--color-accent);
   }
 
   .success-state p {
