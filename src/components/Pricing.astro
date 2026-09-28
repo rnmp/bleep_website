@@ -2,7 +2,7 @@
 import Surface from "../components/Surface.astro";
 ---
 
-<div class="relative sm:mx-auto pb-20 flex flex-col items-center gap-10">
+<div class="relative sm:mx-auto pb-8 flex flex-col items-center gap-10">
   <div class="absolute -top-31" id="pricing"></div>
   <div class="text-center flex flex-col items-center">
     <span class="font-display-caps text-[var(--color-accent)] text-sm">
@@ -11,7 +11,9 @@ import Surface from "../components/Surface.astro";
     <h1
       class="font-display font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8 mb-8"
     >
-      Enjoy Bleep 100% free,<br />super charge with Pro
+      Enjoy Bleep for Free,<br />super charge with <span class="pro-badge"
+        >Pro</span
+      >
     </h1>
 
     <fieldset
@@ -65,7 +67,7 @@ import Surface from "../components/Surface.astro";
     <Surface
       class="w-67 sm:w-72 p-5 pb-6 sm:p-7 shrink-0 sm:pb-8 flex flex-col text-start gap-5"
     >
-      <h3 class="mb-1 font-bold">Bleep</h3>
+      <h3 class="plan-name mb-1 font-display font-bold">Bleep</h3>
       <h3 class="font-display text-3xl">Free</h3>
       <ul class="text-sm flex flex-col gap-1">
         <li class="flex items-center gap-2">
@@ -144,7 +146,9 @@ import Surface from "../components/Surface.astro";
     <Surface
       class="w-67 sm:w-72 p-5 pb-6 sm:p-7 shrink-0 sm:pb-8 flex flex-col text-start gap-5"
     >
-      <h2 class="mb-1 font-bold">Bleep Pro</h2>
+      <h2 class="plan-name mb-1 font-display font-bold">
+        Bleep <span class="pro-badge">Pro</span>
+      </h2>
       <h3 class="flex items-end gap-2">
         <span id="plan_price_amount" class="font-display text-3xl">
           $29.99
@@ -218,7 +222,7 @@ import Surface from "../components/Surface.astro";
             stroke-linejoin="round"
             ><polyline points="20 6 9 17 4 12"></polyline></svg
           >
-          & more...
+          Nested rooms
         </li>
       </ul>
       <a
@@ -230,6 +234,27 @@ import Surface from "../components/Surface.astro";
     </Surface>
   </div>
 </div>
+
+<style>
+  .plan-name {
+    display: flex;
+    align-items: center;
+    gap: 0.42em;
+    line-height: 1;
+    min-height: 1.55em;
+  }
+
+  .pro-badge {
+    display: inline-block;
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    border: 0.08em solid currentColor;
+    border-radius: 0.24em;
+    padding: 0em 0.2em;
+    line-height: 1;
+  }
+</style>
 
 <script>
   const timeframeSelector = document.getElementById("plan_timeframe_selector");
