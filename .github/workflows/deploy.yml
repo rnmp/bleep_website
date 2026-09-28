@@ -2,13 +2,21 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
+# contents: write publishes the production site to gh-pages without deleting
+# pr-preview/. pages and id-token keep the current Actions Pages deploy working
+# until Settings → Pages is switched to "Deploy from a branch" (gh-pages / root).
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+
+# Share this group with preview.yml so the two publishes cannot race.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -16,23 +24,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'yarn'
-      
+          node-version: "20"
+          cache: yarn
+
       - name: Install dependencies
-        run: yarn install
-      
+        run: yarn install --frozen-lockfile
+
       - name: Build site
         run: yarn build
-      
-      - name: Upload artifact
+
+      - name: Include custom domain
+        run: cp CNAME dist/CNAME
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
+      - name: Upload build for branch deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 1
 
   deploy:
     needs: build
@@ -41,6 +59,38 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Detect Pages source
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if build_type=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type); then
+            echo "build_type=$build_type" >> "$GITHUB_OUTPUT"
+          else
+            echo "build_type=workflow" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Skipped once Settings → Pages is "Deploy from a branch". That source
+      # rejects actions/deploy-pages, and deploy-branch publishes the site.
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        if: steps.pages.outputs.build_type != 'legacy'
+        uses: actions/deploy-pages@v4
+
+  deploy-branch:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - name: Deploy site to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean-exclude: pr-preview
+          force: false
