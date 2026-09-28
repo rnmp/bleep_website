@@ -15,7 +15,7 @@ const { frontmatter } = Astro.props;
   >
     <Surface class="p-4 md:p-7">
       <Content>
-        <a href="/support">&larr; Guides</a>
+        <a href="/guides" class="color-black">Guides</a>
         <h1 class="text-3xl">{frontmatter.title}</h1>
         {frontmatter.subtitle && <p class="subtitle">{frontmatter.subtitle}</p>}
         <slot />

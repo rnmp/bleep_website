@@ -13,7 +13,8 @@ export default defineConfig({
     },
     integrations: [mdx()],
     redirects: {
+        '/support': '/guides',
         '/support/extensions/safari': '/support/extensions/#install-on-safari',
         '/support/extensions/chrome': 'https://chromewebstore.google.com/detail/bleep-quick-save/cjfkfilhmpodcciidnmoiojffkmkgepj'
     }
-}); 
+});
