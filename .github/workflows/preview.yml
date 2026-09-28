@@ -1,0 +1,57 @@
+name: Deploy PR preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+# Serialise every publish to gh-pages with the production deploy workflow.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+# The preview action commits the built site onto gh-pages and comments on the PR.
+# Repository Settings → Actions → General → Workflow permissions must allow
+# read and write, and Settings → Pages must deploy from the gh-pages branch.
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: github.event.action != 'closed'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: yarn
+
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: yarn install --frozen-lockfile
+
+      - name: Build site
+        if: github.event.action != 'closed'
+        env:
+          BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+        run: yarn build
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: dist
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pages-base-url: bleep.is
+          # Leave the comment as soon as the branch updates. Waiting on the
+          # Pages Builds API fails while the site is still published by the
+          # GitHub Actions source, which does not build the gh-pages branch.
