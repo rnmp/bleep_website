@@ -26,8 +26,15 @@ import FaqItem from "../components/FaqItem.astro";
       <FaqList>
         <FaqItem id="free-plan" icon="🎁" question="Can I use Bleep for free?">
           Yes. The free plan includes unlimited items and rooms, the browser
-          extension, offline access, and sync across devices via iCloud. No
-          sign-up required.
+          extension, offline access, and sync across devices via iCloud.
+        </FaqItem>
+        <FaqItem
+          id="pro-trial"
+          icon="👀"
+          question="Can I try Pro before paying?"
+        >
+          Yes! You'll enter a free 7-day trial before you're build on the yearly
+          or monthly plan.
         </FaqItem>
         <FaqItem id="pro-features" icon="⚡️" question="What does Pro add?">
           Pro adds putting items in multiple rooms, pinned items, bulk editing,
@@ -35,7 +42,7 @@ import FaqItem from "../components/FaqItem.astro";
         </FaqItem>
         <FaqItem id="pro-billing" icon="💳" question="How is Pro billed?">
           Pro is $3.99 billed monthly, $29.99 billed yearly, or $99.99 once for
-          lifetime.
+          lifetime. Prices in USD and vary per region.
         </FaqItem>
       </FaqList>
     </section>
