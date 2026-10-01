@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Pricing from "../components/Pricing.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FaqList from "../components/FaqList.astro";
+import FaqItem from "../components/FaqItem.astro";
+---
+
+<Layout title="Pricing · Bleep">
+  <SiteHeader />
+  <main class="pt-[120px] md:pt-[140px]">
+    <Pricing />
+
+    <section
+      class="w-full max-w-160 mx-auto px-[var(--safe-area-padding)] pb-20"
+    >
+      <header class="text-center pb-16">
+        <h2
+          class="font-display font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8"
+        >
+          Questions about pricing
+        </h2>
+      </header>
+      <FaqList>
+        <FaqItem id="free-plan" icon="🎁" question="Can I use Bleep for free?">
+          Yes. The free plan includes unlimited items and rooms, the browser
+          extension, offline access, and sync across devices via iCloud.
+        </FaqItem>
+        <FaqItem
+          id="pro-trial"
+          icon="👀"
+          question="Can I try Pro before paying?"
+        >
+          Yes! You'll enter a free 7-day trial before you're build on the yearly
+          or monthly plan.
+        </FaqItem>
+        <FaqItem id="pro-features" icon="⚡️" question="What does Pro add?">
+          Pro adds putting items in multiple rooms, pinned items, bulk editing,
+          customized bookmarks, and nested rooms.
+        </FaqItem>
+        <FaqItem id="pro-billing" icon="💳" question="How is Pro billed?">
+          Pro is $3.99 billed monthly, $29.99 billed yearly, or $99.99 once for
+          lifetime. Prices in USD and vary per region.
+        </FaqItem>
+      </FaqList>
+    </section>
+
+    <Testimonials />
+  </main>
+  <SiteFooter />
+</Layout>

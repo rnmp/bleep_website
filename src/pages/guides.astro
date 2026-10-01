@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Surface from "../components/Surface.astro";
+import FaqList from "../components/FaqList.astro";
+import FaqItem from "../components/FaqItem.astro";
+
+const articles = [
+  await import("./support/stay_organized.mdx"),
+  await import("./support/links.mdx"),
+  await import("./support/images.mdx"),
+  await import("./support/notes.mdx"),
+  await import("./support/share_ios.mdx"),
+  await import("./support/extensions.mdx"),
+  await import("./support/icloud.mdx"),
+  await import("./support/ai.mdx"),
+];
+---
+
+<Layout title="Guides · Bleep">
+  <SiteHeader fixed={false} />
+  <main
+    class="max-w-160 mx-auto px-[var(--safe-area-padding)] pb-16 pt-8 md:pt-16"
+  >
+    <h1 class="font-display font-normal text-2xl md:text-3xl pb-6">Guides</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-20">
+      {
+        articles.map((article) => (
+          <Surface
+            as="a"
+            href={article.url}
+            class="group flex flex-col gap-3 p-4 rounded-2xl transition-all duration-200 no-underline shadow-xs rounded-xl"
+          >
+            <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-lg bg-black/4 text-lg dark:bg-white/8">
+              {article.frontmatter.icon}
+            </span>
+            <div class="min-w-0">
+              <span class="block font-medium text-black dark:text-white transition-colors duration-200">
+                {article.frontmatter.support_title || article.frontmatter.title}
+              </span>
+              {article.frontmatter.subtitle && (
+                <span class="block text-sm text-zinc-500 dark:text-zinc-400 leading-snug mt-0.5">
+                  {article.frontmatter.subtitle}
+                </span>
+              )}
+            </div>
+          </Surface>
+        ))
+      }
+    </div>
+
+    <section>
+      <h1 class="font-display font-normal text-2xl md:text-3xl pb-6">FAQs</h1>
+      <FaqList>
+        <FaqItem
+          id="syncing-between-devices"
+          icon="☁️"
+          question="Why is my data not synced between devices?"
+        >
+          Most likely, you don't have iCloud Drive enabled. Check out the <a
+            href="/support/icloud">how-to guide</a
+          > to enable it. Please allow a few minutes for changes to sync between devices,
+          especially if you're using a new device.
+        </FaqItem>
+
+        <FaqItem
+          id="data-privacy"
+          icon="🔒"
+          question="Is my data on Bleep private?"
+        >
+          Yes, your data can only be accessed by you. It's stored on your
+          device. Bleep uses iCloud for syncing between devices, but it's
+          encrypted end-to-end. You can also review the <a href="/privacy"
+            >privacy policy.</a
+          >
+        </FaqItem>
+
+        <FaqItem
+          id="export-import"
+          icon="💾"
+          question="Can I export/import my data?"
+        >
+          Not at the moment. But it will be added in a future update.
+        </FaqItem>
+
+        <FaqItem
+          id="other-platforms"
+          icon="💻"
+          question="Do you have a web, Windows, Linux, or Android app?"
+        >
+          No, the current focus is on macOS and iOS. Long-term, I'd love for
+          Bleep to be universal and on as many platforms as possible.
+        </FaqItem>
+
+        <FaqItem id="ai" icon="🤖" question="What's your take on AI?">
+          <p>
+            While Bleep is designed for privacy and simplicity, <em>optional</em
+            > AI features may be added in the future using local models.
+          </p>
+          <p>
+            Bleep also offers an MCP server which you can use to connect with
+            your favorite AI tools. <a href="/support/ai">Learn more &rarr;</a>
+          </p>
+        </FaqItem>
+      </FaqList>
+    </section>
+  </main>
+  <SiteFooter />
+</Layout>

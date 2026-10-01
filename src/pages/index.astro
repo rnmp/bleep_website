@@ -7,13 +7,12 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import FeatureRow from "../components/FeatureRow.astro";
 import Surface from "../components/Surface.astro";
-import Pricing from "../components/Pricing.astro";
 import Testimonials from "../components/Testimonials.astro";
 
-const title = "So many ideas, so little room?";
+const title = "The notes app for creatives";
 ---
 
-<Layout title={`${title} · Bleep`}>
+<Layout title={`Bleep · ${title}`}>
   <SiteHeader />
   <main>
     <section
@@ -40,15 +39,17 @@ const title = "So many ideas, so little room?";
         <h1
           class="font-display font-normal md:leading-16 text-3xl md:text-5xl mb-4 px-4 tracking-wide"
         >
-          Bleep is the ultra-niche thought-board<SmartBreak />for creative
-          people like you and me
+          Bleep is the notes app<SmartBreak />for creative people
         </h1>
+        <p class="font-display text-lg opacity-70">
+          Available on iPhone, iPad &amp; Mac
+        </p>
 
         <a
           class="inline-block leading-4 mt-8 bg-white text-black md:text-[1.5rem] font-display rounded-full py-[0.75em] px-[1em] ring ring-black/8 dark:border-transparent shadow-[0_0_8px_rgb(0_0_0/0.05)] no-underline transition-[transform,box-shadow] duration-200"
           href="https://apps.apple.com/app/bleep-think-visually/id1638417383"
         >
-          Download Bleep on the App Store
+          Download Free on App Store
         </a>
       </header>
 
@@ -71,12 +72,12 @@ const title = "So many ideas, so little room?";
       <div class="absolute -top-10" id="features"></div>
       <div class="px-6 text-center">
         <span class="font-display-caps text-[var(--color-accent)] text-sm">
-          Features
+          Make room for ideas
         </span>
         <h2
           class="font-display font-normal text-3xl sm:text-[2.5rem] leading-[1.2] mt-8"
         >
-          An all-in-one visual bookmarking app that<SmartBreak />works offline
+          An all-in-one visual note-taking app that<SmartBreak />works offline
           &amp; syncs privately via iCloud
         </h2>
       </div>
@@ -84,7 +85,7 @@ const title = "So many ideas, so little room?";
       <div class="flex flex-col gap-20">
         <FeatureRow
           title="Capture anything"
-          description="Save bookmarks, images, and even notes into Bleep. All with rich previews."
+          description="Save notes, bookmarks and images into Bleep. All with rich previews."
           image="/assets/feature_capture_light.png"
           imageDark="/assets/feature_capture_dark.png"
           reverse
@@ -107,7 +108,6 @@ const title = "So many ideas, so little room?";
       </div>
     </div>
 
-    <Pricing />
     <Testimonials />
     <div
       class="relative max-w-4xl mx-auto pt-15 md:pt-20 pb-15 md:pb-30 flex flex-col gap-10 md:gap-20"
@@ -157,24 +157,6 @@ const title = "So many ideas, so little room?";
     </div>
     <SiteFooter animate />
   </main>
-
-  <script>
-    plan_timeframe_selector.addEventListener("change", (event) => {
-      const [amount, description] = (() => {
-        switch (event.target.value) {
-          case "monthly":
-            return ["$3.99", "billed monthly"];
-          case "lifetime":
-            return ["$99.99", "billed once"];
-          default:
-            return ["$29.99", "billed yearly"];
-        }
-      })();
-
-      plan_price_amount.innerHTML = amount;
-      plan_price_description.innerHTML = description;
-    });
-  </script>
 
   <style>
     .app-icon-shadow::before {

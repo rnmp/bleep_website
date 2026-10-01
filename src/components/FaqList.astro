@@ -1,0 +1,42 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "w-full rounded-2xl border border-[rgb(from_var(--body-foreground-color)_r_g_b/0.06)] overflow-hidden dark:border-white/7",
+    className,
+  ]}
+>
+  <slot />
+</div>
+
+<script>
+  const openFaqFromHash = () => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    const faq = document.getElementById(decodeURIComponent(id));
+    if (
+      faq instanceof HTMLDetailsElement &&
+      faq.classList.contains("faq-item")
+    ) {
+      faq.open = true;
+    }
+  };
+
+  document.querySelectorAll(".faq-link").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const faq = link.closest("details");
+      if (faq instanceof HTMLDetailsElement) faq.open = true;
+    });
+  });
+
+  openFaqFromHash();
+  window.addEventListener("hashchange", openFaqFromHash);
+</script>
