@@ -6,10 +6,10 @@ Get Bleep
 </a> <button id="menu-toggle" class="sm:hidden flex items-center justify-center w-9 h-9 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" aria-label="Toggle menu" aria-expanded="false"> <svg id="menu-icon" class="w-5 h-5 text-zinc-600 dark:text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"> <line x1="4" y1="7" x2="20" y2="7"></line> <line x1="4" y1="12" x2="20" y2="12"></line> <line x1="4" y1="17" x2="20" y2="17"></line> </svg> <svg id="close-icon" class="w-5 h-5 text-zinc-600 dark:text-zinc-400 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"> <line x1="6" y1="6" x2="18" y2="18"></line> <line x1="6" y1="18" x2="18" y2="6"></line> </svg> </button> </div> </div> <nav id="mobile-nav" class="hidden sm:hidden flex-col items-center gap-1 pt-3 pb-1 border-t border-black/8 dark:border-white/10 mt-2.5"> <a class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2" href="/#features">Features</a> <a class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2" href="/pricing">Pricing</a> <a class="font-medium text-zinc-600 dark:text-zinc-400 hover:text-accent text-center py-2" href="/guides">Guides</a> <a class="inline-block leading-3 bg-black dark:bg-white text-white dark:text-black font-[550] text-[0.95rem] rounded-full py-2.5 px-4 dark:border-transparent no-underline transition-[transform,box-shadow] duration-200 hover:text-black mt-2" href="https://apps.apple.com/app/bleep-think-visually/id1638417383">
 Get Bleep
 </a> </nav> </div> </header> <script type="module">const n=document.getElementById("menu-toggle");document.getElementById("header-pill");const t=document.getElementById("mobile-nav"),s=document.getElementById("menu-icon"),l=document.getElementById("close-icon");function d(e){n.setAttribute("aria-expanded",String(e)),s.classList.toggle("hidden",e),l.classList.toggle("hidden",!e),e?(t.classList.remove("hidden"),t.classList.add("flex")):(t.classList.add("hidden"),t.classList.remove("flex"))}n.addEventListener("click",()=>{const e=n.getAttribute("aria-expanded")!=="true";d(e)});t.querySelectorAll("a").forEach(e=>{e.addEventListener("click",()=>d(!1))});</script> <main class="max-w-[640px] mx-auto px-[var(--safe-area-padding)] pb-16 pt-8 md:pt-16" data-astro-cid-cwserffi> <div data-astro-cid-cwserffi="true" class="rounded-3xl bg-[#282828]/4 dark:bg-white/4 ring ring-black/8 dark:ring-white/10 shadow-lg p-4 md:p-7">  <div class="content">  <a href="/guides" class="color-black" data-astro-cid-cwserffi>Guides</a> <h1 class="text-3xl" data-astro-cid-cwserffi> Mac: Browser Extensions </h1> <p class="subtitle" data-astro-cid-cwserffi>Save websites and images to Bleep from your favorite browser. Works with Chrome, Arc, and Safari.</p><p><img src="/assets/context_menu.CHn-cbR7_Z1F0EXH.webp" alt="Context menu" width="1036" height="643" loading="lazy" decoding="async"></p>
-<h2 id="install-on-chrome-or-arc">Install on Chrome or Arc</h2>
+<h2 id="install-on-chrome-or-dia">Install on Chrome (or Dia)</h2>
 <ol>
 <li><a href="/support/extensions/chrome">Install extension from Chrome Web Store.</a><br/>
-Compatible with Arc as well.</li>
+Compatible with Dia, or any Chrome-based as well.</li>
 <li>That’s it! You’re good to go.</li>
 </ol>
 <h3 id="important">Important</h3>
@@ -31,6 +31,18 @@ Compatible with Arc as well.</li>
 <ul>
 <li>Bleep must be running on your computer for the extension to work.</li>
 <li>For best experience, allow access to “All Websites” when prompted.</li>
+</ul>
+<hr/>
+<h2 id="install-on-firefox-or-zen">Install on Firefox (or Zen)</h2>
+<ol>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/bleep-quick-save/">Install extension from Add-ons for Firefox.</a><br/>
+Compatible with Zen, or any Gecko-based as well.</li>
+<li>That’s it! You’re good to go.</li>
+</ol>
+<h3 id="important-2">Important</h3>
+<ul>
+<li>Bleep must be running on your computer for the extension to work.</li>
+<li>Since Bleep is a macOS/iOS app, this extension will not work on Windows or Linux.</li>
 </ul>
 <hr/>
 <h2 id="add-stuff-to-bleep">Add Stuff to Bleep</h2>
